@@ -1,1 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/core/theming/prebuilt/deeppurple-amber.css';
+
+* {
+    margin: 0;
+    padding: 0;
+}
+.page {
+    padding: 16px;
+    max-width: 750px;
+    margin: 0px auto;
+    font-size:16px;
+}
+p {
+    margin-bottom:16px;
+}
+.wizard>div {
+    margin:16px 0px;
+}
