@@ -1,3 +1,58 @@
 <h1>
   {{title}}
 </h1>
+<p>Select your current version, and the desired version of Angular. We'll tell you the steps to update</p>
+From:
+<select [(ngModel)]="from">
+  <option value="200">2.0</option>
+  <option value="201">2.1</option>
+  <option value="202">2.2</option>
+  <option value="203">2.3</option>
+  <option value="204">2.4</option>
+  <option value="400">4.0</option>
+  <option value="500">5.0</option>
+  <option value="600">6.0</option>
+</select>
+
+To: 
+<select [(ngModel)]="to">
+  <option value="200">2.0</option>
+  <option value="201">2.1</option>
+  <option value="202">2.2</option>
+  <option value="203">2.3</option>
+  <option value="204">2.4</option>
+  <option value="400">4.0</option>
+  <option value="500">5.0</option>
+  <option value="600">6.0</option>
+</select>
+
+<br/>
+How complex is your app?
+<select [(ngModel)]="level">
+  <option value="1">Basic</option>
+  <option value="2">Medium</option>
+  <option value="3">Advanced</option>
+</select>
+
+<br/>
+Do you use NgUpgrade? 
+<input type="checkbox" [(ngModel)]="ngUpgrade">
+
+
+<div><button type="button" (click)="showUpgradePath()">Show me how to upgrade!</button></div>
+
+
+<div *ngIf="beforeRecommendations.length > 0 || duringRecommendations.length > 0 || afterRecommendations.length > 0">
+  <h2>Before upgrading</h2>
+  <li *ngFor="let r of beforeRecommendations">
+    {{r.step}}
+  </li>
+  <h2>During the upgrade</h2>
+  <li *ngFor="let r of duringRecommendations">
+    {{r.step}}
+  </li>
+  <h2>After the upgrade</h2>
+  <li *ngFor="let r of afterRecommendations">
+    {{r.step}}
+  </li>
+</div>
