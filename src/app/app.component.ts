@@ -32,6 +32,7 @@ export class AppComponent {
     { step: 'If you use animations in your application, add it to your App NgModule.', possibleIn: 400, necessaryAsOf: 400, level: 1 },
     { step: 'RootRenderer cannot be used any more, use RendererFactoryV2 instead. ', possibleIn: 400, necessaryAsOf: 400, level: 3 },
     { step: 'DowngradeInject', possibleIn: 400, necessaryAsOf: 400, level: 3, ngUpgrade: true },
+    { step: 'Four newly added APIs in 2.2.0-beta: downgradeComponent, downgradeInjectable, UpgradeComponent, and UpgradeModule are no longer exported by @angular/upgrade. Import these from @angular/upgrade/static instead.', possibleIn: 220, necessaryAsOf: 500, level: 1, ngUpgrade: true},
     { step: 'If you call DifferFactory.create(...) remove the ChangeDetectorRef argument.', possibleIn: 400, necessaryAsOf: 500, level: 3},
     { step: 'Stop using ngOutletContext. Use ngTemplateOutletContext instead.', possibleIn: 400, necessaryAsOf: 600, level: 3},
     { step: 'Update `CollectionChangeRecord` to `IterableChangeRecord`', possibleIn: 400, necessaryAsOf: 600, level: 3},
