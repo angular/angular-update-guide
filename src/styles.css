@@ -16,3 +16,10 @@ p {
 .wizard>div {
     margin:16px 0px;
 }
+
+.recommendations md-checkbox {
+    float:left;
+}
+.recommendations>div {
+    
+}

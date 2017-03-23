@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import * as Showdown from 'showdown';
+
 
 export interface Step {
   step: string;
@@ -6,6 +8,7 @@ export interface Step {
   necessaryAsOf: number;
   level: number;
   ngUpgrade?: boolean;
+  renderedStep?: string;
 }
 
 @Component({
@@ -13,9 +16,8 @@ export interface Step {
   templateUrl: './app.component.html',
 })
 export class AppComponent {
-  title = 'Angular Upgrade Guide';
-  to: number = 400;
-  from: number = 200;
+  title = 'Angular Update Guide';
+  
   level: number = 1;
   ngUpgrade: boolean;
 
@@ -23,22 +25,45 @@ export class AppComponent {
   duringRecommendations: Step[] = [];
   afterRecommendations: Step[] = [];
 
-  steps: Step[]  = [
-    { step: 'Rename template tags to ng-template', possibleIn: 400, necessaryAsOf: 500, level: 1 },
-    { step: 'Replace Opaque Tokens with InjectionToken', possibleIn: 400, necessaryAsOf: 500, level: 2 },
-    { step: 'Ensure you don\'t use implements OnInit, or any lifecycle event. Instead use `extends <lifecycle event>`', possibleIn: 200, necessaryAsOf: 400, level: 1 },
-    { step: 'NPM update to version 4 and the latest typescript using this command: npm install @angular/{animations,common,compiler,compiler-cli,core,forms,http,platform-browser,platform-browser-dynamic,platform-server,router}@next typescript@latest --save --save-exact', possibleIn: 400, necessaryAsOf: 400, level: 1},
-    { step: 'If you use animations in your application, add it to your App NgModule.', possibleIn: 400, necessaryAsOf: 400, level: 1 },
-    { step: 'RootRenderer cannot be used any more, use RendererFactoryV2 instead. ', possibleIn: 400, necessaryAsOf: 400, level: 3 },
+  converter: Showdown.Converter;
+
+  versions =     [   
+        {name:'2.0',number:200},
+        {name:'2.1',number:201},
+        {name:'2.2',number:202},
+        {name:'2.3',number:203},
+        {name:'2.4',number:204},
+        {name:'4.0',number:400},
+        {name:'5.0',number:500},
+        {name:'6.0',number:600},
+  ];
+  to = this.versions[5];
+  from = this.versions[0];
+
+  steps: Step[] = [
+    { step: 'Rename your `template` tags to `ng-template`.', possibleIn: 400, necessaryAsOf: 500, level: 1 },
+    { step: 'Replace `OpaqueToken`s with `InjectionToken`s.', possibleIn: 400, necessaryAsOf: 500, level: 2 },
+    { step: 'Ensure you don\'t use `implements OnInit`, or use `implements` with any lifecycle event. Instead use `extends <lifecycle event>.`', possibleIn: 200, necessaryAsOf: 400, level: 1 },
+    { step: 'Update all of your dependencies to version 4 and the latest typescript. If you are using Linux/Mac, you can use: `npm install @angular/{animations,common,compiler,compiler-cli,core,forms,http,platform-browser,platform-browser-dynamic,platform-server,router}@next typescript@latest --save`', possibleIn: 400, necessaryAsOf: 400, level: 1 },
+    { step: 'If you use animations in your application, you should import `BrowserAnimationsModule` from `@angular/platform-browser/animations` in your App `NgModule`.', possibleIn: 400, necessaryAsOf: 400, level: 1 },
+    { step: 'Replace `RootRenderer` with `RendererFactoryV2` instead.  ', possibleIn: 400, necessaryAsOf: 400, level: 3 },
     { step: 'DowngradeInject', possibleIn: 400, necessaryAsOf: 400, level: 3, ngUpgrade: true },
-    { step: 'Four newly added APIs in 2.2.0-beta: downgradeComponent, downgradeInjectable, UpgradeComponent, and UpgradeModule are no longer exported by @angular/upgrade. Import these from @angular/upgrade/static instead.', possibleIn: 220, necessaryAsOf: 500, level: 1, ngUpgrade: true},
-    { step: 'If you call DifferFactory.create(...) remove the ChangeDetectorRef argument.', possibleIn: 400, necessaryAsOf: 500, level: 3},
-    { step: 'Stop using ngOutletContext. Use ngTemplateOutletContext instead.', possibleIn: 400, necessaryAsOf: 600, level: 3},
-    { step: 'Update `CollectionChangeRecord` to `IterableChangeRecord`', possibleIn: 400, necessaryAsOf: 600, level: 3},
-    { step: 'Stop using DefaultIterableDiffer, KeyValueDiffers#factories, or IterableDiffers#factories', possibleIn: 200, necessaryAsOf: 500, level: 3},
+    { step: 'Replace `downgradeComponent`, `downgradeInjectable`, `UpgradeComponent`, and `UpgradeModule` imported from `@angular/upgrade`. Instead use the new versions in `@angular/upgrade/static`.', possibleIn: 220, necessaryAsOf: 500, level: 1, ngUpgrade: true },
+    { step: 'If you call `DifferFactory.create(...)` remove the `ChangeDetectorRef` argument.', possibleIn: 400, necessaryAsOf: 500, level: 3 },
+    { step: 'Replace `ngOutletContext` with `ngTemplateOutletContext`.', possibleIn: 400, necessaryAsOf: 600, level: 3 },
+    { step: 'Replace `CollectionChangeRecord` with `IterableChangeRecord`', possibleIn: 400, necessaryAsOf: 600, level: 3 },
+    { step: 'Stop using `DefaultIterableDiffer`, `KeyValueDiffers#factories`, or `IterableDiffers#factories`', possibleIn: 200, necessaryAsOf: 500, level: 3 },
 
 
   ];
+
+  constructor() {
+    this.converter = new Showdown.Converter();
+
+    this.steps.map(item => item.renderedStep = this.converter.makeHtml(item.step));
+
+  }
+
 
   showUpgradePath() {
     this.beforeRecommendations = [];
@@ -46,13 +71,15 @@ export class AppComponent {
     this.afterRecommendations = [];
 
     for (let step of this.steps) {
-      if (step.level <= this.level && (!step.ngUpgrade || this.ngUpgrade) && step.necessaryAsOf > this.from) {
-        
-        if (step.possibleIn <= this.from) {
+      if (step.level <= this.level && (!step.ngUpgrade || this.ngUpgrade) && step.necessaryAsOf > this.from.number) {
+
+        // If you could do it before now, but didn't have to finish it before now
+        if (step.possibleIn <= this.from.number && step.necessaryAsOf >= this.from.number) {
           this.beforeRecommendations.push(step);
-        } else if (step.possibleIn > this.from && step.necessaryAsOf <= this.to) {
+         // If you couldn't do it before now, and you must do it now 
+        } else if (step.possibleIn > this.from.number && step.necessaryAsOf <= this.to.number) {
           this.duringRecommendations.push(step);
-        } else if (step.possibleIn <= this.to) {
+        } else if (step.possibleIn <= this.to.number) {
           this.afterRecommendations.push(step);
         } else {
           console.log("ignoring irrelevant step", step);
