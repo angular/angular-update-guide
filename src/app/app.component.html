@@ -32,20 +32,20 @@
 
   <div class="recommendations" *ngIf="beforeRecommendations.length > 0 || duringRecommendations.length > 0 || afterRecommendations.length > 0">
     <hr>
-    <h1>Angular Upgrade {{ from.name }} -> {{to.name}} Guide for {{level
+    <h1>Angular Updating {{ from.name }} -> {{to.name}} Guide for {{level
       < 2 ? 'Basic' : level < 3 ? 'Medium' : 'Advanced' }} Apps</h1>
-        <h2>Before upgrading</h2>
+        <h2>Before updating</h2>
         <div *ngFor="let r of beforeRecommendations">
           <md-checkbox></md-checkbox>
           <div [innerHTML]="r.renderedStep"></div>
         </div>
 
-        <h2>During the upgrade</h2>
+        <h2>During the update</h2>
         <div *ngFor="let r of duringRecommendations">
           <md-checkbox></md-checkbox>
           <div [innerHTML]="r.renderedStep"></div>
         </div>
-        <h2>After the upgrade</h2>
+        <h2>After the update</h2>
         <div *ngFor="let r of afterRecommendations">
           <md-checkbox></md-checkbox>
           <div [innerHTML]="r.renderedStep"></div>

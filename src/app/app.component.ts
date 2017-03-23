@@ -49,7 +49,7 @@ export class AppComponent {
     { step: 'Update all of your dependencies to version 4 and the latest typescript. If you are using Linux/Mac, you can use: `npm install @angular/{animations,common,compiler,compiler-cli,core,forms,http,platform-browser,platform-browser-dynamic,platform-server,router}@next typescript@latest --save`', possibleIn: 400, necessaryAsOf: 400, level: 1 },
     { step: 'If you use animations in your application, you should import `BrowserAnimationsModule` from `@angular/platform-browser/animations` in your App `NgModule`.', possibleIn: 400, necessaryAsOf: 400, level: 1 },
     { step: 'Replace `RootRenderer` with `RendererFactoryV2` instead.  ', possibleIn: 400, necessaryAsOf: 400, level: 3 },
-    { step: 'DowngradeInject', possibleIn: 400, necessaryAsOf: 400, level: 3, ngUpgrade: true },
+    { step: 'The return value of `upgrade/static/downgradeInjectable` has changed.', possibleIn: 400, necessaryAsOf: 400, level: 3, ngUpgrade: true },
     { step: 'Replace `downgradeComponent`, `downgradeInjectable`, `UpgradeComponent`, and `UpgradeModule` imported from `@angular/upgrade`. Instead use the new versions in `@angular/upgrade/static`.', possibleIn: 220, necessaryAsOf: 500, level: 1, ngUpgrade: true },
     { step: 'If you call `DifferFactory.create(...)` remove the `ChangeDetectorRef` argument.', possibleIn: 400, necessaryAsOf: 500, level: 3 },
     { step: 'Replace `ngOutletContext` with `ngTemplateOutletContext`.', possibleIn: 400, necessaryAsOf: 600, level: 3 },
