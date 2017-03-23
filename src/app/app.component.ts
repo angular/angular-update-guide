@@ -17,7 +17,7 @@ export interface Step {
 })
 export class AppComponent {
   title = 'Angular Update Guide';
-  
+
   level: number = 1;
   ngUpgrade: boolean;
 
@@ -27,18 +27,20 @@ export class AppComponent {
 
   converter: Showdown.Converter;
 
-  versions =     [   
-        {name:'2.0',number:200},
-        {name:'2.1',number:201},
-        {name:'2.2',number:202},
-        {name:'2.3',number:203},
-        {name:'2.4',number:204},
-        {name:'4.0',number:400},
-        {name:'5.0',number:500},
-        {name:'6.0',number:600},
+  versions = [
+    { name: '2.0', number: 200 },
+    { name: '2.1', number: 201 },
+    { name: '2.2', number: 202 },
+    { name: '2.3', number: 203 },
+    { name: '2.4', number: 204 },
+    { name: '4.0', number: 400 },
+    { name: '5.0', number: 500 },
+    { name: '6.0', number: 600 },
   ];
   to = this.versions[5];
+  selectedTo = this.versions[5];
   from = this.versions[0];
+  selectedFrom = this.versions[0];
 
   steps: Step[] = [
     { step: 'Rename your `template` tags to `ng-template`.', possibleIn: 400, necessaryAsOf: 500, level: 1 },
@@ -70,13 +72,16 @@ export class AppComponent {
     this.duringRecommendations = [];
     this.afterRecommendations = [];
 
+    this.from = this.selectedFrom;
+    this.to = this.selectedTo;
+
     for (let step of this.steps) {
       if (step.level <= this.level && (!step.ngUpgrade || this.ngUpgrade) && step.necessaryAsOf > this.from.number) {
 
         // If you could do it before now, but didn't have to finish it before now
         if (step.possibleIn <= this.from.number && step.necessaryAsOf >= this.from.number) {
           this.beforeRecommendations.push(step);
-         // If you couldn't do it before now, and you must do it now 
+          // If you couldn't do it before now, and you must do it now 
         } else if (step.possibleIn > this.from.number && step.necessaryAsOf <= this.to.number) {
           this.duringRecommendations.push(step);
         } else if (step.possibleIn <= this.to.number) {

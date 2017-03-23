@@ -5,7 +5,6 @@
   <p>Select your current Angular version, and the desired version of Angular. We'll tell you the steps to update.</p>
   <div class="wizard">
     <div>
-
       <md-select [(ngModel)]="selectedFrom" placeholder="from">
         <md-option *ngFor="let version of versions" [value]="version">{{version.name}}</md-option>
       </md-select>

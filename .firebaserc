@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "angular-upgrade-guide"
+    "default": "angular-update-guide",
+    "production": "angular-update-guide"
   }
 }
