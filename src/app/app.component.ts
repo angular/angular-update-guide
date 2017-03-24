@@ -44,7 +44,7 @@ export class AppComponent {
   steps: Step[] = [
     { step: 'Rename your `template` tags to `ng-template`.', possibleIn: 400, necessaryAsOf: 500, level: 1 },
     { step: 'Replace `OpaqueToken`s with `InjectionToken`s.', possibleIn: 400, necessaryAsOf: 500, level: 2 },
-    { step: 'Ensure you don\'t use `implements OnInit`, or use `implements` with any lifecycle event. Instead use `extends <lifecycle event>.`', possibleIn: 200, necessaryAsOf: 400, level: 1 },
+    { step: 'Ensure you don\'t use `extends OnInit`, or use `extends` with any lifecycle event. Instead use `implements <lifecycle event>.`', possibleIn: 200, necessaryAsOf: 400, level: 1 },
     { step: 'Update all of your dependencies to version 4 and the latest typescript.\n\nIf you are using Linux/Mac, you can use: `npm install @angular/{animations,common,compiler,compiler-cli,core,forms,http,platform-browser,platform-browser-dynamic,platform-server,router}@4.0.0 typescript@latest --save`', possibleIn: 400, necessaryAsOf: 400, level: 1 },
     { step: 'If you use animations in your application, you should import `BrowserAnimationsModule` from `@angular/platform-browser/animations` in your App `NgModule`.', possibleIn: 400, necessaryAsOf: 400, level: 1 },
     { step: 'Replace `RootRenderer` with `RendererFactoryV2` instead.  ', possibleIn: 400, necessaryAsOf: 400, level: 3 },
