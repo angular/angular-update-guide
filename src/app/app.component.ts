@@ -38,15 +38,14 @@ export class AppComponent {
     { name: '6.0', number: 600 },
   ];
   to = this.versions[5];
-  selectedTo = this.versions[5];
   from = this.versions[0];
-  selectedFrom = this.versions[0];
+
 
   steps: Step[] = [
     { step: 'Rename your `template` tags to `ng-template`.', possibleIn: 400, necessaryAsOf: 500, level: 1 },
     { step: 'Replace `OpaqueToken`s with `InjectionToken`s.', possibleIn: 400, necessaryAsOf: 500, level: 2 },
     { step: 'Ensure you don\'t use `implements OnInit`, or use `implements` with any lifecycle event. Instead use `extends <lifecycle event>.`', possibleIn: 200, necessaryAsOf: 400, level: 1 },
-    { step: 'Update all of your dependencies to version 4 and the latest typescript. If you are using Linux/Mac, you can use: `npm install @angular/{animations,common,compiler,compiler-cli,core,forms,http,platform-browser,platform-browser-dynamic,platform-server,router}@next typescript@latest --save`', possibleIn: 400, necessaryAsOf: 400, level: 1 },
+    { step: 'Update all of your dependencies to version 4 and the latest typescript.\n\nIf you are using Linux/Mac, you can use: `npm install @angular/{animations,common,compiler,compiler-cli,core,forms,http,platform-browser,platform-browser-dynamic,platform-server,router}@4.0.0 typescript@latest --save`', possibleIn: 400, necessaryAsOf: 400, level: 1 },
     { step: 'If you use animations in your application, you should import `BrowserAnimationsModule` from `@angular/platform-browser/animations` in your App `NgModule`.', possibleIn: 400, necessaryAsOf: 400, level: 1 },
     { step: 'Replace `RootRenderer` with `RendererFactoryV2` instead.  ', possibleIn: 400, necessaryAsOf: 400, level: 3 },
     { step: 'The return value of `upgrade/static/downgradeInjectable` has changed.', possibleIn: 400, necessaryAsOf: 400, level: 3, ngUpgrade: true },
@@ -55,6 +54,8 @@ export class AppComponent {
     { step: 'Replace `ngOutletContext` with `ngTemplateOutletContext`.', possibleIn: 400, necessaryAsOf: 600, level: 3 },
     { step: 'Replace `CollectionChangeRecord` with `IterableChangeRecord`', possibleIn: 400, necessaryAsOf: 600, level: 3 },
     { step: 'Stop using `DefaultIterableDiffer`, `KeyValueDiffers#factories`, or `IterableDiffers#factories`', possibleIn: 200, necessaryAsOf: 500, level: 3 },
+    { step: 'Stop using deep imports, these symbols are now marked with ɵ and are not part of our public API.', possibleIn: 200, necessaryAsOf: 400, level: 3 },
+    { step: 'Stop using `Renderer.invikeMethodElement`as this method has been removed. There is not currently a replacement.', possibleIn: 200, necessaryAsOf: 400, level: 3},
 
 
   ];
@@ -72,8 +73,8 @@ export class AppComponent {
     this.duringRecommendations = [];
     this.afterRecommendations = [];
 
-    this.from = this.selectedFrom;
-    this.to = this.selectedTo;
+    this.title = `Angular Update Guide - ${this.from.name} -> ${this.to.name} for ${this.level
+      < 2 ? 'Basic' : this.level < 3 ? 'Medium' : 'Advanced' } Apps`;
 
     for (let step of this.steps) {
       if (step.level <= this.level && (!step.ngUpgrade || this.ngUpgrade) && step.necessaryAsOf > this.from.number) {

@@ -2,20 +2,22 @@
   {{title}}
 </md-toolbar>
 <div class="page">
-  <p>Select your current Angular version, and the desired version of Angular. We'll tell you the steps to update.</p>
+  <p style="margin-bottom:32px;">Select your current Angular version, and the desired version of Angular. We'll tell you the steps to update.</p>
   <div class="wizard">
     <div>
-      <md-select [(ngModel)]="selectedFrom" placeholder="from">
+      <md-select [(ngModel)]="from" placeholder="from">
         <md-option *ngFor="let version of versions" [value]="version">{{version.name}}</md-option>
       </md-select>
-      <md-select [(ngModel)]="selectedTo" placeholder="to">
+      <md-select [(ngModel)]="to" placeholder="to">
         <md-option *ngFor="let version of versions" [value]="version">{{version.name}}</md-option>
       </md-select>
     </div>
+    <div *ngIf="from.number > 400 || to.number > 400"><strong style="color:darkred">Warning:</strong> Plans for releases after 4.0 are not finalized and may change. These recommendations are based on scheduled deprecations.</div>
+    <div *ngIf="from.number > to.number"><strong style="color:darkred">Warning:</strong> We do not currently support downgrading versions of Angular.</div>
 
-    <div>
-      How complex is your app?
-      <md-select [(ngModel)]="level">
+    <div style="align-items:center;display:flex;">
+      How complex is your app? 
+      <md-select [(ngModel)]="level" style="margin-left:32px;">
         <md-option [value]="1">Basic</md-option>
         <md-option [value]="2">Medium</md-option>
         <md-option [value]="3">Advanced</md-option>
@@ -32,23 +34,25 @@
 
   <div class="recommendations" *ngIf="beforeRecommendations.length > 0 || duringRecommendations.length > 0 || afterRecommendations.length > 0">
     <hr>
-    <h1>Angular Updating {{ from.name }} -> {{to.name}} Guide for {{level
-      < 2 ? 'Basic' : level < 3 ? 'Medium' : 'Advanced' }} Apps</h1>
+    <h1>{{title}}</h1>
         <h2>Before updating</h2>
         <div *ngFor="let r of beforeRecommendations">
           <md-checkbox></md-checkbox>
           <div [innerHTML]="r.renderedStep"></div>
         </div>
+        <div *ngIf="beforeRecommendations.length <= 0"><em>There aren't currently any recommendations for moving between these versions.</em></div>
 
         <h2>During the update</h2>
         <div *ngFor="let r of duringRecommendations">
           <md-checkbox></md-checkbox>
           <div [innerHTML]="r.renderedStep"></div>
         </div>
+        <div *ngIf="duringRecommendations.length <= 0"><em>There aren't currently any recommendations for moving between these versions.</em></div>
         <h2>After the update</h2>
         <div *ngFor="let r of afterRecommendations">
           <md-checkbox></md-checkbox>
           <div [innerHTML]="r.renderedStep"></div>
         </div>
+        <div *ngIf="afterRecommendations.length <= 0"><em>There aren't currently any recommendations for moving between these versions.</em></div>
   </div>
 </div>
