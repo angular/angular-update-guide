@@ -16,7 +16,7 @@ export interface Step {
   templateUrl: './app.component.html',
 })
 export class AppComponent {
-  title = 'Angular Update Guide';
+  title = 'Angular Update Guide - Beta';
 
   level: number = 1;
   ngUpgrade: boolean;
@@ -55,7 +55,8 @@ export class AppComponent {
     { step: 'Replace `CollectionChangeRecord` with `IterableChangeRecord`', possibleIn: 400, necessaryAsOf: 600, level: 3 },
     { step: 'Stop using `DefaultIterableDiffer`, `KeyValueDiffers#factories`, or `IterableDiffers#factories`', possibleIn: 200, necessaryAsOf: 500, level: 3 },
     { step: 'Stop using deep imports, these symbols are now marked with ɵ and are not part of our public API.', possibleIn: 200, necessaryAsOf: 400, level: 3 },
-    { step: 'Stop using `Renderer.invokeElementMethod` as this method has been removed. There is not currently a replacement.', possibleIn: 200, necessaryAsOf: 400, level: 3},
+    { step: 'Stop using `Renderer.invokeElementMethod` as this method has been removed. There is not currently a replacement.', possibleIn: 200, necessaryAsOf: 400, level: 3 },
+    { step: 'Angular began adding a `novalidate` attribute to form elements when you include `FormsModule`. To re-enable native forms behaviors, use `ngNoForm` or add `ngNativeValidate`.', possibleIn: 400, necessaryAsOf: 400, level: 2 },
 
 
   ];
@@ -68,13 +69,13 @@ export class AppComponent {
   }
 
 
-  showUpgradePath() {
+  showUpdatePath() {
     this.beforeRecommendations = [];
     this.duringRecommendations = [];
     this.afterRecommendations = [];
 
     this.title = `Angular Update Guide - ${this.from.name} -> ${this.to.name} for ${this.level
-      < 2 ? 'Basic' : this.level < 3 ? 'Medium' : 'Advanced' } Apps`;
+      < 2 ? 'Basic' : this.level < 3 ? 'Medium' : 'Advanced'} Apps`;
 
     for (let step of this.steps) {
       if (step.level <= this.level && (!step.ngUpgrade || this.ngUpgrade) && step.necessaryAsOf > this.from.number) {
