@@ -57,7 +57,7 @@ export class AppComponent {
     { step: 'Stop using deep imports, these symbols are now marked with ɵ and are not part of our public API.', possibleIn: 200, necessaryAsOf: 400, level: 3 },
     { step: 'Stop using `Renderer.invokeElementMethod` as this method has been removed. There is not currently a replacement.', possibleIn: 200, necessaryAsOf: 400, level: 3 },
     { step: 'Angular began adding a `novalidate` attribute to form elements when you include `FormsModule`. To re-enable native forms behaviors, use `ngNoForm` or add `ngNativeValidate`.', possibleIn: 400, necessaryAsOf: 400, level: 2 },
-
+    { step: 'If you use Animations and tests, add `mods[1].NoopAnimationsModule` to your `TestBed.initTestEnvironment` call.', possibleIn: 400, necessaryAsOf: 400, level: 3 },
 
   ];
 
