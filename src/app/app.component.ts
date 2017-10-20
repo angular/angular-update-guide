@@ -128,9 +128,9 @@ export class AppComponent {
     let upgradeStep;
     const isWindows = /win/i.test(navigator.platform);
     if (isWindows) {
-      upgradeStep = { step: 'General Update', action: 'Update all of your dependencies to the latest Angular and the latest TypeScript.\n\nIf you are using Windows, you can use: `npm install @angular/common@latest @angular/compiler@latest @angular/compiler-cli@latest @angular/core@latest @angular/forms@latest @angular/http@latest @angular/platform-browser@latest @angular/platform-browser-dynamic@latest @angular/platform-server@latest @angular/router@latest @angular/animations@latest typescript@latest --save`'};
+      upgradeStep = { step: 'General Update', action: 'Update all of your dependencies to the latest Angular and the TypeScript 2.4.\n\nIf you are using Windows, you can use: `npm install @angular/common@latest @angular/compiler@latest @angular/compiler-cli@latest @angular/core@latest @angular/forms@latest @angular/http@latest @angular/platform-browser@latest @angular/platform-browser-dynamic@latest @angular/platform-server@latest @angular/router@latest @angular/animations@latest typescript@2.4 --save`'};
     } else {
-      upgradeStep = { step: 'General update', action: 'Update all of your dependencies to the latest Angular and the latest TypeScript.\n\nIf you are using Linux/Mac, you can use: `npm install @angular/{animations,common,compiler,compiler-cli,core,forms,http,platform-browser,platform-browser-dynamic,platform-server,router}@latest typescript@latest --save`'};
+      upgradeStep = { step: 'General update', action: 'Update all of your dependencies to the latest Angular and the TypeScript 2.4.\n\nIf you are using Linux/Mac, you can use: `npm install @angular/{animations,common,compiler,compiler-cli,core,forms,http,platform-browser,platform-browser-dynamic,platform-server,router}@latest typescript@2.4 --save`'};
     }
     upgradeStep.renderedStep = this.converter.makeHtml(upgradeStep.action)
 
