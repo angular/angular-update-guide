@@ -1,60 +1,88 @@
-<md-toolbar color="primary">
+<mat-toolbar color="primary">
   {{title}}
-</md-toolbar>
+</mat-toolbar>
 <div class="page">
   <p style="margin-bottom:32px;">Select your current Angular version, and the desired version of Angular. We'll tell you the steps to update.</p>
   <div class="wizard">
     <div>
-      <md-select [(ngModel)]="from" placeholder="from">
-        <md-option *ngFor="let version of versions" [value]="version">{{version.name}}</md-option>
-      </md-select>
-      <md-select [(ngModel)]="to" placeholder="to">
-        <md-option *ngFor="let version of versions" [value]="version">{{version.name}}</md-option>
-      </md-select>
+      <mat-form-field>
+        <mat-select [(ngModel)]="from" placeholder="from">
+          <mat-option *ngFor="let version of versions" [value]="version">{{version.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select [(ngModel)]="to" placeholder="to">
+          <mat-option *ngFor="let version of versions" [value]="version">{{version.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
     </div>
-    <div *ngIf="from.number > 500 || to.number > 500"><strong style="color:darkred">Warning:</strong> Plans for releases after 5.0 are not finalized and may change. These recommendations are based on scheduled deprecations.</div>
-    <div *ngIf="from.number > to.number"><strong style="color:darkred">Warning:</strong> We do not currently support downgrading versions of Angular.</div>
+    <div *ngIf="from.number > 500 || to.number > 500">
+      <strong style="color:darkred">Warning:</strong> Plans for releases after 5.0 are not finalized and may change. These recommendations are based on
+      scheduled deprecations.</div>
+    <div *ngIf="from.number > to.number">
+      <strong style="color:darkred">Warning:</strong> We do not currently support downgrading versions of Angular.</div>
 
     <div style="align-items:center;display:flex;">
       How complex is your app?
-      <md-select [(ngModel)]="level" style="margin-left:32px;">
-        <md-option [value]="1">Basic</md-option>
-        <md-option [value]="2">Medium</md-option>
-        <md-option [value]="3">Advanced</md-option>
-      </md-select>
+      <mat-form-field style="margin-left:32px;">
+        <mat-select [(ngModel)]="level">
+          <mat-option [value]="1">Basic</mat-option>
+          <mat-option [value]="2">Medium</mat-option>
+          <mat-option [value]="3">Advanced</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+
+    <div>
+      <mat-checkbox [(ngModel)]="ngUpgrade">I use ngUpgrade</mat-checkbox>
+    </div>
+    <div>
+      <mat-form-field>
+        <mat-select placeholder="Package Manager" [(ngModel)]="packageManager">
+          <mat-option value="npm install">npm</mat-option>
+          <mat-option value="yarn add">yarn</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br/>
+      <!-- <mat-checkbox [(ngModel)]="material">I use Angular Material</mat-checkbox><br/>
+      <mat-checkbox [(ngModel)]="pwa">I use the Angular Service Worker</mat-checkbox><br/> -->
+
     </div>
 
     <div>
-      <md-checkbox [(ngModel)]="ngUpgrade">I use ngUpgrade</md-checkbox><br/>
-      <!-- <md-checkbox [(ngModel)]="material">I use Angular Material</md-checkbox><br/>
-      <md-checkbox [(ngModel)]="pwa">I use the Angular Service Worker</md-checkbox><br/> -->
-
+      <button type="button" (click)="showUpdatePath()" mat-raised-button color="primary">Show me how to update!</button>
     </div>
-
-    <div><button type="button" (click)="showUpdatePath()" md-raised-button color="primary">Show me how to update!</button></div>
   </div>
 
   <div class="recommendations" *ngIf="beforeRecommendations.length > 0 || duringRecommendations.length > 0 || afterRecommendations.length > 0">
     <hr>
     <h1>{{title}}</h1>
-        <h2>Before updating</h2>
-        <div *ngFor="let r of beforeRecommendations">
-          <md-checkbox></md-checkbox>
-          <div [innerHTML]="r.renderedStep"></div>
-        </div>
-        <div *ngIf="beforeRecommendations.length <= 0"><em>There aren't currently any recommendations for moving between these versions.</em></div>
+    <h2>Before updating</h2>
+    <div *ngFor="let r of beforeRecommendations">
+      <mat-checkbox></mat-checkbox>
+      <div style="margin-left:30px;" [innerHTML]="r.renderedStep"></div>
+    </div>
+    <div *ngIf="beforeRecommendations.length <= 0">
+      <em>There aren't currently any recommendations for moving between these versions.</em>
+    </div>
 
-        <h2>During the update</h2>
-        <div *ngFor="let r of duringRecommendations">
-          <md-checkbox></md-checkbox>
-          <div [innerHTML]="r.renderedStep"></div>
-        </div>
-        <div *ngIf="duringRecommendations.length <= 0"><em>There aren't currently any recommendations for moving between these versions.</em></div>
-        <h2>After the update</h2>
-        <div *ngFor="let r of afterRecommendations">
-          <md-checkbox></md-checkbox>
-          <div [innerHTML]="r.renderedStep"></div>
-        </div>
-        <div *ngIf="afterRecommendations.length <= 0"><em>There aren't currently any recommendations for moving between these versions.</em></div>
+    <h2>During the update</h2>
+    <div *ngFor="let r of duringRecommendations">
+      <mat-checkbox></mat-checkbox>
+      <div style="margin-left:30px;" [innerHTML]="r.renderedStep"></div>
+    </div>
+    <div *ngIf="duringRecommendations.length <= 0">
+      <em>There aren't currently any recommendations for moving between these versions.</em>
+    </div>
+    <h2>After the update</h2>
+    <div *ngFor="let r of afterRecommendations">
+      <mat-checkbox></mat-checkbox>
+      <div style="margin-left:30px;" [innerHTML]="r.renderedStep"></div>
+    </div>
+    <div *ngIf="afterRecommendations.length <= 0">
+      <em>There aren't currently any recommendations for moving between these versions.</em>
+    </div>
   </div>
 </div>

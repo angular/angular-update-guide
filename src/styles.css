@@ -20,7 +20,7 @@ p {
     margin:16px 0px;
 }
 
-.recommendations md-checkbox {
+.recommendations mat-checkbox {
     float:left;
 }
 .recommendations>div {
