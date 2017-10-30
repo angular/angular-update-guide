@@ -98,13 +98,13 @@ export class AppComponent {
 
     if (isWindows) {
       const packages = angularPackages.map(packageName => `@angular/${packageName}@${angularVersion}`).join(' ') + ' ' + additionalDeps;
-      
+
       upgradeStep = {
         step: "General Update",
         action:
           `${actionMessage}
-          If you are using Windows, you can use: 
-          
+          If you are using Windows, you can use:
+
 \`${this.packageManager} ${packages}\``
       };
     } else {
@@ -113,8 +113,8 @@ export class AppComponent {
         step: "General update",
         action:
         `${actionMessage}
-          If you are using Linux/Mac, you can use:  
-          
+          If you are using Linux/Mac, you can use:
+
 \`${this.packageManager} ${packages}\``
       };
     }
@@ -125,9 +125,9 @@ export class AppComponent {
 
   getAdditionalDependencies(version: number) {
     if (version < 400) {
-      return "typescript@'>=2.1.0 <2.4.0'";
+      return `typescript@'>=2.1.0 <2.4.0'`;
     } else {
-      return "typescript@2.4.2 rxjs@'^5.5.2'";
+      return `typescript@2.4.2 rxjs@'^5.5.2'`;
     }
   }
   getAngularVersion(version: number) {
@@ -135,8 +135,10 @@ export class AppComponent {
       return `'^2.0.0'`;
     } else if (version < 500) {
       return `'^4.0.0'`;
+    } else if (version < 600) {
+      return `next`;
     } else {
-      return `'5.0.0-rc.6'`;
+      return `'^${Math.floor(version / 100)}.0.0'`;
     }
   }
 }
