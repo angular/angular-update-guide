@@ -118,13 +118,22 @@ export class AppComponent {
 \`${this.packageManager} ${packages}\``
       };
     }
+
+    // Npm installs typescript wrong in v5, let's manually specify
+    // https://github.com/npm/npm/issues/16813
+    if(this.packageManager === 'npm install' && this.to.number === 500) {
+      upgradeStep.action += `
+
+\`npm install typescript@2.4.2 --save-exact\``;
+    }
+
     upgradeStep.renderedStep = this.converter.makeHtml(upgradeStep.action);
 
     this.duringRecommendations.push(upgradeStep);
   }
 
   getAdditionalDependencies(version: number) {
-    if (version < 400) {
+    if (version < 500) {
       return `typescript@'>=2.1.0 <2.4.0'`;
     } else {
       return `typescript@2.4.2 rxjs@'^5.5.2'`;
@@ -133,12 +142,10 @@ export class AppComponent {
   getAngularVersion(version: number) {
     if (version < 400) {
       return `'^2.0.0'`;
-    } else if (version < 500) {
-      return `'^4.0.0'`;
-    } else if (version < 600) {
-      return `next`;
     } else {
-      return `'^${Math.floor(version / 100)}.0.0'`;
+      const major = Math.floor(version / 100);
+      const minor = Math.floor( ( version - (major * 100) )  / 10);
+      return `'^${major}.${minor}.0'`;
     }
   }
 }
