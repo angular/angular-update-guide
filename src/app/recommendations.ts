@@ -26,7 +26,6 @@ export const RECOMMENDATIONS: Step[] = [
     { step: 'ErrorHandler Parameter', action: 'Stop passing any arguments to the constructor for ErrorHandler', possibleIn: 400, necessaryAsOf: 500, level: 3, },
     { step: 'ngProbeToken', action: 'If you use ngProbeToken, make sure you import it from @angular/core instead of @angular/platform-browser', possibleIn: 400, necessaryAsOf: 500, level: 3, },
     { step: 'TrackByFn', action: 'If you use TrackByFn, instead use TrackByFunction', possibleIn: 400, necessaryAsOf: 500, level: 3, },
-    //{ step: 'Service Worker', action: 'If you use service workers, update your manifest to the new format. Learn more about upgrading your manifest.', possibleIn: 500, necessaryAsOf: 500, level: 2, pwa: true, },
     { step: 'i18n Pipe Change', action: 'If you rely on the date, currency, decimal, or percent pipes, in 5 you will see minor changes to the format. For applications using locales other than en-us you will need to import it and optionally `locale_extended_fr` from `@angular/common/i18n_data/locale_fr` and registerLocaleData(local).', possibleIn: 500, necessaryAsOf: 500, level: 1, },
     { step: 'Dynamic ngUpgrade', action: 'Replace `downgradeComponent`, `downgradeInjectable`, `UpgradeComponent`, and `UpgradeModule` imported from `@angular/upgrade`. Instead use the new versions in `@angular/upgrade/static`.', possibleIn: 220, necessaryAsOf: 600, level: 1, ngUpgrade: true, },
     { step: 'Animations in Core', action: 'If you import any animations services or tools from @angular/core, you should import them from @angular/animations', possibleIn: 400, necessaryAsOf: 600, level: 2, },
@@ -40,7 +39,5 @@ export const RECOMMENDATIONS: Step[] = [
     { step: 'i18n ID Changes', action: 'If you are currently using i18n, the IDs will change', possibleIn: 600, necessaryAsOf: 700, level: 2, },
     { step: 'Whitespace', action: 'Choose a value of `off` `preserveWhitespaces` in your `tsconfig.json` to gain the benefits of this setting while the default is still to preserve whitespace.', possibleIn: 500, necessaryAsOf: 600, level: 2, },
     { step: 'RxJS Operators', action: 'For each RxJS Operator you import, you should now `import from \'rxjs/operators\'` and use the `pipe` operator`. [Read more](https://github.com/ReactiveX/rxjs/blob/master/doc/lettable-operators.md)', possibleIn: 500, necessaryAsOf: 800, level: 2, },
-    { step: 'Min Max Validators', action: 'If you created a custom form control with min and max input properties, you will need to adapt to the new behavior by renaming them or using the native validators.', possibleIn: 500, necessaryAsOf: 500, level: 3, },
     { step: 'Router Query Params', action: 'If you use preserveQueryParams, instead use queryParamsHandling', possibleIn: 400, necessaryAsOf: 600, level: 3, },
   ];
-  
