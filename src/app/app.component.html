@@ -17,8 +17,8 @@
       </mat-form-field>
 
     </div>
-    <div *ngIf="from.number > 500 || to.number > 500">
-      <strong style="color:darkred">Warning:</strong> Plans for releases after 5.0 are not finalized and may change. These recommendations are based on
+    <div *ngIf="from.number >= 700 || to.number >= 700">
+      <strong style="color:darkred">Warning:</strong> Plans for releases after the current major release are not finalized and may change. These recommendations are based on
       scheduled deprecations.</div>
     <div *ngIf="from.number > to.number">
       <strong style="color:darkred">Warning:</strong> We do not currently support downgrading versions of Angular.</div>

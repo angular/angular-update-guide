@@ -21,7 +21,7 @@ export const RECOMMENDATIONS: Step[] = [
     { step: 'Animations Tests', action: 'If you use Animations and tests, add `mods[1].NoopAnimationsModule` to your `TestBed.initTestEnvironment` call.', possibleIn: 400, necessaryAsOf: 400, level: 3, },
     { step: 'DefaultIterableDiffer', action: 'Stop using `DefaultIterableDiffer`, `KeyValueDiffers#factories`, or `IterableDiffers#factories`', possibleIn: 200, necessaryAsOf: 500, level: 3, },
     { step: 'Template Tag', action: 'Rename your `template` tags to `ng-template`', possibleIn: 400, necessaryAsOf: 500, level: 1, },
-    { step: 'OpaqueToken', action: 'Replace `OpaqueToken`s with `InjectionToken`s.', possibleIn: 400, necessaryAsOf: 500, level: 2, },
+    { step: 'OpaqueToken', action: 'Replace any `OpaqueToken` with `InjectionToken`.', possibleIn: 400, necessaryAsOf: 500, level: 2, },
     { step: 'DifferFactory', action: 'If you call `DifferFactory.create(...)` remove the `ChangeDetectorRef` argument.', possibleIn: 400, necessaryAsOf: 500, level: 3, },
     { step: 'ErrorHandler Parameter', action: 'Stop passing any arguments to the constructor for ErrorHandler', possibleIn: 400, necessaryAsOf: 500, level: 3, },
     { step: 'ngProbeToken', action: 'If you use ngProbeToken, make sure you import it from @angular/core instead of @angular/platform-browser', possibleIn: 400, necessaryAsOf: 500, level: 3, },
