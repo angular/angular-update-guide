@@ -2,62 +2,77 @@
   {{title}}
 </mat-toolbar>
 <div class="page">
-  <p style="margin-bottom:32px;">Select your current Angular version, and the desired version of Angular. We'll tell you the steps to update.</p>
   <div class="wizard">
     <div>
-      <mat-form-field>
-        <mat-select [(ngModel)]="from" placeholder="from">
-          <mat-option *ngFor="let version of versions" [value]="version">{{version.name}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-select [(ngModel)]="to" placeholder="to">
-          <mat-option *ngFor="let version of versions" [value]="version">{{version.name}}</mat-option>
-        </mat-select>
-      </mat-form-field>
+      <mat-card>
+        <mat-card-title class="card-title">Select the options matching your project</mat-card-title>
+        <mat-grid-list cols="5" [rowHeight]="80">
+          <mat-grid-tile>Angular</mat-grid-tile>
+          <mat-grid-tile [colspan]="2">
+            <mat-form-field>
+              <mat-select [(ngModel)]="from" placeholder="from">
+                <mat-option *ngFor="let version of versions" [value]="version">{{version.name}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile [colspan]="2">
+            <mat-form-field>
+              <mat-select [(ngModel)]="to" placeholder="to">
+                <mat-option *ngFor="let version of versions" [value]="version">{{version.name}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-grid-tile>
 
-    </div>
-    <div *ngIf="from.number >= 700 || to.number >= 700">
-      <strong style="color:darkred">Warning:</strong> Plans for releases after the current major release are not finalized and may change. These recommendations are based on
-      scheduled deprecations.</div>
-    <div *ngIf="from.number > to.number">
-      <strong style="color:darkred">Warning:</strong> We do not currently support downgrading versions of Angular.</div>
+          <mat-grid-tile>How complex is your app?</mat-grid-tile>
+          <mat-grid-tile [colspan]="2">
+            <mat-form-field>
+              <mat-select [(ngModel)]="level">
+                <mat-option [value]="1">Basic</mat-option>
+                <mat-option [value]="2">Medium</mat-option>
+                <mat-option [value]="3">Advanced</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile [colspan]="2"></mat-grid-tile>
 
-    <div style="align-items:center;display:flex;">
-      How complex is your app?
-      <mat-form-field style="margin-left:32px;">
-        <mat-select [(ngModel)]="level">
-          <mat-option [value]="1">Basic</mat-option>
-          <mat-option [value]="2">Medium</mat-option>
-          <mat-option [value]="3">Advanced</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
+          <mat-grid-tile>Angular CLI</mat-grid-tile>
+          <mat-grid-tile [colspan]="2"><mat-checkbox [(ngModel)]="angularCLI">I use Angular CLI</mat-checkbox></mat-grid-tile>
+          <mat-grid-tile [colspan]="2"></mat-grid-tile>
 
+          <mat-grid-tile>ngUpgrade</mat-grid-tile>
+          <mat-grid-tile [colspan]="2"><mat-checkbox [(ngModel)]="ngUpgrade">I use ngUpgrade</mat-checkbox></mat-grid-tile>
+          <mat-grid-tile [colspan]="2"></mat-grid-tile>
 
-    <div>
-      <mat-checkbox [(ngModel)]="ngUpgrade">I use ngUpgrade</mat-checkbox>
-    </div>
-    <div>
-      <mat-form-field>
-        <mat-select placeholder="Package Manager" [(ngModel)]="packageManager">
-          <mat-option value="npm install">npm</mat-option>
-          <mat-option value="yarn add">yarn</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <br/>
-      <!-- <mat-checkbox [(ngModel)]="material">I use Angular Material</mat-checkbox><br/>
-      <mat-checkbox [(ngModel)]="pwa">I use the Angular Service Worker</mat-checkbox><br/> -->
+          <mat-grid-tile>Package manager</mat-grid-tile>
+          <mat-grid-tile [colspan]="2">
+            <mat-form-field>
+              <mat-select [(ngModel)]="packageManager">
+                <mat-option value="npm install">npm</mat-option>
+                <mat-option value="yarn add">yarn</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile [colspan]="2"></mat-grid-tile>
 
-    </div>
+          <mat-grid-tile [colspan]="5">
+            <button type="button" (click)="showUpdatePath()" mat-raised-button color="primary">Show me how to update!</button>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </mat-card>
 
-    <div>
-      <button type="button" (click)="showUpdatePath()" mat-raised-button color="primary">Show me how to update!</button>
+      <div *ngIf="from.number >= 700 || to.number >= 700">
+        <br/>
+        <strong style="color:darkred">Warning:</strong> Plans for releases after the current major release are not finalized and may change. These recommendations are based on
+        scheduled deprecations.
+      </div>
+      <div *ngIf="from.number > to.number">
+        <br/>
+        <strong style="color:darkred">Warning:</strong> We do not currently support downgrading versions of Angular.
+      </div>
     </div>
   </div>
 
   <div class="recommendations" *ngIf="beforeRecommendations.length > 0 || duringRecommendations.length > 0 || afterRecommendations.length > 0">
-    <hr>
     <h1>{{title}}</h1>
     <h2>Before updating</h2>
     <div *ngFor="let r of beforeRecommendations">
