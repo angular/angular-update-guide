@@ -9,11 +9,12 @@ import { Step, RECOMMENDATIONS } from './recommendations';
 export class AppComponent {
   title = 'Angular Update Guide';
 
-  level: number = 1;
-  ngUpgrade: boolean;
-  material: boolean;
-  pwa: boolean;
-  packageManager: string = 'npm install';
+  level = 1;
+  angularCLI = true;
+  ngUpgrade = false;
+  material = false;
+  pwa = false;
+  packageManager = 'npm install';
 
   beforeRecommendations: Step[] = [];
   duringRecommendations: Step[] = [];
@@ -39,8 +40,9 @@ export class AppComponent {
     { name: '7.0', number: 700 },
     { name: '8.0', number: 800 },
   ];
-  to = this.versions[12];
-  from = this.versions[5];
+  from = this.versions[12];
+  to = this.versions[13];
+
   steps: Step[] = RECOMMENDATIONS;
 
   constructor() {
@@ -63,7 +65,8 @@ export class AppComponent {
       if (
         step.level <= this.level &&
         step.necessaryAsOf > this.from.number &&
-        (!step.ngUpgrade || this.ngUpgrade) &&
+        (this.ngUpgrade && (step.ngUpgrade || typeof step.ngUpgrade === 'undefined') || !this.ngUpgrade && !step.ngUpgrade) &&
+        (this.angularCLI && (step.angularCLI || typeof step.angularCLI === 'undefined') || !this.angularCLI && !step.angularCLI) &&
         (!step.material || this.material) &&
         (!step.pwa || this.pwa)
       ) {
@@ -100,7 +103,11 @@ export class AppComponent {
       'router',
     ];
 
-    const actionMessage = `Update all of your dependencies to the latest Angular and the right version of TypeScript.`;
+    let actionMessage = `Update all of your dependencies to the latest Angular and the right version of TypeScript.`;
+
+    if (this.to.number >= 600 && this.angularCLI) {
+      actionMessage += `<br/>Simply use \`ng update @angular/core\`.`;
+    }
 
     if (isWindows) {
       const packages =
@@ -110,7 +117,7 @@ export class AppComponent {
 
       upgradeStep = {
         step: 'General Update',
-        action: `${actionMessage}
+        action: this.to.number >= 600 && this.angularCLI ? actionMessage : `${actionMessage}
           If you are using Windows, you can use:
 
 \`${this.packageManager} ${packages}\``,
@@ -119,7 +126,7 @@ export class AppComponent {
       const packages = `@angular/{${angularPackages.join(',')}}@${angularVersion} ${additionalDeps}`;
       upgradeStep = {
         step: 'General update',
-        action: `${actionMessage}
+        action: this.to.number >= 600 && this.angularCLI ? actionMessage : `${actionMessage}
           If you are using Linux/Mac, you can use:
 
 \`${this.packageManager} ${packages}\``,
@@ -142,8 +149,10 @@ export class AppComponent {
   getAdditionalDependencies(version: number) {
     if (version < 500) {
       return `typescript@'>=2.1.0 <2.4.0'`;
-    } else {
+    } else if (version < 600) {
       return `typescript@2.4.2 rxjs@'^5.5.2'`;
+    } else {
+      return `typescript@2.7.x rxjs@'^6.0.0'`;
     }
   }
   getAngularVersion(version: number) {

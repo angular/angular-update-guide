@@ -1,28 +1,36 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
-h1,h2,h3 {
-    padding:16px 0;
+
+h1, h2, h3 {
+  padding: 16px 0;
 }
+
 .page {
-    padding: 16px;
-    max-width: 750px;
-    margin: 0px auto;
-    font-size:16px;
+  padding: 16px;
+  max-width: 750px;
+  margin: 0 auto;
+  font-size: 16px;
 }
+
 p {
-    margin-bottom:16px;
+  margin-bottom: 16px;
 }
-.wizard>div {
-    margin:16px 0px;
+
+.wizard > div {
+  margin: 16px 0;
 }
 
 .recommendations mat-checkbox {
-    float:left;
+  float: left;
 }
-.recommendations>div {
 
+code {
+  padding: 0 6px;
+  background-color: #f6f8fa;
+  border-radius: 3px;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
 }
