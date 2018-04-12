@@ -42,6 +42,6 @@ export const RECOMMENDATIONS: Step[] = [
   { possibleIn: 500, necessaryAsOf: 800, level: 1, angularCLI: true, step: 'Angular CLI', action: 'Update Angular CLI to v6: <pre>`npm install --dev @angular/cli@^6.0.0`<br/>(optional) `npm install --global @angular/cli@^6.0.0`<br/>`ng update @angular/cli --migrate-only --from=1.7.3`</pre>'},
   { possibleIn: 500, necessaryAsOf: 800, level: 1, step: 'RxJS Operators', action: 'Update RxJS to v6 with `rxjs-compat` using Angular CLI: `ng update rxjs`<br/><br/>Or manually with:<pre>`npm update rxjs@6`<br/>`npm install --save-dev rxjs-compat`</pre>', },
   { possibleIn: 600, necessaryAsOf: 600, level: 1, angularCLI: false, step: 'strictPropertyInitializer', action: 'Update tsconfig.json to disable strictPropertyInitializer'},
-  { possibleIn: 600, necessaryAsOf: 800, level: 1, step: 'Remove RxJS compat', action: 'Remove `rxjs-compat` and update RxJS code to v6. [Read more](https://docs.google.com/document/d/12nlLt71VLKb-z3YaSGzUfx6mJbc34nsMXtByPUN35cg/edit#heading=h.9gxcyk6xxdc8)'},
+  { possibleIn: 600, necessaryAsOf: 800, level: 1, step: 'Remove RxJS compat', action: 'Remove `rxjs-compat` and update RxJS code to v6 using [rxjs-tslint auto update rules](https://github.com/ReactiveX/rxjs-tslint).'},
   { possibleIn: 700, necessaryAsOf: 800, level: 2, step: 'i18n ID Changes', action: 'If you are currently using i18n, the IDs will change', },
 ];
