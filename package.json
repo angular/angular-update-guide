@@ -14,7 +14,7 @@
   "dependencies": {
     "@angular/animations": "5.2.9",
     "@angular/cdk": "^5.0.1",
-    "@angular/cli": "1.7.3",
+    "@angular/cli": "^6.0.0-rc.5",
     "@angular/common": "5.2.9",
     "@angular/compiler": "5.2.9",
     "@angular/compiler-cli": "5.2.9",
@@ -47,7 +47,8 @@
     "karma-jasmine-html-reporter": "^0.2.2",
     "protractor": "~5.1.0",
     "ts-node": "~2.0.0",
-    "tslint": "~4.4.2"
+    "tslint": "~4.4.2",
+    "@angular-devkit/build-angular": "~0.5.0"
   },
   "prettier": {
     "trailingComma": "es5",
