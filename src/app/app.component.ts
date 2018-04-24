@@ -75,7 +75,7 @@ export class AppComponent {
         }
 
         // Render and replace variables
-        step.renderedStep = this.converter.makeHtml(this.replaceVariables(step.action))));
+        step.renderedStep = this.converter.makeHtml(this.replaceVariables(step.action));
 
         // If you could do it before now, but didn't have to finish it before now
         if (step.possibleIn <= this.from.number && step.necessaryAsOf >= this.from.number) {
@@ -86,7 +86,6 @@ export class AppComponent {
         } else if (step.possibleIn <= this.to.number) {
           this.afterRecommendations.push(step);
         } else {
-          console.log('ignoring irrelevant step', step);
         }
       }
     }

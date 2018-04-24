@@ -67,6 +67,10 @@
         <br/>
         <strong style="color:darkred">Warning:</strong> We do not currently support downgrading versions of Angular.
       </div>
+      <div *ngIf="to.number - from.number > 100">
+        <br/>
+        <strong style="color:darkred">Warning:</strong> We do not recommend moving across multiple major versions.
+      </div>
     </div>
   </div>
 
