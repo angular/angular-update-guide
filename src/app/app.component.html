@@ -35,13 +35,11 @@
           </mat-grid-tile>
           <mat-grid-tile [colspan]="2"></mat-grid-tile>
 
-          <mat-grid-tile>Angular CLI</mat-grid-tile>
-          <mat-grid-tile [colspan]="2"><mat-checkbox [(ngModel)]="angularCLI">I use Angular CLI</mat-checkbox></mat-grid-tile>
-          <mat-grid-tile [colspan]="2"></mat-grid-tile>
-
-          <mat-grid-tile>ngUpgrade</mat-grid-tile>
-          <mat-grid-tile [colspan]="2"><mat-checkbox [(ngModel)]="ngUpgrade">I use ngUpgrade</mat-checkbox></mat-grid-tile>
-          <mat-grid-tile [colspan]="2"></mat-grid-tile>
+          <ng-container *ngFor="let option of optionList">
+            <mat-grid-tile>{{option.name}}</mat-grid-tile>
+            <mat-grid-tile [colspan]="2"><mat-checkbox [(ngModel)]="options[option.id]">I use {{option.name}}</mat-checkbox></mat-grid-tile>
+            <mat-grid-tile [colspan]="2"></mat-grid-tile>
+          </ng-container>
 
           <mat-grid-tile>Package manager</mat-grid-tile>
           <mat-grid-tile [colspan]="2">

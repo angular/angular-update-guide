@@ -33,4 +33,6 @@ code {
   background-color: #f6f8fa;
   border-radius: 3px;
   font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  display:inline-block;
+  margin: 8px 4px;
 }
