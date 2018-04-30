@@ -29,7 +29,6 @@
     "@types/showdown": "^1.4.32",
     "codelyzer": "^4.0.2",
     "core-js": "^2.4.1",
-    "fsevents": "^1.2.2",
     "rxjs": "6.0.0-uncanny-rc.7",
     "showdown": "^1.6.4",
     "typescript": "2.7.2",
