@@ -98,9 +98,9 @@ export class AppComponent {
     if (version < 500) {
       return `typescript@'>=2.1.0 <2.4.0'`;
     } else if (version < 600) {
-      return `typescript@2.4.2 rxjs@'^5.5.2'`;
+      return `typescript@2.4.2 rxjs@^5.5.2`;
     } else {
-      return `typescript@2.7.x rxjs@'^6.0.0'`;
+      return `typescript@2.7.x rxjs@^6.0.0`;
     }
   }
   getAngularVersion(version: number) {
@@ -109,7 +109,7 @@ export class AppComponent {
     } else {
       const major = Math.floor(version / 100);
       const minor = Math.floor((version - major * 100) / 10);
-      return `'^${major}.${minor}.0'`;
+      return `^${major}.${minor}.0`;
     }
   }
 
