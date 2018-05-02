@@ -131,7 +131,9 @@
       }
     }
   },
-  "cli": {},
+  "cli": {
+    "packageManager": "yarn"
+  },
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",
