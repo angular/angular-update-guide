@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, } from '@angular/core';
 import * as Showdown from 'showdown';
 import { Step, RECOMMENDATIONS } from './recommendations';
 
@@ -54,7 +54,7 @@ export class AppComponent {
     this.duringRecommendations = [];
     this.afterRecommendations = [];
 
-    this.title = `Angular Update Guide - ${this.from.name} -> ${this.to.name} for ${
+    this.title = `Angular Update Guide | ${this.from.name} -> ${this.to.name} for ${
       this.level < 2 ? 'Basic' : this.level < 3 ? 'Medium' : 'Advanced'
     } Apps`;
 

@@ -1,67 +1,65 @@
 <mat-toolbar color="primary">
-  {{title}}
+  <div class="page-title">Angular Update Guide</div>
 </mat-toolbar>
 <div class="page">
   <div class="wizard">
     <div>
       <mat-card>
-        <mat-card-title class="card-title">Select the options matching your project</mat-card-title>
-        <mat-grid-list cols="5" [rowHeight]="80">
-          <mat-grid-tile>Angular</mat-grid-tile>
-          <mat-grid-tile [colspan]="2">
-            <mat-form-field>
-              <mat-select [(ngModel)]="from" placeholder="from">
-                <mat-option *ngFor="let version of versions" [value]="version">{{version.name}}</mat-option>
-              </mat-select>
-            </mat-form-field>
-          </mat-grid-tile>
-          <mat-grid-tile [colspan]="2">
-            <mat-form-field>
-              <mat-select [(ngModel)]="to" placeholder="to">
-                <mat-option *ngFor="let version of versions" [value]="version">{{version.name}}</mat-option>
-              </mat-select>
-            </mat-form-field>
-          </mat-grid-tile>
+        <h3>
+          Select the options matching your project:
+        </h3>
 
-          <mat-grid-tile>How complex is your app?</mat-grid-tile>
-          <mat-grid-tile [colspan]="2">
-            <mat-form-field>
-              <mat-select [(ngModel)]="level">
-                <mat-option [value]="1">Basic</mat-option>
-                <mat-option [value]="2">Medium</mat-option>
-                <mat-option [value]="3">Advanced</mat-option>
-              </mat-select>
-            </mat-form-field>
-          </mat-grid-tile>
-          <mat-grid-tile [colspan]="2"></mat-grid-tile>
+        <mat-card-content>
+
+          <h4>Angular Version</h4>
+
+          <mat-form-field appearance="outline">
+            <mat-select [(ngModel)]="from" placeholder="from">
+              <mat-option *ngFor="let version of versions" [value]="version">{{version.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-select [(ngModel)]="to" placeholder="to">
+              <mat-option *ngFor="let version of versions" [value]="version">{{version.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <h4>App Complexity</h4>
+          <ng-container>
+              <mat-button-toggle-group #group="matButtonToggleGroup" value="1" [(ngModel)]="level">
+                <mat-button-toggle value="1">Basic</mat-button-toggle>
+                <mat-button-toggle value="2">Medium</mat-button-toggle>
+                <mat-button-toggle value="3">Advanced</mat-button-toggle>
+              </mat-button-toggle-group>
+            </ng-container>
 
           <ng-container *ngFor="let option of optionList">
-            <mat-grid-tile>{{option.name}}</mat-grid-tile>
-            <mat-grid-tile [colspan]="2"><mat-checkbox [(ngModel)]="options[option.id]">I use {{option.name}}</mat-checkbox></mat-grid-tile>
+            <h4>{{option.name}}</h4>
+            <p>
+              <mat-checkbox [(ngModel)]="options[option.id]">I use {{option.name}}</mat-checkbox>
+            </p>
             <mat-grid-tile [colspan]="2"></mat-grid-tile>
           </ng-container>
 
-          <mat-grid-tile>Package manager</mat-grid-tile>
-          <mat-grid-tile [colspan]="2">
-            <mat-form-field>
-              <mat-select [(ngModel)]="packageManager">
-                <mat-option value="npm install">npm</mat-option>
-                <mat-option value="yarn add">yarn</mat-option>
-              </mat-select>
-            </mat-form-field>
-          </mat-grid-tile>
-          <mat-grid-tile [colspan]="2"></mat-grid-tile>
+          <h4>Package Manager</h4>
+          <ng-container>
+            <mat-button-toggle-group [(ngModel)]="packageManager">
+              <mat-button-toggle value="npm install">npm</mat-button-toggle>
+              <mat-button-toggle value="yarn add">yarn</mat-button-toggle>
+            </mat-button-toggle-group>
+          </ng-container>
 
-          <mat-grid-tile [colspan]="5">
-            <button type="button" (click)="showUpdatePath()" mat-raised-button color="primary">Show me how to update!</button>
-          </mat-grid-tile>
-        </mat-grid-list>
+        </mat-card-content>
+        <mat-card-actions>
+          <button type="button" (click)="showUpdatePath()" mat-raised-button color="primary">Show me how to update!</button>
+        </mat-card-actions>
       </mat-card>
 
       <div *ngIf="from.number >= 700 || to.number >= 700">
         <br/>
-        <strong style="color:darkred">Warning:</strong> Plans for releases after the current major release are not finalized and may change. These recommendations are based on
-        scheduled deprecations.
+        <strong style="color:darkred">Warning:</strong> Plans for releases after the current major release are not finalized and may change. These recommendations
+        are based on scheduled deprecations.
       </div>
       <div *ngIf="from.number > to.number">
         <br/>
@@ -74,9 +72,11 @@
     </div>
   </div>
 
+  <!-- RECOMMENDATIONS SECTION -->
+
   <div class="recommendations" *ngIf="beforeRecommendations.length > 0 || duringRecommendations.length > 0 || afterRecommendations.length > 0">
-    <h1>{{title}}</h1>
-    <h2>Before updating</h2>
+    <h2>{{title}}</h2>
+    <h3>Before Updating</h3>
     <div *ngFor="let r of beforeRecommendations">
       <mat-checkbox></mat-checkbox>
       <div style="margin-left:30px;" [innerHTML]="r.renderedStep"></div>
@@ -85,7 +85,7 @@
       <em>There aren't currently any recommendations for moving between these versions.</em>
     </div>
 
-    <h2>During the update</h2>
+    <h3>During the Update</h3>
     <div *ngFor="let r of duringRecommendations">
       <mat-checkbox></mat-checkbox>
       <div style="margin-left:30px;" [innerHTML]="r.renderedStep"></div>
@@ -93,7 +93,7 @@
     <div *ngIf="duringRecommendations.length <= 0">
       <em>There aren't currently any recommendations for moving between these versions.</em>
     </div>
-    <h2>After the update</h2>
+    <h3>After the Update</h3>
     <div *ngFor="let r of afterRecommendations">
       <mat-checkbox></mat-checkbox>
       <div style="margin-left:30px;" [innerHTML]="r.renderedStep"></div>

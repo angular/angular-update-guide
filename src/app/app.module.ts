@@ -9,7 +9,9 @@ import {
   MatInputModule,
   MatListModule,
   MatSelectModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatProgressBarModule,
+  MatButtonToggleModule
 } from '@angular/material';
 
 @NgModule({
@@ -29,6 +31,8 @@ import {
     MatCardModule,
     MatListModule,
     MatGridListModule,
+    MatProgressBarModule,
+    MatButtonToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

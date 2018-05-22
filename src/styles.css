@@ -8,8 +8,25 @@
   font-family: 'Roboto', sans-serif;
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4 {
   padding: 16px 0;
+}
+
+h1, h2, h3, h4, h5, h6, p, li, ul, ol, td, th, table {
+  color: #333333;
+}
+
+p {
+  margin-bottom: 16px;
+  line-height: 1.75;
+}
+
+a {
+  color: #3f51b5;
+}
+
+a:hover {
+  color: #283593;
 }
 
 .page {
@@ -17,10 +34,6 @@ h1, h2, h3 {
   max-width: 750px;
   margin: 0 auto;
   font-size: 16px;
-}
-
-p {
-  margin-bottom: 16px;
 }
 
 .wizard > div {
@@ -32,9 +45,20 @@ p {
 }
 
 code {
+  font-size: 14px;
+  line-height: 1.5;
   padding: 0 6px;
-  background-color: #c0c0c0;
+  background-color: #CFD8DC;
   border-radius: 3px;
   font-family: 'Roboto Mono', monospace;
   display:inline-block;
+}
+
+mat-form-field.mat-form-field-appearance-outline .mat-form-field-wrapper {
+  margin-right: 1em;
+}
+
+mat-toolbar .page-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
