@@ -27,10 +27,10 @@
 
           <h4>App Complexity</h4>
           <ng-container>
-              <mat-button-toggle-group #group="matButtonToggleGroup" value="1" [(ngModel)]="level">
-                <mat-button-toggle value="1">Basic</mat-button-toggle>
-                <mat-button-toggle value="2">Medium</mat-button-toggle>
-                <mat-button-toggle value="3">Advanced</mat-button-toggle>
+              <mat-button-toggle-group [(ngModel)]="level">
+                <mat-button-toggle [value]="1">Basic</mat-button-toggle>
+                <mat-button-toggle [value]="2">Medium</mat-button-toggle>
+                <mat-button-toggle [value]="3">Advanced</mat-button-toggle>
               </mat-button-toggle-group>
             </ng-container>
 
