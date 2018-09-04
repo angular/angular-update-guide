@@ -37,11 +37,12 @@ export class AppComponent {
     { name: '5.1', number: 510 },
     { name: '5.2', number: 520 },
     { name: '6.0', number: 600 },
+    { name: '6.1', number: 610 },
     { name: '7.0', number: 700 },
     { name: '8.0', number: 800 },
   ];
   from = this.versions[12];
-  to = this.versions[13];
+  to = this.versions[14];
 
   steps: Step[] = RECOMMENDATIONS;
 
