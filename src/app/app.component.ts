@@ -1,4 +1,4 @@
-import { Component, } from '@angular/core';
+import { Component } from '@angular/core';
 import * as Showdown from 'showdown';
 import { Step, RECOMMENDATIONS } from './recommendations';
 
@@ -13,7 +13,10 @@ export class AppComponent {
   options = {
     ngUpgrade: false,
   };
-  optionList = [{ id: 'ngUpgrade', name: 'ngUpgrade' }];
+  optionList = [
+    { id: 'ngUpgrade', name: 'ngUpgrade', description: 'for using AngularJS and Angular at the same time' },
+    { id: 'material', name: 'Angular Material', description: '' },
+  ];
   packageManager: 'npm install' | 'yarn add' = 'npm install';
 
   beforeRecommendations: Step[] = [];
@@ -39,10 +42,9 @@ export class AppComponent {
     { name: '6.0', number: 600 },
     { name: '6.1', number: 610 },
     { name: '7.0', number: 700 },
-    { name: '8.0', number: 800 },
   ];
-  from = this.versions[12];
-  to = this.versions[14];
+  from = this.versions[14];
+  to = this.versions[15];
 
   steps: Step[] = RECOMMENDATIONS;
 
@@ -66,7 +68,7 @@ export class AppComponent {
         // Only show steps that don't have a required option
         // Or when the user has a matching option selected
         let skip = false;
-        for (let option of this.optionList) {
+        for (const option of this.optionList) {
           if (step[option.id] && !this.options[option.id]) {
             skip = true;
           }
@@ -135,7 +137,7 @@ export class AppComponent {
 
     // Provide npm/yarn instructions for versions before 6
     if (this.to.number < 600) {
-      let actionMessage = `Update all of your dependencies to the latest Angular and the right version of TypeScript.`;
+      const actionMessage = `Update all of your dependencies to the latest Angular and the right version of TypeScript.`;
 
       if (isWindows) {
         const packages =
@@ -177,7 +179,10 @@ export class AppComponent {
 
   replaceVariables(action: string) {
     let newAction = action;
-    newAction = newAction.replace('${packageManagerGlobalInstall}', this.packageManager === 'npm install' ? 'npm install -g' : 'yarn global add' );
+    newAction = newAction.replace(
+      '${packageManagerGlobalInstall}',
+      this.packageManager === 'npm install' ? 'npm install -g' : 'yarn global add'
+    );
     newAction = newAction.replace('${packageManagerInstall}', this.packageManager);
     return newAction;
   }

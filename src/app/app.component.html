@@ -34,10 +34,10 @@
               </mat-button-toggle-group>
             </ng-container>
 
+          <h4>Other Dependencies</h4>
           <ng-container *ngFor="let option of optionList">
-            <h4>{{option.name}}</h4>
             <p>
-              <mat-checkbox [(ngModel)]="options[option.id]">I use {{option.name}}</mat-checkbox>
+              <mat-checkbox [(ngModel)]="options[option.id]">I use {{option.name}} {{option.description}}</mat-checkbox>
             </p>
             <mat-grid-tile [colspan]="2"></mat-grid-tile>
           </ng-container>
@@ -56,7 +56,7 @@
         </mat-card-actions>
       </mat-card>
 
-      <div *ngIf="from.number >= 700 || to.number >= 700">
+      <div *ngIf="from.number >= 800 || to.number >= 800">
         <br/>
         <strong style="color:darkred">Warning:</strong> Plans for releases after the current major release are not finalized and may change. These recommendations
         are based on scheduled deprecations.
@@ -82,7 +82,7 @@
       <div style="margin-left:30px;" [innerHTML]="r.renderedStep"></div>
     </div>
     <div *ngIf="beforeRecommendations.length <= 0">
-      <em>There aren't currently any recommendations for moving between these versions.</em>
+      <em>There aren't currently any changes needed before moving between these versions.</em>
     </div>
 
     <h3>During the Update</h3>
@@ -99,7 +99,7 @@
       <div style="margin-left:30px;" [innerHTML]="r.renderedStep"></div>
     </div>
     <div *ngIf="afterRecommendations.length <= 0">
-      <em>There aren't currently any recommendations for moving between these versions.</em>
+      <em>There aren't currently any changes needed after moving between these versions.</em>
     </div>
   </div>
 </div>
