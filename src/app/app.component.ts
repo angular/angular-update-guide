@@ -42,6 +42,10 @@ export class AppComponent {
     { name: '6.0', number: 600 },
     { name: '6.1', number: 610 },
     { name: '7.0', number: 700 },
+    { name: '7.1', number: 710 },
+    { name: '7.2', number: 720 },
+    { name: '8.0', number: 800 },
+    { name: '9.0', number: 900 },
   ];
   from = this.versions[14];
   to = this.versions[15];
