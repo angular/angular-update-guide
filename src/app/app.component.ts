@@ -47,8 +47,8 @@ export class AppComponent {
     { name: '8.0', number: 800 },
     { name: '9.0', number: 900 },
   ];
-  from = this.versions[14];
-  to = this.versions[15];
+  from = this.versions[15];
+  to = this.versions[18];
 
   steps: Step[] = RECOMMENDATIONS;
 
