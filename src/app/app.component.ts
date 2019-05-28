@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import * as Showdown from 'showdown';
 import { Step, RECOMMENDATIONS } from './recommendations';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -52,8 +53,17 @@ export class AppComponent {
 
   steps: Step[] = RECOMMENDATIONS;
 
-  constructor() {
+  constructor(public location: Location) {
     this.converter = new Showdown.Converter();
+
+    if(location.path() !== '') {
+      const [from,to] = location.path().split(':');
+      console.log(from,to);
+      this.from = this.versions.find(version => version.name === from);
+      this.to = this.versions.find(version => version.name === to);
+      this.showUpdatePath();
+    }
+    
   }
 
   showUpdatePath() {
@@ -95,6 +105,10 @@ export class AppComponent {
         } else {
         }
       }
+      
+
+      // Update the URL so users can link to this transition
+      this.location.replaceState(`${this.from.name}:${this.to.name}`);
     }
 
     // Tell everyone how to upgrade for v6 or earlier
