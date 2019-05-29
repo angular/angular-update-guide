@@ -12,17 +12,16 @@
         <mat-card-content>
 
           <h4>Angular Version</h4>
-
           <mat-form-field appearance="outline">
-            <mat-select [(ngModel)]="from" placeholder="from">
-              <mat-option *ngFor="let version of versions" [value]="version">{{version.name}}</mat-option>
-            </mat-select>
+            <select (change)="from = getVersion($event.target.value)" placeholder="from" matNativeControl>
+              <option *ngFor="let version of versions" [value]="version.name" [selected]="version.name === from.name">{{version.name}}</option>
+            </select>
           </mat-form-field>
 
           <mat-form-field appearance="outline">
-            <mat-select [(ngModel)]="to" placeholder="to">
-              <mat-option *ngFor="let version of versions" [value]="version">{{version.name}}</mat-option>
-            </mat-select>
+            <select (change)="to = getVersion($event.target.value)" placeholder="to" matNativeControl>
+              <option *ngFor="let version of versions" [value]="version.name" [selected]="version.name === to.name">{{version.name}}</option>
+            </select>
           </mat-form-field>
 
           <div *ngIf="from.number >= 900 || to.number >= 900">
@@ -41,7 +40,7 @@
 
           <h4>App Complexity</h4>
           <ng-container>
-              <mat-button-toggle-group [(ngModel)]="level">
+              <mat-button-toggle-group (change)="level = $event.value" [value]="level">
                 <mat-button-toggle [value]="1">Basic</mat-button-toggle>
                 <mat-button-toggle [value]="2">Medium</mat-button-toggle>
                 <mat-button-toggle [value]="3">Advanced</mat-button-toggle>
@@ -51,14 +50,14 @@
           <h4>Other Dependencies</h4>
           <ng-container *ngFor="let option of optionList">
             <p>
-              <mat-checkbox [(ngModel)]="options[option.id]">I use {{option.name}} {{option.description}}</mat-checkbox>
+              <mat-checkbox (change)="options[option.id] = $event.checked" [value]="options[option.id]">I use {{option.name}} {{option.description}}</mat-checkbox>
             </p>
             <mat-grid-tile [colspan]="2"></mat-grid-tile>
           </ng-container>
 
           <h4>Package Manager</h4>
           <ng-container>
-            <mat-button-toggle-group [(ngModel)]="packageManager">
+            <mat-button-toggle-group (change)="packageManager = $event.value" [value]="packageManager">
               <mat-button-toggle value="npm install">npm</mat-button-toggle>
               <mat-button-toggle value="yarn add">yarn</mat-button-toggle>
             </mat-button-toggle-group>

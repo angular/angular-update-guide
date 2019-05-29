@@ -16,7 +16,7 @@ h1, h2, h3, h4, h5, h6, p, li, ul, ol, td, th, table {
   color: #333333;
 }
 
-p {
+.recommendations>*>div {
   margin-bottom: 16px;
   line-height: 1.75;
 }

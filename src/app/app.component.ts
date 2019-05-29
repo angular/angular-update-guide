@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import * as Showdown from 'showdown';
+import snarkdown from 'snarkdown';
 import { Step, RECOMMENDATIONS } from './recommendations';
 import { Location } from '@angular/common';
 
@@ -24,7 +24,6 @@ export class AppComponent {
   duringRecommendations: Step[] = [];
   afterRecommendations: Step[] = [];
 
-  converter: Showdown.Converter;
 
   versions = [
     { name: '2.0', number: 200 },
@@ -54,7 +53,6 @@ export class AppComponent {
   steps: Step[] = RECOMMENDATIONS;
 
   constructor(public location: Location) {
-    this.converter = new Showdown.Converter();
 
     if(location.path() !== '') {
       const [from,to] = location.path().split(':');
@@ -92,7 +90,7 @@ export class AppComponent {
         }
 
         // Render and replace variables
-        step.renderedStep = this.converter.makeHtml(this.replaceVariables(step.action));
+        step.renderedStep = snarkdown(this.replaceVariables(step.action));
 
         // If you could do it before now, but didn't have to finish it before now
         if (step.possibleIn <= this.from.number && step.necessaryAsOf >= this.from.number) {
@@ -189,7 +187,7 @@ export class AppComponent {
 \`npm install typescript@2.4.2 --save-exact\``;
       }
 
-      upgradeStep.renderedStep = this.converter.makeHtml(upgradeStep.action);
+      upgradeStep.renderedStep = snarkdown(upgradeStep.action);
 
       this.duringRecommendations.push(upgradeStep);
     }
@@ -203,5 +201,13 @@ export class AppComponent {
     );
     newAction = newAction.replace('${packageManagerInstall}', this.packageManager);
     return newAction;
+  }
+
+  getVersion(newVersion: string) {
+    return this.versions.find(version => version.name === newVersion);
+  }
+  log(x) {
+    console.log(x);
+    return x;
   }
 }
