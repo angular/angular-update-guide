@@ -103,11 +103,10 @@ export class AppComponent {
         } else {
         }
       }
-      
-
-      // Update the URL so users can link to this transition
-      this.location.replaceState(`${this.from.name}:${this.to.name}`);
     }
+
+    // Update the URL so users can link to this transition
+    this.location.replaceState(`${this.from.name}:${this.to.name}`);
 
     // Tell everyone how to upgrade for v6 or earlier
     this.renderPreV6Instructions();
