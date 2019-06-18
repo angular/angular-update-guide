@@ -69,6 +69,12 @@ export class AppComponent {
     this.duringRecommendations = [];
     this.afterRecommendations = [];
 
+    // Refuse to generate recommendations for downgrades
+    if(this.to.number < this.from.number) {
+      alert("We do not support downgrading versions of Angular.");
+      return;
+    }
+
     this.title = `Angular Update Guide | ${this.from.name} -> ${this.to.name} for ${
       this.level < 2 ? 'Basic' : this.level < 3 ? 'Medium' : 'Advanced'
     } Apps`;
