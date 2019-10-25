@@ -4,6 +4,7 @@
 /dist
 /tmp
 /dist*
+/.firebase
 
 # dependencies
 /node_modules
