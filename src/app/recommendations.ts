@@ -70,4 +70,10 @@ export const RECOMMENDATIONS: Step[] = [
   { possibleIn: 800, necessaryAsOf: 900, level: 3, step: 'platform deprecated', action: 'We are deprecating support for `@angular/platform-webworker`, as it has been incompatible with the CLI. If you have use cases where you need this, let us know at devrel@angular.io!' },
   { possibleIn: 800, necessaryAsOf: 800, level: 3, step: 'node-sass', action: 'We have switched from the native Sass compiler to the JavaScript compiler. To switch back to the native version, install it as a devDependency: `npm install node-sass --save-dev`.' },
   { possibleIn: 800, necessaryAsOf: 800, level: 3, step: 'schematics async', action: 'If you are building your own Schematics, they have previously been *potentially* asynchronous. As of 8.0, all schematics will be asynchronous.' },
+  { possibleIn: 900, necessaryAsOf: 900, level: 1, step: 'node 10.13', action: 'Make sure you are using <a href="http://www.hostingadvice.com/how-to/update-node-js-latest-version/" target="_blank">Node 10.13 or later</a>.' },
+  { possibleIn: 900, necessaryAsOf: 900, level: 1, step: 'cli v8 latest', action: 'Update the Angular CLI in your project to the latest verstion 8 patch.' },
+  { possibleIn: 900, necessaryAsOf: 900, level: 1, step: 'commit cli changes', action: 'Commit the latest changes in `package.json` and your lock file.' },
+  { possibleIn: 900, necessaryAsOf: 900, level: 1, step: 'ng update v9', action: 'Run `ng update @angular/core @angular/cli`. This step may require the `--force` flag if any of your third-party dependncies have not updated the Angular version of their peer dependencies.' },
+  { possibleIn: 900, necessaryAsOf: 900, level: 1, step: 'typescript 3.6', action: 'Angular now uses TypeScript 3.6, [read more about any potential breaking changes](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-6.html).', },
+  { possibleIn: 900, necessaryAsOf: 1000, level: 1, step: 'ngcc postinstall', action: 'In `postinstall` we\'ll invoke the `ngcc` (Angular Compatibility Compiler) to transform your Angular packages to Ivy compatible format.' },
 ];
