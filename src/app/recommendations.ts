@@ -75,5 +75,5 @@ export const RECOMMENDATIONS: Step[] = [
   { possibleIn: 900, necessaryAsOf: 900, level: 1, step: 'commit cli changes', action: 'Commit the latest changes in `package.json` and your lock file.' },
   { possibleIn: 900, necessaryAsOf: 900, level: 1, step: 'ng update v9', action: 'Run `ng update @angular/core @angular/cli`. This step may require the `--force` flag if any of your third-party dependncies have not updated the Angular version of their peer dependencies.' },
   { possibleIn: 900, necessaryAsOf: 900, level: 1, step: 'typescript 3.6', action: 'Angular now uses TypeScript 3.6, [read more about any potential breaking changes](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-6.html).', },
-  { possibleIn: 900, necessaryAsOf: 1000, level: 1, step: 'ngcc postinstall', action: 'In `postinstall` we\'ll invoke the `ngcc` (Angular Compatibility Compiler) to transform your Angular packages to Ivy compatible format.' },
+  { possibleIn: 900, necessaryAsOf: 1000, level: 1, step: 'ngcc postinstall', action: 'In `postinstall` we\'ll invoke the `ngcc` (Angular Compatibility Compiler) to transform your Angular npm packages in node_modules to Ivy compatible format.' },
 ];
