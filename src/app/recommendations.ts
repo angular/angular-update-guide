@@ -75,4 +75,5 @@ export const RECOMMENDATIONS: Step[] = [
   { possibleIn: 900, necessaryAsOf: 900, level: 1, step: 'ng update v9', action: 'Run `ng update @angular/core @angular/cli`. This step may require the `--force` flag if any of your third-party dependencies have not updated the Angular version of their peer dependencies.' },
   { possibleIn: 900, necessaryAsOf: 900, level: 1, step: 'typescript 3.6', action: 'Your project has now been updated to TypeScript 3.6, [read more about new compiler checks and errors that might require you to fix issues in your code](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-6.html).', },
   { possibleIn: 900, necessaryAsOf: 1000, level: 1, step: 'ngcc postinstall', action: 'In `postinstall` we\'ll invoke the `ngcc` (Angular Compatibility Compiler) to transform your Angular npm packages in node_modules to Ivy compatible format.' },
+  { possibleIn: 900, necessaryAsOf: 1000, level: 1, step: 'ivy update', action: 'Find more information about deprecated and removed APIs in version 9 in [this guide](https://v9.angular.io/guide/updating-to-version-9).' },
 ];
