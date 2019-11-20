@@ -47,10 +47,13 @@ export class AppComponent {
     { name: '7.1', number: 710 },
     { name: '7.2', number: 720 },
     { name: '8.0', number: 800 },
+    { name: '8.1', number: 810 },
+    { name: '8.2', number: 820 },
     { name: '9.0', number: 900 },
+    { name: '10.0', number: 1000 },
   ];
-  from = this.versions[15];
-  to = this.versions[18];
+  from = this.versions.find(version => version.name === '7.0');
+  to = this.versions.find(version => version.name === '8.0');
 
   steps: Step[] = RECOMMENDATIONS;
 
