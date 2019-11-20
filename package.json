@@ -8,7 +8,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "deploy": "firebase deploy"
   },
   "private": true,
   "dependencies": {
@@ -36,6 +37,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.900.0-rc.2",
+    "firebase-tools": "^7.8.0",
     "tslint": "^5.16.0"
   },
   "prettier": {
