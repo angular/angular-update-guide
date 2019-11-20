@@ -139,7 +139,7 @@
   },
   "cli": {
     "packageManager": "yarn",
-    "analytics": false
+    "analytics": "37650cf7-0a86-452b-ad6b-8fa10ccb2c2c"
   },
   "schematics": {
     "@schematics/angular:component": {
