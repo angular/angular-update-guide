@@ -17,6 +17,8 @@ export class AppComponent {
   optionList = [
     { id: 'ngUpgrade', name: 'ngUpgrade', description: 'for using AngularJS and Angular at the same time' },
     { id: 'material', name: 'Angular Material', description: '' },
+    { id: 'universalExpress', name: 'Angular Universal Express Engine', description: '' },
+    { id: 'universalHapi', name: 'Angular Universal Hapi Engine', description: '' },
   ];
   packageManager: 'npm install' | 'yarn add' = 'npm install';
 
@@ -61,7 +63,6 @@ export class AppComponent {
       this.to = this.versions.find(version => version.name === to);
       this.showUpdatePath();
     }
-    
   }
 
   showUpdatePath() {
