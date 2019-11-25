@@ -11,13 +11,15 @@
 
         <mat-card-content>
 
-          <h4>Angular Version</h4>
+          <h4>Angular Versions</h4>
+          From:
           <mat-form-field appearance="outline">
             <select (change)="from = getVersion($event.target.value)" placeholder="from" matNativeControl>
               <option *ngFor="let version of versions" [value]="version.name" [selected]="version.name === from.name">{{version.name}}</option>
             </select>
           </mat-form-field>
 
+          To:
           <mat-form-field appearance="outline">
             <select (change)="to = getVersion($event.target.value)" placeholder="to" matNativeControl>
               <option *ngFor="let version of versions" [value]="version.name" [selected]="version.name === to.name">{{version.name}}</option>
