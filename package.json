@@ -8,8 +8,7 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "deploy": "ng build --prod && firebase deploy"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
@@ -20,6 +19,7 @@
     "@angular/compiler": "9.0.0-rc.2",
     "@angular/compiler-cli": "9.0.0-rc.2",
     "@angular/core": "9.0.0-rc.2",
+    "@angular/fire": "^5.2.3",
     "@angular/forms": "9.0.0-rc.2",
     "@angular/material": "9.0.0-rc.2",
     "@angular/platform-browser": "9.0.0-rc.2",
@@ -33,12 +33,17 @@
     "snarkdown": "^1.2.2",
     "tslib": "^1.10.0",
     "typescript": "3.6.4",
-    "zone.js": "~0.10.2"
+    "zone.js": "~0.10.2",
+    "firebase": ">= 5.5.7 <8"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.900.0-rc.2",
     "firebase-tools": "^7.8.0",
-    "tslint": "^5.16.0"
+    "tslint": "^5.16.0",
+    "@angular-devkit/architect": "<0.900 || ^0.900.0-0 || ^9.0.0-0",
+    "fuzzy": "^0.1.3",
+    "inquirer": "^6.2.2",
+    "inquirer-autocomplete-prompt": "^1.0.1"
   },
   "prettier": {
     "trailingComma": "es5",

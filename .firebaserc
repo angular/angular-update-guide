@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "update-angular-io"
+  },
+  "targets": {
+    "update-angular-io": {
+      "hosting": {
+        "angular-upgrade-guide": [
+          "update-angular-io"
+        ]
+      }
+    }
   }
 }
