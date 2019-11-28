@@ -70,8 +70,8 @@ export class AppComponent {
     this.afterRecommendations = [];
 
     // Refuse to generate recommendations for downgrades
-    if(this.to.number < this.from.number) {
-      alert("We do not support downgrading versions of Angular.");
+    if (this.to.number < this.from.number) {
+      alert('We do not support downgrading versions of Angular.');
       return;
     }
 

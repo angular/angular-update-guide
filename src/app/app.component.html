@@ -13,13 +13,13 @@
 
           <h4>Angular Version</h4>
           <mat-form-field appearance="outline">
-            <select (change)="from = getVersion($event.target.value)" placeholder="from" matNativeControl>
+            <select (change)="from = getVersion($event.target.value); showUpdatePath()" placeholder="from" matNativeControl>
               <option *ngFor="let version of versions" [value]="version.name" [selected]="version.name === from.name">{{version.name}}</option>
             </select>
           </mat-form-field>
 
           <mat-form-field appearance="outline">
-            <select (change)="to = getVersion($event.target.value)" placeholder="to" matNativeControl>
+            <select (change)="to = getVersion($event.target.value); showUpdatePath()" placeholder="to" matNativeControl>
               <option *ngFor="let version of versions" [value]="version.name" [selected]="version.name === to.name">{{version.name}}</option>
             </select>
           </mat-form-field>
@@ -40,7 +40,7 @@
 
           <h4>App Complexity</h4>
           <ng-container>
-              <mat-button-toggle-group (change)="level = $event.value" [value]="level">
+              <mat-button-toggle-group (change)="level = $event.value; showUpdatePath()" [value]="level">
                 <mat-button-toggle [value]="1">Basic</mat-button-toggle>
                 <mat-button-toggle [value]="2">Medium</mat-button-toggle>
                 <mat-button-toggle [value]="3">Advanced</mat-button-toggle>
@@ -50,23 +50,20 @@
           <h4>Other Dependencies</h4>
           <ng-container *ngFor="let option of optionList">
             <p>
-              <mat-checkbox (change)="options[option.id] = $event.checked" [value]="options[option.id]">I use {{option.name}} {{option.description}}</mat-checkbox>
+              <mat-checkbox (change)="options[option.id] = $event.checked; showUpdatePath()" [value]="options[option.id]">I use {{option.name}} {{option.description}}</mat-checkbox>
             </p>
             <mat-grid-tile [colspan]="2"></mat-grid-tile>
           </ng-container>
 
           <h4>Package Manager</h4>
           <ng-container>
-            <mat-button-toggle-group (change)="packageManager = $event.value" [value]="packageManager">
+            <mat-button-toggle-group (change)="packageManager = $event.value; showUpdatePath()" [value]="packageManager">
               <mat-button-toggle value="npm install">npm</mat-button-toggle>
               <mat-button-toggle value="yarn add">yarn</mat-button-toggle>
             </mat-button-toggle-group>
           </ng-container>
 
         </mat-card-content>
-        <mat-card-actions>
-          <button type="button" (click)="showUpdatePath()" mat-raised-button color="primary">Show me how to update!</button>
-        </mat-card-actions>
       </mat-card>
 
 
