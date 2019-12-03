@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import snarkdown from 'snarkdown';
 import { Step, RECOMMENDATIONS } from './recommendations';
 import { Location } from '@angular/common';
+import { AnalyticsService } from './analytics.service';
 
 @Component({
   selector: 'app-root',
@@ -57,7 +58,7 @@ export class AppComponent {
 
   steps: Step[] = RECOMMENDATIONS;
 
-  constructor(public location: Location) {
+  constructor(public location: Location, public track: AnalyticsService) {
 
     if(location.path() !== '') {
       const [from,to] = location.path().split(':');
