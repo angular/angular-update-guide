@@ -51,16 +51,16 @@ export class AppComponent {
     { name: '9.0', number: 900 },
     { name: '10.0', number: 1000 },
   ];
-  from = this.versions.find(version => version.name === '7.0');
-  to = this.versions.find(version => version.name === '8.0');
+  from = this.versions.find(version => version.name === '8.0');
+  to = this.versions.find(version => version.name === '9.0');
 
   steps: Step[] = RECOMMENDATIONS;
 
   constructor(public location: Location, public track: AnalyticsService) {
 
-    if(location.path() !== '') {
-      const [from,to] = location.path().split(':');
-      console.log(from,to);
+    if (location.path() !== '') {
+      const [from, to] = location.path().split(':');
+      console.log(from, to);
       this.from = this.versions.find(version => version.name === from);
       this.to = this.versions.find(version => version.name === to);
       this.showUpdatePath();

@@ -1,5 +1,10 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" style="display: flex;justify-content: space-between;">
   <div class="page-title">Angular Update Guide</div>
+  <div>
+    <a href="https://github.com/StephenFluin/angular-update-guide">
+    <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>github-circle-white-transparent</title><path d="M10 0C4.477 0 0 4.477 0 10c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V19c0 .27.16.59.67.5C17.14 18.16 20 14.42 20 10A10 10 0 0 0 10 0z" fill="#FFF" fill-rule="evenodd"/></svg>
+  </a>
+  </div>
 </mat-toolbar>
 <div class="page">
   <div class="wizard">
@@ -35,18 +40,21 @@
             <br/>
             <strong style="color:darkred">Warning:</strong> We do not currently support downgrading versions of Angular.
           </div>
-          <div *ngIf="to.number - from.number > 100">
+          <div *ngIf="(to.number - from.number > 150) && from.number > 240">
             <br/>
             <strong style="color:darkred">Warning:</strong> We do not recommend moving across multiple major versions.
           </div>
 
           <h4>App Complexity</h4>
           <ng-container>
-              <mat-button-toggle-group (change)="level = $event.value; track.send('setting-complexity',$event.value); showUpdatePath()" [value]="level">
+              <mat-button-toggle-group (change)="level = $event.value; track.send('setting-complexity',$event.value); showUpdatePath()" [value]="level" style="margin-bottom:16px;">
                 <mat-button-toggle [value]="1">Basic</mat-button-toggle>
                 <mat-button-toggle [value]="2">Medium</mat-button-toggle>
                 <mat-button-toggle [value]="3">Advanced</mat-button-toggle>
               </mat-button-toggle-group>
+              <p *ngIf="level === 1">We'll show update information relevant to all Angular developers.</p>
+              <p *ngIf="level === 2">We'll show more specific update information relevant to around 10% of Angular developers.</p>
+              <p *ngIf="level === 3">We'll show all the information we have about the update.</p>
             </ng-container>
 
           <h4>Other Dependencies</h4>
@@ -57,8 +65,8 @@
             <mat-grid-tile [colspan]="2"></mat-grid-tile>
           </ng-container>
 
-          <h4>Package Manager</h4>
-          <ng-container>
+          <ng-container *ngIf="from.number < 600">
+            <h4>Package Manager</h4>
             <mat-button-toggle-group (change)="packageManager = $event.value; showUpdatePath()" [value]="packageManager">
               <mat-button-toggle value="npm install">npm</mat-button-toggle>
               <mat-button-toggle value="yarn add">yarn</mat-button-toggle>
@@ -66,8 +74,8 @@
           </ng-container>
 
         </mat-card-content>
-        <mat-card-actions>	
-          <button type="button" (click)="showUpdatePath()" mat-raised-button color="primary">Show me how to update!</button>	
+        <mat-card-actions>
+          <button type="button" (click)="showUpdatePath()" mat-raised-button color="primary">Show me how to update!</button>
         </mat-card-actions>
       </mat-card>
 
