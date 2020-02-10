@@ -14,7 +14,7 @@
   "dependencies": {
     "@angular/animations": "9.0.0",
     "@angular/cdk": "9.0.0-rc.2",
-    "@angular/cli": "9.0.0-rc.14",
+    "@angular/cli": "9.0.0",
     "@angular/common": "9.0.0",
     "@angular/compiler": "9.0.0",
     "@angular/compiler-cli": "9.0.0",
@@ -37,7 +37,7 @@
     "firebase": ">= 5.5.7 <8"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.900.0-rc.14",
+    "@angular-devkit/build-angular": "~0.900.0",
     "firebase-tools": "^7.8.0",
     "tslint": "^5.16.0",
     "@angular-devkit/architect": "<0.900 || ^0.900.0-0 || ^9.0.0-0",
