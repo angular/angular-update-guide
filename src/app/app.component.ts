@@ -25,7 +25,6 @@ export class AppComponent {
   duringRecommendations: Step[] = [];
   afterRecommendations: Step[] = [];
 
-
   versions = [
     { name: '2.0', number: 200 },
     { name: '2.1', number: 201 },
@@ -57,10 +56,18 @@ export class AppComponent {
   steps: Step[] = RECOMMENDATIONS;
 
   constructor(public location: Location, public track: AnalyticsService) {
-
     if (location.path() !== '') {
-      const [from, to] = location.path().split(':');
-      console.log(from, to);
+      let path = location.path();
+
+      // Detect level in URL fragment
+      const level = path.match(/l(\d)/);
+      if (level) {
+        path = path.replace(/l\d/, '');
+        this.level = parseInt(level[1], 10);
+      }
+
+      // Detect from and to in URL fragment
+      const [from, to] = path.split(':');
       this.from = this.versions.find(version => version.name === from);
       this.to = this.versions.find(version => version.name === to);
       this.showUpdatePath();
@@ -115,7 +122,8 @@ export class AppComponent {
     }
 
     // Update the URL so users can link to this transition
-    this.location.replaceState(`${this.from.name}:${this.to.name}`);
+    const levelString = this.level < 2 ? '' : `l${this.level}`;
+    this.location.replaceState(`${this.from.name}:${this.to.name}${levelString}`);
 
     // Tell everyone how to upgrade for v6 or earlier
     this.renderPreV6Instructions();
