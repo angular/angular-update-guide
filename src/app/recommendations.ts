@@ -8,8 +8,6 @@ export interface Step {
   ngUpgrade?: boolean;
   pwa?: boolean;
   material?: boolean;
-  universalHapi?: boolean;
-  universalExpress?: boolean;
   renderedStep?: string;
 }
 
@@ -60,7 +58,7 @@ export const RECOMMENDATIONS: Step[] = [
   { possibleIn: 700, necessaryAsOf: 700, level: 1, material: true, step: 'v7 material update', action: 'Update Angular Material to v7 by running `ng update @angular/material@7` in your terminal. You should test your application for sizing and layout changes.'},
   { possibleIn: 700, necessaryAsOf: 700, level: 2, material: true, step: 'v7 material changes', action: 'If you use screenshot tests, you\'ll need to regenerate your screenshot golden files as many minor visual tweaks have landed.'},
   { possibleIn: 700, necessaryAsOf: 800, level: 3, material: true, step: 'v7 material deprecations', action: 'Stop using `matRippleSpeedFactor` and `baseSpeedFactor` for ripples, using Animation config instead.'},
-  { possibleIn: 800, necessaryAsOf: 800, level: 1, step: 'v8 update', action: 'Update to version 8 of the core framework and CLI by running `ng update @angular/cli@8 @angular/core@8` in your terminal'},
+  { possibleIn: 800, necessaryAsOf: 800, level: 1, step: 'v8 update', action: 'Update to version 8 of the core framework and CLI by running `ng update @angular/cli@8 @angular/core@8` in your terminal and review and commit the changes.'},
   { possibleIn: 800, necessaryAsOf: 800, level: 1, step: 'use ::ng-deep instead of /deep/', action: 'Replace `/deep/` with `::ng-deep` in your styles, [read more about angular component styles and ::ng-deep](https://angular.io/guide/component-styles#deprecated-deep--and-ng-deep). `/deep/` and `::ng-deep` both are deprecated but using `::ng-deep` is preferred until the shadow-piercing descendant combinator is [removed from browsers and tools](https://www.chromestatus.com/features/6750456638341120) completely.', },
   { possibleIn: 800, necessaryAsOf: 800, level: 1, step: 'TypeScript 3.4', action: 'Angular now uses TypeScript 3.4, [read more about errors that might arise from improved type checking](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-4.html).', },
   { possibleIn: 800, necessaryAsOf: 800, level: 1, step: 'node 10', action: 'Make sure you are using <a href="http://www.hostingadvice.com/how-to/update-node-js-latest-version/" target="_blank">Node 10 or later</a>.', },
