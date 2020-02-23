@@ -3,6 +3,7 @@ import snarkdown from 'snarkdown';
 import { Step, RECOMMENDATIONS } from './recommendations';
 import { Location } from '@angular/common';
 import { AnalyticsService } from './analytics.service';
+import { getLocalizedAction } from './localization';
 
 @Component({
   selector: 'app-root',
@@ -52,22 +53,28 @@ export class AppComponent {
   ];
   from = this.versions.find(version => version.name === '8.0');
   to = this.versions.find(version => version.name === '9.0');
+  locale = 'en-US';
 
   steps: Step[] = RECOMMENDATIONS;
 
   constructor(public location: Location, public track: AnalyticsService) {
-    if (location.path() !== '') {
-      let path = location.path();
+    const searchParams = new URLSearchParams(window.location.search);
+    // Detect level
+    const level = searchParams.get('l')
+    if (level) {
+      this.level = parseInt(level, 10);
+    }
 
-      // Detect level in URL fragment
-      const level = path.match(/l(\d)/);
-      if (level) {
-        path = path.replace(/l\d/, '');
-        this.level = parseInt(level[1], 10);
-      }
+    // Detect locale
+    const locale = searchParams.get('locale')
+    if (locale) {
+      this.locale = locale;
+    }
 
-      // Detect from and to in URL fragment
-      const [from, to] = path.split(':');
+    // Detect versions of from and to
+    const versions = searchParams.get('v')
+    if (versions) {
+      const [from, to] = versions.split('-');
       this.from = this.versions.find(version => version.name === from);
       this.to = this.versions.find(version => version.name === to);
       this.showUpdatePath();
@@ -106,7 +113,7 @@ export class AppComponent {
         }
 
         // Render and replace variables
-        step.renderedStep = snarkdown(this.replaceVariables(step.action));
+        step.renderedStep = snarkdown(this.replaceVariables(getLocalizedAction(this.locale, step)));
 
         // If you could do it before now, but didn't have to finish it before now
         if (step.possibleIn <= this.from.number && step.necessaryAsOf >= this.from.number) {
@@ -122,8 +129,15 @@ export class AppComponent {
     }
 
     // Update the URL so users can link to this transition
-    const levelString = this.level < 2 ? '' : `l${this.level}`;
-    this.location.replaceState(`${this.from.name}:${this.to.name}${levelString}`);
+    const searchParams = new URLSearchParams();
+    if (this.locale !== 'en-US') {
+      searchParams.set('locale', this.locale);
+    }
+    if (this.level >= 2) {
+      searchParams.set('l', `${this.level}`);
+    }
+    searchParams.set('v', `${this.from.name}-${this.to.name}`)
+    this.location.replaceState('', searchParams.toString())
 
     // Tell everyone how to upgrade for v6 or earlier
     this.renderPreV6Instructions();

@@ -11,7 +11,9 @@ import { MatInputModule } from "@angular/material/input";
 import { MatListModule } from "@angular/material/list";
 import { MatProgressBarModule } from "@angular/material/progress-bar";
 import { MatToolbarModule } from "@angular/material/toolbar";
-import { Location, HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
+
+import './locales';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,7 @@ import { Location, HashLocationStrategy, LocationStrategy } from '@angular/commo
     MatProgressBarModule,
     MatButtonToggleModule
   ],
-  providers: [Location, { provide: LocationStrategy, useClass: HashLocationStrategy }],
+  providers: [Location, { provide: LocationStrategy, useClass: PathLocationStrategy }],
   bootstrap: [AppComponent]
 })
 export class AppModule {
