@@ -3,6 +3,7 @@ import snarkdown from 'snarkdown';
 import { Step, RECOMMENDATIONS } from './recommendations';
 import { Location } from '@angular/common';
 import { AnalyticsService } from './analytics.service';
+import { getLocalizedAction } from './localization';
 
 @Component({
   selector: 'app-root',
@@ -51,28 +52,32 @@ export class AppComponent {
     { name: '2.2', number: 202 },
     { name: '2.1', number: 201 },
     { name: '2.0', number: 200 },
-
   ];
-  from = this.versions.find(version => version.name === '9.0');
-  to = this.versions.find(version => version.name === '10.0');
+  from = this.versions.find((version) => version.name === '9.0');
+  to = this.versions.find((version) => version.name === '10.0');
+  locale: string;
+  /**
+   * Only save the locale in the URL if it was already there, or the user changed it
+   */
+  saveLocale = false;
 
   steps: Step[] = RECOMMENDATIONS;
 
   constructor(public location: Location, public track: AnalyticsService) {
-    if (location.path() !== '') {
-      let path = location.path();
+    const searchParams = new URLSearchParams(window.location.search);
+    // Detect settings in URL
+    this.level = parseInt(searchParams.get('l'), 10) || this.level;
+    this.locale = searchParams.get('locale') || navigator.language;
+    if (searchParams.get('locale')) {
+      this.saveLocale = true;
+    }
+    const versions = searchParams.get('v');
 
-      // Detect level in URL fragment
-      const level = path.match(/l(\d)/);
-      if (level) {
-        path = path.replace(/l\d/, '');
-        this.level = parseInt(level[1], 10);
-      }
-
-      // Detect from and to in URL fragment
-      const [from, to] = path.split(':');
-      this.from = this.versions.find(version => version.name === from);
-      this.to = this.versions.find(version => version.name === to);
+    // Detect versions of from and to
+    if (versions) {
+      const [from, to] = versions.split('-');
+      this.from = this.versions.find((version) => version.name === from);
+      this.to = this.versions.find((version) => version.name === to);
       this.showUpdatePath();
     }
   }
@@ -109,7 +114,7 @@ export class AppComponent {
         }
 
         // Render and replace variables
-        step.renderedStep = snarkdown(this.replaceVariables(step.action));
+        step.renderedStep = snarkdown(this.replaceVariables(getLocalizedAction(this.locale, step)));
 
         // If you could do it before now, but didn't have to finish it before now
         if (step.possibleIn <= this.from.number && step.necessaryAsOf >= this.from.number) {
@@ -125,8 +130,15 @@ export class AppComponent {
     }
 
     // Update the URL so users can link to this transition
-    const levelString = this.level < 2 ? '' : `l${this.level}`;
-    this.location.replaceState(`${this.from.name}:${this.to.name}${levelString}`);
+    const searchParams = new URLSearchParams();
+    if (this.locale && this.saveLocale) {
+      searchParams.set('locale', this.locale);
+    }
+    if (this.level >= 2) {
+      searchParams.set('l', `${this.level}`);
+    }
+    searchParams.set('v', `${this.from.name}-${this.to.name}`);
+    this.location.replaceState('', searchParams.toString());
 
     // Tell everyone how to upgrade for v6 or earlier
     this.renderPreV6Instructions();
@@ -176,7 +188,7 @@ export class AppComponent {
 
       if (isWindows) {
         const packages =
-          angularPackages.map(packageName => `@angular/${packageName}@${angularVersion}`).join(' ') +
+          angularPackages.map((packageName) => `@angular/${packageName}@${angularVersion}`).join(' ') +
           ' ' +
           additionalDeps;
 
@@ -223,10 +235,16 @@ export class AppComponent {
   }
 
   getVersion(newVersion: string) {
-    return this.versions.find(version => version.name === newVersion);
+    return this.versions.find((version) => version.name === newVersion);
   }
   log(x) {
     console.log(x);
     return x;
+  }
+
+  setLocale(locale: string) {
+    this.locale = locale;
+    this.saveLocale = true;
+    this.showUpdatePath();
   }
 }
