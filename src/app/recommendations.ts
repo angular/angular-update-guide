@@ -33,7 +33,7 @@ export const RECOMMENDATIONS: Step[] = [
   { possibleIn: 400, necessaryAsOf: 600, level: 2, step: 'Animations in Core', action: 'If you import any animations services or tools from @angular/core, you should import them from @angular/animations', },
   { possibleIn: 400, necessaryAsOf: 600, level: 3, step: 'ngOutletContext', action: 'Replace `ngOutletContext` with `ngTemplateOutletContext`.', },
   { possibleIn: 400, necessaryAsOf: 600, level: 3, step: 'collectionChangeRecord', action: 'Replace `CollectionChangeRecord` with `IterableChangeRecord`', },
-  { possibleIn: 400, necessaryAsOf: 600, level: 3, step: 'Renderer', action: 'Anywhere you use Renderer, now use Renderer2', },
+  { possibleIn: 400, necessaryAsOf: 900, level: 3, step: 'Renderer', action: 'Anywhere you use Renderer, now use Renderer2', },
   { possibleIn: 400, necessaryAsOf: 600, level: 3, step: 'Router Query Params', action: 'If you use preserveQueryParams, instead use queryParamsHandling', },
   { possibleIn: 430, necessaryAsOf: 800, level: 1, step: 'Http', action: 'If you use the legacy `HttpModule` and the `Http` service, switch to `HttpClientModule` and the `HttpClient` service. HttpClient simplifies the default ergonomics (you don\'t need to map to JSON anymore) and now supports typed return values and interceptors. Read more on [angular.io](https://angular.io/guide/http).', },
   { possibleIn: 430, necessaryAsOf: 600, level: 3, step: 'DOCUMENT in @angular/platform-browser', action: 'If you use DOCUMENT from @angular/platform-browser, you should start to import this from @angular/common', },
