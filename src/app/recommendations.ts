@@ -12,6 +12,7 @@ export interface Step {
 }
 
 export const RECOMMENDATIONS: Step[] = [
+  { possibleIn: 200, necessaryAsOf: 1000, level: 1, step: 'Consult the update docs', action: 'Consult [Keeping your Angular projects up-to-date](https://angular.io/guide/updating) to learn more about the update process.', },
   { possibleIn: 200, necessaryAsOf: 400, level: 1, step: 'Extends OnInit', action: 'Ensure you don\'t use `extends OnInit`, or use `extends` with any lifecycle event. Instead use `implements <lifecycle event>.`', },
   { possibleIn: 200, necessaryAsOf: 400, level: 3, step: 'Deep Imports', action: 'Stop using deep imports, these symbols are now marked with ɵ and are not part of our public API.', },
   { possibleIn: 200, necessaryAsOf: 400, level: 3, step: 'invokeElementMethod', action: 'Stop using `Renderer.invokeElementMethod` as this method has been removed. There is not currently a replacement.', },
