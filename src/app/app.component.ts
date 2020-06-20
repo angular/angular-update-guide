@@ -16,7 +16,7 @@ export class AppComponent {
     ngUpgrade: false,
   };
   optionList = [
-    { id: 'ngUpgrade', name: 'ngUpgrade', description: 'for using AngularJS and Angular at the same time' },
+    { id: 'ngUpgrade', name: 'ngUpgrade', description: 'to combine AngularJS & Angular' },
     { id: 'material', name: 'Angular Material', description: '' },
   ];
   packageManager: 'npm install' | 'yarn add' = 'npm install';
@@ -48,10 +48,13 @@ export class AppComponent {
     { name: '8.1', number: 810 },
     { name: '8.2', number: 820 },
     { name: '9.0', number: 900 },
+    { name: '9.1', number: 910 },
     { name: '10.0', number: 1000 },
+    { name: '11.0', number: 1100 },
+
   ];
-  from = this.versions.find(version => version.name === '8.0');
-  to = this.versions.find(version => version.name === '9.0');
+  from = this.versions.find(version => version.name === '9.0');
+  to = this.versions.find(version => version.name === '10.0');
 
   steps: Step[] = RECOMMENDATIONS;
 
