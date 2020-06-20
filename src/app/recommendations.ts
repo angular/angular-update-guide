@@ -92,6 +92,11 @@ export const RECOMMENDATIONS: Step[] = [
   { possibleIn: 900, necessaryAsOf: 1000, level: 2, step: 'entryComponents', action: 'If you have specified any `entryComponents` in your NgModules or had any uses of `ANALYZE_FOR_ENTRY_COMPONENTS`, you can remove them. They are no longer required with the Ivy compiler and runtime.' },
   { possibleIn: 900, necessaryAsOf: 1000, level: 2, step: 'testbed-get', action: 'If you use `TestBed.get`, you should instead use `TestBed.inject`. This new method has the same behavior, but is type safe.' },
   { possibleIn: 900, necessaryAsOf: 1000, level: 2, step: '$localize', action: 'If you use [Angular\'s i18n support](http://angular.io/guide/i18n), you will need to begin using `@angular/localize`. Learn more about the [$localize Global Import Migration](https://v9.angular.io/guide/migration-localize).' },
+  { possibleIn: 1000, necessaryAsOf: 1000, level: 1, step: 'browserlist', action: 'New projects use the filename `.browserslistrc` instead of `browserslist`. `ng update` will migrate you automatically.' },
+  { possibleIn: 1000, necessaryAsOf: 1000, level: 2, step: 'browserlist', action: 'Angular now recommends `tslint` v6. `ng update` will migrate you automatically.' },
+  { possibleIn: 900, necessaryAsOf: 1000, level: 2, step: 'browserlist', action: 'Remove any `es5BrowserSupport` flags in your `angular.json`. Angular now uses your browserslist to determine if an ES5 build is needed. `ng update` will migrate you automatically.' },
+  { possibleIn: 1000, necessaryAsOf: 1000, level: 1, step: 'styleext', action: 'Stop using `styleext` or `spec` in your Angular schematics. `ng update` will migrate you automatically.' },
+
 
 
 ];
