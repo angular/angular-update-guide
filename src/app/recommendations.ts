@@ -113,6 +113,5 @@ export const RECOMMENDATIONS: Step[] = [
   { possibleIn: 1000, necessaryAsOf: 1000, level: 3, step: 'property-binding-change-detection', action: 'If you have a property binding such as `[val]=(observable | async).someProperty`, this will no longer trigger change detection if the value of `someProperty` is identical to the previous emit. If you rely on this, either manually subscribe and call `markForCheck` as needed or update the binding to ensure the reference changes.' },
   { possibleIn: 1000, necessaryAsOf: 1000, level: 3, step: 'day-periods-crossing-midnight', action: 'If you use either `formatDate()` or `DatePipe` and any of the `b` or `B` format codes, the logic has been updated so that it matches times that are within a day period that spans midnight, so it will now render the correct output, such as at `night` in the case of English.' },
   { possibleIn: 1000, necessaryAsOf: 1000, level: 3, step: 'urlmatcher-null', action: 'If you use the `UrlMatcher`, the type now reflects that it could always return `null`.' },
-
-
+  { possibleIn: 1000, necessaryAsOf: 1000, level: 3, step: 'v10-more-details', action: 'For more details about deprecations, automated migrations, and changes visit the [guide angular.io](https://angular.io/guide/updating-to-version-10)' },
 ];
