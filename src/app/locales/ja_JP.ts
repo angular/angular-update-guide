@@ -1,6 +1,10 @@
 import { LocalizedSteps, registerLocalization } from '../localization';
 
 const steps: LocalizedSteps = {
+  //UI
+  'Angular Update Guide': {
+    action: 'UPDATE GUIDE'
+  },
   // v10.0
   debug: {
     action:

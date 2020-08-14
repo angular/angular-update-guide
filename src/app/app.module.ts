@@ -15,9 +15,10 @@ import { MatMenuModule } from '@angular/material/menu';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 
 import './locales';
+import { I18nPipe } from './i18n.pipe';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, I18nPipe],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

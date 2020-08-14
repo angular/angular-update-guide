@@ -13,9 +13,13 @@ export function registerLocalization(locale: string, steps: LocalizedSteps) {
 }
 
 export function getLocalizedAction(locale: string, original: Step): string {
+  if (locale === 'debug') {
+    return '*******';
+  }
   if (!localizations.has(locale)) {
     return original.action;
   }
   const step = localizations.get(locale)[original.step];
   return step ? step.action : original.action;
 }
+export let currentLocale = { locale: undefined };

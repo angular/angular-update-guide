@@ -3,7 +3,7 @@ import snarkdown from 'snarkdown';
 import { Step, RECOMMENDATIONS } from './recommendations';
 import { Location } from '@angular/common';
 import { AnalyticsService } from './analytics.service';
-import { getLocalizedAction } from './localization';
+import { getLocalizedAction, currentLocale } from './localization';
 
 @Component({
   selector: 'app-root',
@@ -55,7 +55,6 @@ export class AppComponent {
   ];
   from = this.versions.find((version) => version.name === '9.0');
   to = this.versions.find((version) => version.name === '10.0');
-  locale: string;
   /**
    * Only save the locale in the URL if it was already there, or the user changed it
    */
@@ -67,7 +66,7 @@ export class AppComponent {
     const searchParams = new URLSearchParams(window.location.search);
     // Detect settings in URL
     this.level = parseInt(searchParams.get('l'), 10) || this.level;
-    this.locale = searchParams.get('locale') || navigator.language;
+    currentLocale.locale = searchParams.get('locale') || navigator.language;
     if (searchParams.get('locale')) {
       this.saveLocale = true;
     }
@@ -114,7 +113,7 @@ export class AppComponent {
         }
 
         // Render and replace variables
-        step.renderedStep = snarkdown(this.replaceVariables(getLocalizedAction(this.locale, step)));
+        step.renderedStep = snarkdown(this.replaceVariables(getLocalizedAction(currentLocale.locale, step)));
 
         // If you could do it before now, but didn't have to finish it before now
         if (step.possibleIn <= this.from.number && step.necessaryAsOf >= this.from.number) {
@@ -131,8 +130,8 @@ export class AppComponent {
 
     // Update the URL so users can link to this transition
     const searchParams = new URLSearchParams();
-    if (this.locale && this.saveLocale) {
-      searchParams.set('locale', this.locale);
+    if (currentLocale.locale && this.saveLocale) {
+      searchParams.set('locale', currentLocale.locale);
     }
     if (this.level >= 2) {
       searchParams.set('l', `${this.level}`);
@@ -243,7 +242,7 @@ export class AppComponent {
   }
 
   setLocale(locale: string) {
-    this.locale = locale;
+    currentLocale.locale = locale;
     this.saveLocale = true;
     this.showUpdatePath();
   }
