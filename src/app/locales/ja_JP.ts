@@ -1,7 +1,44 @@
 import { LocalizedSteps, registerLocalization, LocalizedLabels } from '../localization';
 
 const uiLabels: LocalizedLabels = {
-  'Angular Update Guide': 'UPDATE GUIDE',
+  'Angular Update Guide': 'Angularアップデートガイド',
+  'Select the options matching your project:': 'プロジェクトにマッチするオプションを選択',
+  'Angular Versions': 'Angularのバージョン',
+  From: 'From',
+  To: 'To',
+  Warning: '注意',
+  'Plans for releases after the current major release are not finalized and may change. These recommendations are based on scheduled deprecations.':
+    '現在のメジャーリリースより先のリリース内容は未確定で変更される可能性があります。推奨事項は非推奨化のスケジュールに基づいています。',
+  'We do not currently support downgrading versions of Angular.':
+    'バージョンのダウングレードは現在サポートしていません。',
+  'We do not recommend moving across multiple major versions.':
+    '複数のメジャーバージョンをまたぐことはおすすめしません。',
+  'App Complexity': 'アプリケーションの複雑度',
+  Basic: 'Basic',
+  Medium: 'Medium',
+  Advanced: 'Advanced',
+  'Show update information relevant to all Angular developers.': 'すべてのAngular開発者に関連する情報を表示します。',
+  'Show more specific update information relevant to around 10% of Angular developers.':
+    'およそ10%程度のAngular開発者に関連する具体的な情報を表示します。',
+  'Show all the information we have about the update.': 'すべての情報を表示します。',
+  'Other Dependencies': 'その他の依存関係',
+  'I use': '',
+  'Package Manager': 'パッケージマネージャ',
+  npm: 'npm',
+  yarn: 'yarn',
+  'Show me how to update!': 'アップデート手順を表示！',
+  'Before Updating': 'アップデートの前に',
+  // tslint:disable-next-line: quotemark
+  "There aren't currently any changes needed before moving between these versions.":
+    'バージョン移行前に必要な手順はありません。',
+  'During the Update': 'アップデートの実施',
+  // tslint:disable-next-line: quotemark
+  "There aren't currently any recommendations for moving between these versions.":
+    'バージョン移行のための推奨事項はありません。',
+  'After the Update': 'アップデートの後に',
+  // tslint:disable-next-line: quotemark
+  "There aren't currently any changes needed after moving between these versions.":
+    'バージョン移行後に必要な手順はありません。',
 };
 
 const steps: LocalizedSteps = {
