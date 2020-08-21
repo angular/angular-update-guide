@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { getLocalizedAction, currentLocale } from './localization';
+import { currentLocale, getLocalizedLabel } from './localization';
 
 /**
  * Re-use the step translation system for system UI
@@ -11,6 +11,6 @@ import { getLocalizedAction, currentLocale } from './localization';
 })
 export class I18nPipe implements PipeTransform {
   transform(value: string): string {
-    return getLocalizedAction(currentLocale.locale, { action: value, step: value } as any);
+    return getLocalizedLabel(currentLocale.locale, value);
   }
 }

@@ -1,10 +1,10 @@
-import { LocalizedSteps, registerLocalization } from '../localization';
+import { LocalizedSteps, registerLocalization, LocalizedLabels } from '../localization';
+
+const uiLabels: LocalizedLabels = {
+  'Angular Update Guide': 'UPDATE GUIDE',
+};
 
 const steps: LocalizedSteps = {
-  //UI
-  'Angular Update Guide': {
-    action: 'UPDATE GUIDE'
-  },
   // v10.0
   debug: {
     action:
@@ -106,4 +106,4 @@ const steps: LocalizedSteps = {
   },
 };
 
-registerLocalization('ja-JP', steps);
+registerLocalization('ja-JP', steps, uiLabels);
