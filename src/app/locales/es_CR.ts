@@ -450,5 +450,6 @@ const steps: LocalizedSteps = {
   },
 
 };
-
+// @TODO This console log is required or the locale won't be registered
+console.log(`es-CR registered`);
 registerLocalization('es-CR', steps, uiLabels);

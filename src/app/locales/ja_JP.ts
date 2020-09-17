@@ -142,5 +142,6 @@ const steps: LocalizedSteps = {
       'サポート終了、自動マイグレーション、変更の詳細については、[angular.ioのガイド](https://angular.jp/guide/updating-to-version-10)にアクセスしてください。',
   },
 };
-
+// @TODO This console log is required or the locale won't be registered
+console.log(`ja-JP registered`);
 registerLocalization('ja-JP', steps, uiLabels);
