@@ -3,7 +3,7 @@ import { LocalizedSteps, registerLocalization, LocalizedLabels } from '../locali
 const uiLabels: LocalizedLabels = {
   'Angular Update Guide': 'Guía de Actualización de Angular',
   'Select the options matching your project:': 'Seleccione las opciónes que más se asimilen a su proyecto:',
-  'Angular Versions': 'Version de Angular',
+  'Angular Versions': 'Versión de Angular',
   From: 'De',
   To: 'A',
   Warning: 'Alerta',
@@ -36,10 +36,15 @@ const uiLabels: LocalizedLabels = {
   // tslint:disable-next-line: quotemark
   "There aren't currently any recommendations for moving between these versions.":
     'No hay ninguna recomendación para moverser entre estas versiones.',
-  'After the Update': 'Después de la actulización',
+  'After the Update': 'Después de la actualización',
   // tslint:disable-next-line: quotemark
   "There aren't currently any changes needed after moving between these versions.":
-    'No es necesario realizar ningun cambio al moverse entre estas versiones.',
+    'No es necesario realizar ningún cambio al moverse entre estas versiones.',
+  'to combine AngularJS & Angular': 'para combinar AngularJS y Angular',
+  'for': 'para',
+  'Basic Apps': 'apps básicos',
+  'Medium Apps': 'apps medianos',
+  'Advanced Apps': 'apps avanzados',
 };
 
 const steps: LocalizedSteps = {
@@ -106,7 +111,7 @@ const steps: LocalizedSteps = {
   },
   'i18n Pipe Change': {
     action:
-      'Si utiliza los pipes de date, currency, decimal o porcentaje, en la v5 verá algunos cambios pequeños en el formato. Para aplicaciones que utilicen otros locales aparte de en-us, necesitara impórtalo y opcionalmente `locale_extended_fr` de `@angular/common/i18n_data/locale_fr` y registerLocaleData(local).'
+      'Si utiliza los pipes de date, currency, decimal o porcentaje, en la v5 verá algunos cambios pequeños en el formato. Para aplicaciones que utilicen otros locales aparte de en-us, necesitará impórtalo y opcionalmente `locale_extended_fr` de `@angular/common/i18n_data/locale_fr` y registerLocaleData(local).'
   },
   'gendir': {
     action:
@@ -186,7 +191,7 @@ const steps: LocalizedSteps = {
   },
   'Update Dependencies for v6': {
     action:
-      'Actualice Angular Material a la ultima versión. <br/><br/>`ng update @angular/material`<br/><br/> Esto migrara los APIs en desuso automáticamente.'
+      'Actualice Angular Material a la ultima versión. <br/><br/>`ng update @angular/material`<br/><br/> Esto migrará los APIs en desuso automáticamente.'
   },
   'strictPropertyInitializer': {
     action:
@@ -214,7 +219,7 @@ const steps: LocalizedSteps = {
   },
   'v7 update': {
     action:
-      'Actualice a la version 7 la base del framework y el CLI corriendo  `ng update @angular/cli@7 @angular/core@7` en la terminal.'
+      'Actualice a la versión 7 la base del framework y el CLI corriendo  `ng update @angular/cli@7 @angular/core@7` en la terminal.'
   },
   'v7 material update': {
     action:
@@ -242,7 +247,7 @@ const steps: LocalizedSteps = {
   },
   'node 10': {
     action:
-      'Asegurese de <a href="http://www.hostingadvice.com/how-to/update-node-js-latest-version/" target="_blank">usar la version 10 de Node o más reciente</a>.'
+      'Asegurese de <a href="http://www.hostingadvice.com/how-to/update-node-js-latest-version/" target="_blank">usar la versión 10 de Node o más reciente</a>.'
   },
   'Differential Loading': {
     action:
@@ -322,7 +327,7 @@ const steps: LocalizedSteps = {
   },
   'ModuleWithProviders': {
     action:
-      'Si es autor de una librería y utiliza un método que retorna un valor de tipo `ModuleWithProviders` (comúnmente la función `forRoot()`), necesitara especificar el tipo genérico. Para saber más [angular.io](https://v9.angular.io/guide/deprecations#modulewithproviders-type-without-a-generic)'
+      'Si es autor de una librería y utiliza un método que retorna un valor de tipo `ModuleWithProviders` (comúnmente la función `forRoot()`), necesitará especificar el tipo genérico. Para saber más [angular.io](https://v9.angular.io/guide/deprecations#modulewithproviders-type-without-a-generic)'
   },
   'wtf': {
     action:
@@ -378,27 +383,27 @@ const steps: LocalizedSteps = {
   // },
   'browserlist': {
     action:
-      'Los proyectos nuevos utilizan `.browserslistrc` en vez de `browserslist`. `ng update` lo migrara automáticamente.'
+      'Los proyectos nuevos utilizan `.browserslistrc` en vez de `browserslist`. `ng update` lo migrará automáticamente.'
   },
   'v10-versions': {
     action:
-      'Angular ahora utiliza la  `tslint` v6, `tslib` v2, y [TypeScript 3.9](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-9.html). `ng update` lo migrara automáticamente.'
+      'Angular ahora utiliza la  `tslint` v6, `tslib` v2, y [TypeScript 3.9](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-9.html). `ng update` lo migrará automáticamente.'
   },
   'styleext': {
     action:
-      'No utilice más `styleext` o `spec` en su Angular schematics. `ng update` lo migrara automáticamente.'
+      'No utilice más `styleext` o `spec` en su Angular schematics. `ng update` lo migrará automáticamente.'
   },
   'tsconfig-layout': {
     action:
-      'Angular recomienda utilizar `tsconfig.base.json` para ayudar a organizar el tipado en diferentes contextos(en común, pruebas unitarias, pruebas end to end, aplicación, etc) `ng update` lo migrara automáticamente.'
+      'Angular recomienda utilizar `tsconfig.base.json` para ayudar a organizar el tipado en diferentes contextos(en común, pruebas unitarias, pruebas end to end, aplicación, etc) `ng update` lo migrará automáticamente.'
   },
   'classes-without-decorators': {
     action:
-      'En la versión 10, las clases que utilicen Angular y no tenga el decorardor respectivo ya no son soportadas. [Lee más](https://v10.angular.io/guide/migration-undecorated-classes). `ng update` lo migrara automáticamente.'
+      'En la versión 10, las clases que utilicen Angular y no tenga el decorardor respectivo ya no son soportadas. [Lee más](https://v10.angular.io/guide/migration-undecorated-classes). `ng update` lo migrará automáticamente.'
   },
   'injectable-definitions': {
     action:
-      'A partir de Angular 9, la aplicación de los decoradores @Injectable en DI es más estricta y las definiciones de provider incompletas se comportan de manera diferente. [Lee más](https://v9.angular.io/guide/migration-injectable). `ng update` lo migrara automáticamente.'
+      'A partir de Angular 9, la aplicación de los decoradores @Injectable en DI es más estricta y las definiciones de provider incompletas se comportan de manera diferente. [Lee más](https://v9.angular.io/guide/migration-injectable). `ng update` lo migrará automáticamente.'
   },
   'closure-jsdoc-comments': {
     action:
@@ -406,7 +411,7 @@ const steps: LocalizedSteps = {
   },
   'forms-number-input': {
     action:
-      'Si utiliza los formularios de Angular, el campo tipo `number` ya no escuchara ningún [evento de cambio](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event) (estos eventos no son necesariamente lanzados por cada alteración en el valor),  en vez escuche [eventos del input](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event).'
+      'Si utiliza los formularios de Angular, el campo tipo `number` ya no escuchará ningún [evento de cambio](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event) (estos eventos no son necesariamente lanzados por cada alteración en el valor),  en vez escuche [eventos del input](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event).'
   },
   'forms-length-input': {
     action:
@@ -418,15 +423,15 @@ const steps: LocalizedSteps = {
   },
   'console-errors': {
     action:
-      'Las alertas sobre elementos no conocidos ahora son registradas como errores. Esto no quebrará su aplicación, pero puede terminar en herramientas que esperar no registrar nada atreves de `console.error`.'
+      'Las alertas sobre elementos no conocidos ahora son registradas como errores. Esto no quebrará su aplicación, pero puede terminar en herramientas que esperar no registrar nada a través de `console.error`.'
   },
   'router-resolver-empty': {
     action:
-      'Cualquier resolver que retorne `EMPTY` cancelería la navegación. Si quiere permitir que continúe, necesitara actualizar el resolver para que emita algún tipo de valor (ejemplo. `defaultIfEmpty(...)`, `of(...)`, etc).'
+      'Cualquier resolver que retorne `EMPTY` cancelería la navegación. Si quiere permitir que continúe, necesitará actualizar el resolver para que emita algún tipo de valor (ejemplo. `defaultIfEmpty(...)`, `of(...)`, etc).'
   },
   'sw-vary-headers': {
     action:
-      'Si utiliza el service worker de Angular y utiliza el header [Vary](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Vary), ahora será ignorado para evitar comportamientos inesperados atreves de navegadores. Para evitar esto [configure](https://angular.io/guide/service-worker-config) su service worker para evitar cachear estos recursos.'
+      'Si utiliza el service worker de Angular y utiliza el header [Vary](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Vary), ahora será ignorado para evitar comportamientos inesperados a través de navegadores. Para evitar esto [configure](https://angular.io/guide/service-worker-config) su service worker para evitar cachear estos recursos.'
   },
   'expression-changed-after-checked-new': {
     action:
@@ -448,7 +453,6 @@ const steps: LocalizedSteps = {
     action:
       'Para más detalles sobre bajas, migraciones automáticas, y cambios, visite la [guía de angular.io](https://angular.io/guide/updating-to-version-10)'
   },
-
 };
 // @TODO This console log is required or the locale won't be registered
 console.log(`es-CR registered`);
