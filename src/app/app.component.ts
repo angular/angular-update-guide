@@ -19,6 +19,7 @@ export class AppComponent {
   optionList = [
     { id: 'ngUpgrade', name: 'ngUpgrade', description: 'to combine AngularJS & Angular' },
     { id: 'material', name: 'Angular Material', description: '' },
+    { id: 'flexLayout', name: 'Angular flex-layout', description: '' },
   ];
   packageManager: 'npm install' | 'yarn add' = 'npm install';
 

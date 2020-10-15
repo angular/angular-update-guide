@@ -8,6 +8,7 @@ export interface Step {
   ngUpgrade?: boolean;
   pwa?: boolean;
   material?: boolean;
+  flexLayout?: boolean;
   renderedStep?: string;
 }
 
@@ -95,6 +96,7 @@ export const RECOMMENDATIONS: Step[] = [
   { possibleIn: 900, necessaryAsOf: 1000, level: 2, step: '$localize', action: 'If you use [Angular\'s i18n support](http://angular.io/guide/i18n), you will need to begin using `@angular/localize`. Learn more about the [$localize Global Import Migration](https://v9.angular.io/guide/migration-localize).' },
   { possibleIn: 1000, necessaryAsOf: 1000, level: 1, step: 'ng update v10', action: 'Run `ng update @angular/core @angular/cli` which should bring you to version 10 of Angular.' },
   { possibleIn: 1000, necessaryAsOf: 1000, level: 1, material: true, step: 'update @angular/material', action: 'Run `ng update @angular/material`.' },
+  { possibleIn: 1000, necessaryAsOf: 1000, level: 1, flexLayout: true, step: 'update @angular/flex-layout', action: 'Run `ng update @angular/flex-layout`.' },
   { possibleIn: 1000, necessaryAsOf: 1000, level: 1, step: 'browserlist', action: 'New projects use the filename `.browserslistrc` instead of `browserslist`. `ng update` will migrate you automatically.' },
   { possibleIn: 1000, necessaryAsOf: 1000, level: 2, step: 'v10-versions', action: 'Angular now requires `tslint` v6, `tslib` v2, and [TypeScript 3.9](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-9.html). `ng update` will migrate you automatically.' },
   { possibleIn: 1000, necessaryAsOf: 1000, level: 3, step: 'styleext', action: 'Stop using `styleext` or `spec` in your Angular schematics. `ng update` will migrate you automatically.' },
