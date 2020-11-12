@@ -180,7 +180,7 @@ const steps: LocalizedSteps = {
   },
   'routerlink queryParams typing': {
     action:
-      'queryParams`, `fragment` や `queryParamsHandling` の `routerLink` の値にアクセスしている場合、`undefined` や `null` も受け付けるように型付けを緩和する必要があるかもしれません。',
+      '`queryParams`, `fragment` や `queryParamsHandling` の `routerLink` の値にアクセスしている場合、`undefined` や `null` も受け付けるように型付けを緩和する必要があるかもしれません。',
   },
   'viewencapsulation native removed': {
     action:
