@@ -370,7 +370,7 @@ const steps: LocalizedSteps = {
   },
   'ng update v10': {
     action:
-      'Corra `ng update @angular/core @angular/cli` el cual debería actualizarlo a la versión 10 de Angular.'
+      'Corra `ng update @angular/core@10 @angular/cli@10` el cual debería actualizarlo a la versión 10 de Angular.'
   },
   // 'update @angular/material': {
   //   action:
