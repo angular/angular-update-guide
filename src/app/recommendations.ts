@@ -95,7 +95,7 @@ export const RECOMMENDATIONS: Step[] = [
   { possibleIn: 900, necessaryAsOf: 1000, level: 2, step: '$localize', action: 'If you use [Angular\'s i18n support](http://angular.io/guide/i18n), you will need to begin using `@angular/localize`. Learn more about the [$localize Global Import Migration](https://v9.angular.io/guide/migration-localize).' },
   
   { possibleIn: 1000, necessaryAsOf: 1000, level: 1, step: 'ng update v10', action: 'Run `ng update @angular/core @angular/cli` which should bring you to version 10 of Angular.' },
-  { possibleIn: 1000, necessaryAsOf: 1000, level: 1, material: true, step: 'update @angular/material', action: 'Run `ng update @angular/material`.' },
+  { possibleIn: 1000, necessaryAsOf: 1000, level: 1, material: true, step: 'update @angular/material', action: 'Run `ng update @angular/material@10`.' },
   { possibleIn: 1000, necessaryAsOf: 1000, level: 1, step: 'browserlist', action: 'New projects use the filename `.browserslistrc` instead of `browserslist`. `ng update` will migrate you automatically.' },
   { possibleIn: 1000, necessaryAsOf: 1000, level: 2, step: 'v10-versions', action: 'Angular now requires `tslint` v6, `tslib` v2, and [TypeScript 3.9](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-9.html). `ng update` will migrate you automatically.' },
   { possibleIn: 1000, necessaryAsOf: 1000, level: 3, step: 'styleext', action: 'Stop using `styleext` or `spec` in your Angular schematics. `ng update` will migrate you automatically.' },
@@ -114,8 +114,9 @@ export const RECOMMENDATIONS: Step[] = [
   { possibleIn: 1000, necessaryAsOf: 1000, level: 3, step: 'urlmatcher-null', action: 'If you use the `UrlMatcher`, the type now reflects that it could always return `null`.' },
   { possibleIn: 1000, necessaryAsOf: 1000, level: 1, step: 'v10-more-details', action: 'For more details about deprecations, automated migrations, and changes visit the [guide angular.io](https://angular.io/guide/updating-to-version-10)' },
   { possibleIn: 1020, necessaryAsOf: 1020, level: 2, step: 'universal-baseurl', action: 'For Angular Universal users, if you use `useAbsoluteUrl` to setup `platform-server`, you now need to also specify `baseUrl`.' },
-  
+
   { possibleIn: 1100, necessaryAsOf: 1100, level: 1, step: 'v11 ng update', action: 'Run `ng update @angular/core @angular/cli` which should bring you to version 11 of Angular.' },
+  { possibleIn: 1100, necessaryAsOf: 1100, level: 1, material: true, step: 'update @angular/material', action: 'Run `ng update @angular/material`.' },
   { possibleIn: 1100, necessaryAsOf: 1100, level: 1, step: 'v11 versions', action: 'Angular now requires [TypeScript 4.0](https://devblogs.microsoft.com/typescript/announcing-typescript-4-0/). `ng update` will migrate you automatically.' },
   { possibleIn: 1100, necessaryAsOf: 1100, level: 1, step: 'v11 browser support', action: 'Support for IE9, IE10, and IE mobile has been removed. This was announced in the [v10 update](http://blog.angular.io/version-10-of-angular-now-available-78960babd41#c357). ' },
   { possibleIn: 1100, necessaryAsOf: 1100, level: 2, step: 'webpack5 optin', action: 'You can now opt-in to use webpack 5 by using Yarn and adding `"resolutions": {"webpack": "^5.0.0"}` to your `package.json`.' },
