@@ -346,7 +346,8 @@ const steps: LocalizedSteps = {
       'Se você usar o [Angular i18n](http://angular.io/guide/i18n), você precisa utilizar `@angular/localize`. Saiba mais em [$ localize global import migration](https://v9.angular.io/guide/migration-localize).',
   },
   'ng update v10': {
-    action: 'Execute `ng update @angular/core @angular/cli` para atualizar seu projeto para a versão 10 do Angular.',
+    action:
+      'Execute `ng update @angular/core@10 @angular/cli@10` para atualizar seu projeto para a versão 10 do Angular.',
   },
   browserlist: {
     action:
