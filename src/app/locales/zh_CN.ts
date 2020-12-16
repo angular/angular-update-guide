@@ -8,11 +8,11 @@ const uiLabels: LocalizedLabels = {
   'To': '到',
   'Warning': '警告',
   'Plans for releases after the current major release are not finalized and may change. These recommendations are based on scheduled deprecations.':
-    '当前主要版本之后的发布计划尚未最终确定，并且可能会更改。这些建议是基于计划中的弃用的。',
+    '当前主要版本之后的发布计划尚未最终确定，并且可能会更改。这些建议基于计划中的弃用。',
   'We do not currently support downgrading versions of Angular.':
     '我们目前不支持降级 Angular 版本。',
   'We do not recommend moving across multiple major versions.':
-    '我们不建议跨多个主要版本进行迁移。',
+    '我们不建议跨多个主要版本进行更新。',
   'App Complexity': '应用程序复杂度',
   'Basic': '基本',
   'Medium': '中等',
@@ -21,16 +21,16 @@ const uiLabels: LocalizedLabels = {
     '显示与所有 Angular 开发人员相关的更新信息。',
   'Show more specific update information relevant to around 10% of Angular developers.':
     '显示与大约 10％ 的 Angular 开发人员相关的更具体的更新信息。',
-  'Show all the information we have about the update.': '显示我们拥有的有关更新的所有信息。',
+  'Show all the information we have about the update.': '显示我们掌握的所有有关此更新的信息。',
   'Other Dependencies': '其他依赖',
   'I use': '使用了',
-  'to combine AngularJS & Angular': '兼容 AngularJS 和 Angular',
+  'to combine AngularJS & Angular': '结合 AngularJS 和 Angular',
   'Package Manager': '包管理器',
   'Show me how to update!': '告诉我如何更新',
   'Before Updating': '更新前',
   // tslint:disable-next-line: quotemark
   "There aren't currently any changes needed before moving between these versions.":
-    '目前在这两个版本间变化无需任何改变。',
+    '目前在这两个版本间变化无需任何变更。',
   'During the Update': '更新期间',
   // tslint:disable-next-line: quotemark
   "There aren't currently any recommendations for moving between these versions.":
@@ -89,10 +89,10 @@ const steps: LocalizedSteps = {
     action: '用 `InjectionToken` 替换 `OpaqueToken`。'
   },
   'DifferFactory': {
-    action: '如果调用 `DifferFactory.create(...)`，则删除 `ChangeDetectorRef` 参数。'
+    action: '如果调用 `DifferFactory.create(...)`，移除 `ChangeDetectorRef` 参数。'
   },
   'ErrorHandler Parameter': {
-    action: '停用所有将参数传递给 ErrorHandler 的构造函数'
+    action: '停止传递任何参数给 ErrorHandler 的构造函数'
   },
   'ngProbeToken': {
     action: '如果使用 ngProbeToken，请确保从 @angular/core 而不是 @angular/platform-browser 导入'
@@ -101,13 +101,13 @@ const steps: LocalizedSteps = {
     action: '如果您使用 TrackByFn，请改用 TrackByFunction'
   },
   'i18n Pipe Change': {
-    action: '如果您依赖日期(date)，货币(currency)，十进制(decimal)或百分比管道(percent pipes)，则在 5 中您会看到格式的细微变化。除了 en-us 语言环境的应用程序，都需要选择从 `@angular/common/i18n_data/locale_fr` 和 registerLocaleData(local) 中导入 `locale_extended_fr`。'
+    action: '如果您依赖日期(date)，货币(currency)，十进制(decimal)或百分比管道(percent pipes)，则在 5 中您会看到格式的细微变化。i18n 管道(pipes)默认语言为 en-us，非此语言环境的应用程序应依需从 `@angular/common/i18n_data/locale_fr` 导入 `locale` 并使用 `registerLocaleData(local)` 注册语言环境数据。'
   },
   'gendir': {
     action: '不要依赖 `gendir`，而要使用 `skipTemplateCodeGen`。<a href="https://github.com/angular/angular/issues/19339#issuecomment-332607471" target="_blank">了解详情</a>'
   },
   'Dynamic ngUpgrade': {
-    action: '替换从 `@angular/upgrade` 导入的 `downgradeComponent`、`downgradeInjectable`、`UpgradeComponent` 和 `UpgradeModule`。而是在 `@angular/upgrade/static` 中使用新版本'
+    action: '替换从 `@angular/upgrade` 导入的 `downgradeComponent`、`downgradeInjectable`、`UpgradeComponent` 和 `UpgradeModule`。需要在 `@angular/upgrade/static` 中使用新版本'
   },
   'Animations in Core': {
     action: '如果从 @angular/core 导入了任何动画服务(animations services)或工具(tools)，则应从 @angular/animations 导入它们。'
@@ -155,7 +155,7 @@ const steps: LocalizedSteps = {
     action: '如果在禁用区域(disabled Zone)内从 `AnimationEvent` 使用 totalTime，它将不再报告时间 0。要检测动画事件是否报告了禁用动画，可以使用 `event.disabled` 属性代替。'
   },
   'ngModel on form control': {
-    action: '在 v6 中不推荐使用 ngModel 和 ngModelChange 事件与反应式表单指令(reactive form directives)，而在 v7 中则取消了这个不赞成(deprecated)。'
+    action: '在反应式表单指令(reactive form directives) 中使用 ngModel 和 ngModelChange 事件的支持，在 v6 中已弃用(deprecated) 而在 v7 中则移除了(removed)。'
   },
   'ngModelChange order': {
     action: 'ngModelChange 现在在其控件的 value/validity 更新后发出，而不是在更新之前，以更好地匹配预期。如果依赖于这些事件的顺序，则需要跟踪组件中的旧值。'
@@ -170,7 +170,7 @@ const steps: LocalizedSteps = {
     action: '移除 RxJS 5 不推荐使用的功能使用 <a href="https://github.com/ReactiveX/rxjs-tslint" target="_blank">rxjs-tslint</a> 自动更新规则<br/>在大多数应用程序中，这需要运行以下两个命令:<br/>`npx rxjs-tslint`<br/>`rxjs-5-to-6-migrate -p src/tsconfig.app.json`'
   },
   'remove rxjs-compat': {
-    action: '一旦依赖更新到 RxJS 6，请移除 `rxjs-compat`.'
+    action: '一旦所有依赖更新到 RxJS 6，请移除 `rxjs-compat`.'
   },
   'use files instead of versionedFiles': {
     action: '如果使用了 Angular Service worker，使用 `files` 替代 `versionedFiles`'
@@ -276,7 +276,7 @@ const steps: LocalizedSteps = {
     action: '如果您使用 `ngForm` 元素选择器来创建 Angular Forms，则应该使用 `ng-form`。'
   },
   'typings compilation': {
-    action: '我们更新了 `tsconfig.app.json` 以限制编译的文件。如果您依赖于编译中包含的其他文件，例如 `typings.d.ts` 文件，则需要手动将其添加到编译中。'
+    action: '我们更新了 `tsconfig.app.json` 以限制编译的文件。如果编译包含其他的依赖文件，例如 `typings.d.ts` 文件，则需要手动将其添加到编译中。'
   },
   'debug': {
     action: 'Angular 9 Ivy 是现在默认的渲染引擎，可能出现的兼容性问题，请阅读 <a href="https://angular.io/guide/ivy-compatibility" target="_blank">Ivy 兼容性指南</a>。'
@@ -424,7 +424,7 @@ const steps: LocalizedSteps = {
     action: '如果您将路由(Router)与 `NavigationExtras` 一起使用，则新的类型允许传入类型为 `NavigationExtras` 的变量，但它们将不允许对象文字(object literals)，因为它们可能仅指定已知属性。他们也将不接受那些与 `Pick` 中的属性没有共同属性的类型。如果您受到此更改的影响，请仅从 NavigationExtras 中指定实际在各个函数调用中使用的属性，或在对象或变量上使用类型声明：`as NavigationExtras`。'
   },
   'v11 TestBed.overrideProvider': {
-    action: '在测试中，如果在 TestBed 初始化之后调用 `TestBed.overrideProvider`，则不再应用提供程序替代。此行为与其他替代方法(例如 `TestBed.overrideDirective` 等)一致，但它们会抛出错误来表明这一点。该检查以前在 TestBed.overrideProvider 函数中丢失。如果看到此错误，则应在完成 TestBed 初始化之前移动 `TestBed.overrideProvider` 调用。'
+    action: '在测试中，如果在 TestBed 初始化之后调用 `TestBed.overrideProvider`，overrideProvider 已移除。此行为与其他替代方法(例如 `TestBed.overrideDirective` 等)一致，但它们会抛出错误来表明这一点。该检查以前在 TestBed.overrideProvider 函数中丢失。如果看到此错误，则应在完成 TestBed 初始化之前移除 `TestBed.overrideProvider` 调用。'
   },
   'v11 router RouteReuseStrategy': {
     action: '如果使用路由(Router)的 RouteReuseStrategy，参数顺序已更改。先前在评估子路由时调用 `RouteReuseStrategy#shouldReuseRoute` 时，它们将使用被交换的 `future` 和 `current` 参数来调用。如果您的 `RouteReuseStrategy` 仅依赖于将来或当前的快照状态，您可能需要更新 `future` 和 `current`、`ActivateRouteSnapshots` 的 `shouldReuseRoute` 实现。'
@@ -433,10 +433,10 @@ const steps: LocalizedSteps = {
     action: '如果您使用区域设置数据数组(locale data arrays)，则此 API 现在将返回只读数组。如果您要对它们进行突变(例如，调用 `sort()`，`push()`，`splice()`等)，则您的代码将不再编译。如果您需要更改数组，现在应该获取副本(例如，通过调用 `slice()`)并更改副本。'
   },
   'v11 CollectionChangeRecord': {
-    action: '在更改检测中，已删除 `CollectionChangeRecord`，而改用 `IterableChangeRecord`。'
+    action: '在更改检测中，`CollectionChangeRecord` 已移除，应改用 `IterableChangeRecord`。'
   },
   'v11 forms async validators': {
-    action: '如果在初始化时对 `FormControl`、`FormGroup` 或 `FormArray` 类实例上定义的异步验证器使用 Angular Forms，则在异步验证器完成后，以前不会发出状态更改事件。这已被更改，因此status事件被发送到 `statusChanges` observable 中。如果代码依赖于旧的行为，则可以忽略此附加的状态更改事件。'
+    action: '如果在初始化时对 `FormControl`、`FormGroup` 或 `FormArray` 类实例上定义的异步验证器使用 Angular Forms，则在异步验证器完成后，以前不会发出状态更改事件。这已被更改，因此 status 事件被发送到 `statusChanges` observable 中。如果代码依赖于旧的行为，则可以忽略此附加的状态更改事件。'
   }
 };
 // @TODO 此控制台日志是必需的，否则将不会注册区域设置
