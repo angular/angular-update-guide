@@ -1,25 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import snarkdown from 'snarkdown';
 import { Step, RECOMMENDATIONS } from './recommendations';
 import { Location } from '@angular/common';
 import { AnalyticsService } from './analytics.service';
 import { getLocalizedAction, currentLocale } from './localization';
+import { I18nPipe } from './i18n.pipe';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
+  providers: [I18nPipe]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'Angular Update Guide';
 
   level = 1;
   options = {
     ngUpgrade: false,
   };
-  optionList = [
-    { id: 'ngUpgrade', name: 'ngUpgrade', description: 'to combine AngularJS & Angular' },
-    { id: 'material', name: 'Angular Material', description: '' },
-  ];
+  optionList = [];
   packageManager: 'npm install' | 'yarn add' = 'npm install';
 
   beforeRecommendations: Step[] = [];
@@ -66,7 +65,12 @@ export class AppComponent {
 
   steps: Step[] = RECOMMENDATIONS;
 
-  constructor(public location: Location, public track: AnalyticsService) {
+  constructor(
+    public location: Location,
+    public track: AnalyticsService,
+    public i18Service: I18nPipe
+  ) {
+
     const searchParams = new URLSearchParams(window.location.search);
     // Detect settings in URL
     this.level = parseInt(searchParams.get('l'), 10) || this.level;
@@ -85,6 +89,13 @@ export class AppComponent {
     }
   }
 
+  ngOnInit() {
+    this.optionList =  [
+      { id: 'ngUpgrade', name: 'ngUpgrade', description: this.i18Service.transform('to combine AngularJS & Angular') },
+      { id: 'material', name: 'Angular Material', description: '' },
+    ];
+  }
+
   showUpdatePath() {
     this.beforeRecommendations = [];
     this.duringRecommendations = [];
@@ -96,9 +107,19 @@ export class AppComponent {
       return;
     }
 
-    this.title = `Angular Update Guide | ${this.from.name} -> ${this.to.name} for ${
-      this.level < 2 ? 'Basic' : this.level < 3 ? 'Medium' : 'Advanced'
-    } Apps`;
+    const labelTitle = this.i18Service.transform('Angular Update Guide');
+    const labelBasic = this.i18Service.transform('Basic Apps');
+    const labelMedium = this.i18Service.transform('Medium Apps');
+    const labelAdvanced = this.i18Service.transform('Advanced Apps');
+
+    this.title =
+    `${labelTitle} | ${this.from.name} -> ${this.to.name}
+    ${this.i18Service.transform('for')}
+    ${
+      this.level < 2 ?
+        labelBasic : this.level < 3 ?
+          labelMedium : labelAdvanced
+    }`;
 
     // Find applicable steps and organize them into before, during, and after upgrade
     for (const step of this.steps) {
