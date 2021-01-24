@@ -26,7 +26,10 @@ export class AppComponent implements OnInit {
   afterRecommendations: Step[] = [];
 
   versions = [
+    { name: '12.0', number: 1200 },
     { name: '11.0', number: 1100 },
+    { name: '10.2', number: 1020 },
+    { name: '10.1', number: 1010 },
     { name: '10.0', number: 1000 },
     { name: '9.1', number: 910 },
     { name: '9.0', number: 900 },
@@ -52,8 +55,9 @@ export class AppComponent implements OnInit {
     { name: '2.1', number: 201 },
     { name: '2.0', number: 200 },
   ];
-  from = this.versions.find((version) => version.name === '9.0');
-  to = this.versions.find((version) => version.name === '10.0');
+  from = this.versions.find((version) => version.name === '10.0');
+  to = this.versions.find((version) => version.name === '11.0');
+  futureVersion = 1200
   /**
    * Only save the locale in the URL if it was already there, or the user changed it
    */

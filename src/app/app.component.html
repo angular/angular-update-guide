@@ -22,6 +22,9 @@
   <button mat-menu-item (click)="setLocale('en-US')">English</button>
   <button mat-menu-item (click)="setLocale('es-CR')">Español</button>
   <button mat-menu-item (click)="setLocale('ja-JP')">日本語</button>
+  <button mat-menu-item (click)="setLocale('pt-BR')">Português</button>
+  <button mat-menu-item (click)="setLocale('zh-CN')">简体中文</button>
+  <button mat-menu-item (click)="setLocale('vi-VN')">Tiếng Việt</button>
 </mat-menu>
 </div>
 
@@ -52,7 +55,7 @@
           </mat-form-field>
         </span>
 
-          <div *ngIf="from.number >= 1100 || to.number >= 1100">
+          <div *ngIf="from.number >= futureVersion || to.number >= futureVersion">
             <br/>
             <strong style="color:darkred">{{'Warning'|i18n}}:</strong> {{'Plans for releases after the current major release are not finalized and may change. These recommendations are based on scheduled deprecations.'|i18n}}
           </div>
