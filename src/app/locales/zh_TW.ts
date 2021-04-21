@@ -15,14 +15,14 @@ const uiLabels: LocalizedLabels = {
     '現在並不支援 Angular 版本降級。',
   'We do not recommend moving across multiple major versions.':
     '不建議升級時跨越太多主要版本。',
-  'App Complexity': '程式複雜度',
+  'App Complexity': '應用程式複雜度',
   'Basic': '基本',
   'Medium': '中等',
   'Advanced': '進階',
   'Show update information relevant to all Angular developers.':
-    '顯示所有與Angular 開發人員相關更新資訊。',
+    '顯示 Angular 開發人員都要知道的更新資訊。',
   'Show more specific update information relevant to around 10% of Angular developers.':
-    '顯示大約關於10% Angular 開發人員相關詳細更新資訊。',
+    '顯示約前10% Angular 開發人員詳細更新資訊。',
   'Show all the information we have about the update.': '顯示所有更新資訊。',
   'Other Dependencies': '其他相依',
   'I use': '使用',
@@ -32,7 +32,7 @@ const uiLabels: LocalizedLabels = {
   'Before Updating': '更新前',
   // tslint:disable-next-line: quotemark
   "There aren't currently any changes needed before moving between these versions.":
-    '目前在这两个版本间变化无需任何变更目前這兩個版本間的變化。',
+    '這兩個版本中間的更新，目前無任何變更。',
   'During the Update': '更新時',
   // tslint:disable-next-line: quotemark
   "There aren't currently any recommendations for moving between these versions.":
@@ -66,7 +66,7 @@ const steps: LocalizedSteps = {
   },
   'Native Form Validation': {
     action:
-      '当你包含 `FormsModule` 时，Angular 开始向表单元素添加一个 `novalidate` 属性，重新启用原始(Native)表单验证使用 `ngNoForm` 或添加 `ngNativeValidate`。'
+      '當你包含 FormsModule 時，Angular 開始向表單元素新增個 novalidate 屬性. 若要回用原生(Native)表單驗證，請使用 ngNoForm 或新增 ngNativeValidate。'
   },
   'RootRenderer': {
     action:
@@ -94,7 +94,7 @@ const steps: LocalizedSteps = {
     action: '如果呼叫 `DifferFactory.create(...)`，移除 `ChangeDetectorRef` 參數。'
   },
   'ErrorHandler Parameter': {
-    action: '停止傳遞任何參數給 ErrorHandler 的建構式'
+    action: '停止傳遞任何參數給 ErrorHandler 的建構函式'
   },
   'ngProbeToken': {
     action: '如果使用 ngProbeToken，請確認從 @angular/core 而不是 @angular/platform-browser 匯入'
@@ -109,7 +109,7 @@ const steps: LocalizedSteps = {
     action: '切勿依賴 `gendir`，而考慮使用 `skipTemplateCodeGen`。<a href="https://github.com/angular/angular/issues/19339#issuecomment-332607471" target="_blank">了解詳情</a>'
   },
   'Dynamic ngUpgrade': {
-    action: '替换从 `@angular/upgrade` 导入的 `downgradeComponent`、`downgradeInjectable`、`UpgradeComponent` 和 `UpgradeModule`。需要在 `@angular/upgrade/static` 中使用新版本'
+    action: '替換從 @angular/upgrade 匯入的 downgradeComponent、downgradeInjectable、UpgradeComponent 和 UpgradeModule。需要在 `@angular/upgrade/static` 中使用新版本'
   },
   'Animations in Core': {
     action: '如果從 @angular/core 匯入任何動畫服務(animations services)或工具(tools)，則應改從 @angular/animations 匯入。'
@@ -166,7 +166,7 @@ const steps: LocalizedSteps = {
     action: '將 Angular Material 更新到最新版本。<br/>`ng Update@Angular/Material`<br/>同時也會自動搬移廢棄的 API。'
   },
   'strictPropertyInitializer': {
-    action: '如果你已經將 TypeScript 設定為嚴格模式(如果在 `tsconfig.json` 檔案中將 `strict` 設定為 `true`)，更新 `tsconfig.json` 停用 `strictPropertyInitialization` 或將屬性初始化從 `ngOnInit` 中搬移到建構式。你可以在<a href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-7.html#strict-class-initialization"> TypeScript 2.7 發行說明</a>了解更多相關資訊。'
+    action: '如果你已經將 TypeScript 設定為嚴格模式(如果在 `tsconfig.json` 檔案中將 `strict` 設定為 `true`)，更新 `tsconfig.json` 停用 `strictPropertyInitialization` 或將屬性初始化從 `ngOnInit` 中搬移到建構函式。你可以在<a href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-7.html#strict-class-initialization"> TypeScript 2.7 發行說明</a>了解更多相關資訊。'
   },
   'update to RxJS 6': {
     action: '使用 <a href="https://github.com/ReactiveX/rxjs-tslint" target="_blank">rxjs-tslint</a> 會移除 RxJS 5 已棄用的功能且自動更新規則<br/>在大多數的應用程式中，只需要執行下列兩個指令：<br/>`npx rxjs-tslint`<br/>`rxjs-5-to-6-migrate -p src/tsconfig.app.json`'
@@ -326,7 +326,7 @@ const steps: LocalizedSteps = {
     action: '如果你使用 Angular 表單，則 `number` 型別的輸入將不再監聽<a href="https://developer.mozilla.org/en-us/docs/Web/API/HTMLElement/change_event" target="_blank">更改事件</a>(此事件不必為每個更改觸發該值)，而監聽<a href="https://developer.mozilla.org/en-us/docs/Web/API/HTMLElement/input_event" target="_blank">輸入事件</a>。'
   },
   'forms-length-input': {
-    action: '對於 Angular 表單驗證，`minLength` 和 `maxLength` 驗證器現在在正表單控制組件具有數字長度的屬性，且唯有在此情況下才會驗證長度。'
+    action: '對於 Angular 表單驗證，表單控制組件的值的長度 (length) 屬性是數字類別時，minLength 和 maxLength 驗證器才會對此控件做長度驗證。'
   },
   'esm5-bundles': {
     action: '<a href="https://g.co/ng/apf" target="_blank">Angular 套件格式</a>已更新，已删除 `esm5` 和 `fesm5` 格式。這些不再分發到 npm 套件中。如果你不使用 CLI，則可能需要自己將 Angular 程式碼降版至 ES5。'
@@ -392,7 +392,7 @@ const steps: LocalizedSteps = {
     action: '如果使用 i18n，現在將再次檢查 Unicode 國際元件(ICU)表達事中的表達式。如果在 ICU 中出現的表達式中發現錯誤，可能會導致編譯失敗。'
   },
   'forms validators asyncValidators typing': {
-    action: '`@angular/forms` 套件中的指令過去將 `any[]` 作为建構式中預期的 `validators` 和 `asyncValidators` 參數型別。現在這些參數型別以正確輸入，因此，如果程式碼相依於 `@angular/forms` 的指令建構式的型別，則可能需要更新提高型別的安全性。'
+    action: '`@angular/forms` 套件中的指令過去將 `any[]` 作为建構函式中預期的 `validators` 和 `asyncValidators` 參數型別。現在這些參數型別以正確輸入，因此，如果程式碼相依於 `@angular/forms` 的指令建構函式的型別，則可能需要更新提高型別的安全性。'
   },
   'forms AbstractFormControl': {
     action: '如果使用 Angular 表單，則 `AbstractFormControl.parent` 的型別現在包含 null。ng update 將自動搬移。但是再不太可能的情況下，你的程式碼是針對 undefined 和 strict equality 来測試父對象的，因此需要改為 `=== null`，因为現在已經明確初始化父對象設定為 `null`，而不是保持 undefined。'
@@ -413,10 +413,10 @@ const steps: LocalizedSteps = {
     action: '`date` 管道現在明確宣告接受哪些類別。'
   },
   'v11 datetime rounding': {
-    action: '當將時間日期包含毫秒的字串的格式傳送給 `DatePipe` 時，現在毫秒將會四捨入，而非取最接近的毫秒。大多數的應用程式將會不受此更改影響。如果這不是你預期的行為，那麼考慮對字串先行處理四捨五入至毫秒再傳送給 `DatePipe`。'
+    action: '當將時間日期包含毫秒的字串的格式傳送給 `DatePipe` 時，現在毫秒將會四捨五入，而非取最接近的毫秒。大多數的應用程式將會不受此更改影響。如果這不是你預期的行為，那麼考慮對字串先行處理四捨五入至毫秒再傳送給 `DatePipe`。'
   },
   'v11 async pipe typing': {
-    action: '`async` 管道不再要求輸入為 undefined 的輸入返回 undefined。要注意的是，程式碼實際上在位定義的輸入返回 null。'
+    action: '`async` 管道不再要求輸入為 undefined 的輸入返回 undefined。要注意的是，程式碼實際上在未定義的輸入返回 null。'
   },
   'v11 case pipe update': {
     action: '`uppercase` 和 `lowercase` 管道不再讓假值通過。現在將會將 `null` 和 `undefined` 都映射到 `null`，並且在無效的輸入(`0`， `false`， `NaN`)上引發例外錯誤。和其他 Angular 管道一致。'
@@ -425,7 +425,7 @@ const steps: LocalizedSteps = {
     action: '如果將路由(Router)與 `NavigationExtras` 一起使用，則新的型別允許傳入型別為 `NavigationExtras` 的變數，但不允許實字物件(object literals)，因为可能僅指定已知屬性。同時也不接受那些與 `Pick` 中的屬性沒有共同屬性的型別。如果受到此更改的影響，請僅從 NavigationExtras 中指定實際在各個函式呼叫中使用的屬性，或在物件或變數上使用型別聲明：`as NavigationExtras`。'
   },
   'v11 TestBed.overrideProvider': {
-    action: '在測試中，如果在 TestBed 初始化後呼叫 `TestBed.overrideProvider`，overrideProvider 已移除。此行為與其他替代方法(例如 `TestBed.overrideDirective` 等)一致，但會拋出錯誤指出這點。此檢查以前在 TestBed.overrideProvider 函數中錯失。如果看到該錯誤，應該在 TestBed 初始化之前移動 `TestBed.overrideProvider` 呼叫。'
+    action: '在測試中，如果在 TestBed 初始化之後呼叫 TestBed.overrideProvider，意欲取代 Provider 的作用不會有效。此行為與其他 取代方法函式(例如 TestBed.overrideDirective 等)一致，但它們會拋出錯誤來表明這一點。該檢查以前在 TestBed.overrideProvider 函數中錯失。如果看到此錯誤，則應移動TestBed.overrideProvider 呼叫到完成 TestBed 初始化之前的地方。'
   },
   'v11 router RouteReuseStrategy': {
     action: '如果使用路由(Router)的 RouteReuseStrategy，參數順序已經更改。先前在評估子路由呼叫 `RouteReuseStrategy#shouldReuseRoute` 時，將使用被交換的 `future` 和 `current` 參數來呼叫。如果 `RouteReuseStrategy` 僅相依於將來或當前的快照狀態，可能需要更新 `future` 和 `current`、`ActivateRouteSnapshots` 的 `shouldReuseRoute` 實作。'
