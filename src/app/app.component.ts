@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import snarkdown from 'snarkdown';
 import { Step, RECOMMENDATIONS } from './recommendations';
 import { Location } from '@angular/common';
 import { AnalyticsService } from './analytics.service';
 import { getLocalizedAction, currentLocale } from './localization';
 import { I18nPipe } from './i18n.pipe';
+import { Clipboard } from '@angular/cdk/clipboard';
 
 @Component({
   selector: 'app-root',
@@ -68,7 +69,8 @@ export class AppComponent implements OnInit {
   constructor(
     public location: Location,
     public track: AnalyticsService,
-    public i18Service: I18nPipe
+    public i18Service: I18nPipe,
+    private clipboard: Clipboard
   ) {
 
     const searchParams = new URLSearchParams(window.location.search);
@@ -94,6 +96,13 @@ export class AppComponent implements OnInit {
       { id: 'ngUpgrade', name: 'ngUpgrade', description: this.i18Service.transform('to combine AngularJS & Angular') },
       { id: 'material', name: 'Angular Material', description: '' },
     ];
+  }
+
+  @HostListener('click', ['$event.target'])
+  copyCode({tagName, textContent}) {
+    if (tagName === 'CODE') {
+      this.clipboard.copy(textContent);
+    }
   }
 
   showUpdatePath() {
@@ -261,6 +270,7 @@ export class AppComponent implements OnInit {
   getVersion(newVersion: string) {
     return this.versions.find((version) => version.name === newVersion);
   }
+
   log(x) {
     console.log(x);
     return x;
