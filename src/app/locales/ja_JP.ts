@@ -250,6 +250,68 @@ const steps: LocalizedSteps = {
     action:
       'Angular Formsで初期化時に非同期バリデータが定義されている `FormControl`, `FormGroup`, `FormArray` のクラスインスタンスを使用している場合、以前は非同期バリデータが完了してもステータス変更イベントは発生しませんでした。これが変更され、ステータスイベントが `statusChanges` Observableに出力されるようになりました。以前の振る舞いに依存している場合は、この追加のステータス変更イベントをフィルタリングしたり無視したりすることができます。',
   },
+  // v12.0
+  'v12 ng update': {
+    action: '`ng update @angular/core@12 @angular/cli@12`を実行すると、Angularのバージョン12になります。',
+  },
+  'v12 versions': {
+    action:
+      'Angularには[TypeScript 4.2](https://devblogs.microsoft.com/typescript/announcing-typescript-4-2/)が必要になりました。`ng update`で自動的にアップデートされます。',
+  },
+  'v12 browser support': {
+    action:
+      'IE11のサポートは非推奨になりました。詳細は、[RFC for IE11 removal](https://github.com/angular/angular/issues/41840)をご覧ください。',
+  },
+  'v12 minimum  Node.js version': { action: 'Node.jsのバージョン10以下では、Angularを使用できなくなりました。' },
+  'v12 `XhrFactory` relocation': {
+    action: '`XhrFactory`のインポート先を`@angular/common/http`から`@angular/common`に変更しました。',
+  },
+  'v12 removal of UMD bundles': {
+    action: 'v12にはUMD形式のバンドルが含まれなくなるため、ビルドパイプラインから依存しないようにしてください。',
+  },
+  'v12 i18n message ids': {
+    action:
+      'レガシーなi18nメッセージID に依存している場合は、`localize-migrate` ツールを使用して [移行してください](https://angular.io/guide/migration-legacy-id)。',
+  },
+  'v12 deprecates `emitDistinctChangesOnly`': {
+    action:
+      '`emitDistinctChangesOnly` を使用して `@ContentChildren` や `@ViewChildren` クエリを構成していた場合は、これまでの振る舞いに合わせて値を `false` に更新する必要があります。v12では、`emitDistinctChangesOnly`のデフォルト値は`true`となっていますが、今後のリリースでは、不要な変更が発生しないように、この設定オプションを削除する予定です。',
+  },
+  'v12 prod by default': {
+    action:
+      '任意でマイグレーションを実行することで、プロダクションビルドをデフォルトで有効にすることができます。`ng update @angular/cli@12 --migrate-only production-by-default`.',
+  },
+  'v12 min and max form attributes': {
+    action:
+      'Angular フォームを使用している場合、`<input type="number">` の `min` および `max` 属性がバリデーション処理をトリガーするようになりました。',
+  },
+  'v12 `emitEvent` in `FormArray` and `FormGroup`': {
+    action:
+      'アプリケーションが `FormArray` や `FormGroup` クラスを拡張し、メソッドをオーバーライドするカスタムクラスを持っている場合は、実装を更新する必要があります。',
+  },
+  'v12 zone.js minimum version': {
+    action: 'zone.jsをバージョン0.11.4に更新します。`ng update`でこの依存関係が自動的に更新されます。',
+  },
+  'v12 `HttpParams` method params update': {
+    action:
+      '`HttpParams`クラスを拡張した場合、パラメータの型の変更を反映させるために、そのメソッドのシグネチャの更新が必要かもしれません。',
+  },
+  'v12 `routerLinkActiveOptions`': {
+    action:
+      '`RouterLinkActive` の `routerLinkActiveOptions` プロパティがより具体的な型になりました。このプロパティにアクセスするコードの更新が必要かもしれません。',
+  },
+  'v12 `APP_INITIALIZER` callback types': {
+    action:
+      'イニシャライザのコールバックの戻り値の型がより具体的になりました。これにより、`Injector.get`または` TestBed.inject`を介して `APP_INITIALIZER`インスタンスを取得する場合、コードの更新が必要かもしれません。',
+  },
+  'v12 fragment typings': {
+    action:
+      'ルーターのフラグメントは `null` になる可能性がありました。TypeScriptの型チェックが失敗しないように、`null`チェックを追加してください。',
+  },
+  'v12 `ng.getDirectives`': {
+    action:
+      '特定のDOMノードに関連付けられたディレクティブが見つからない場合に`ng.getDirectives`エラーを投げる振る舞いに頼らないようにしてください。',
+  },
 };
 // @TODO This console log is required or the locale won't be registered
 console.log(`ja-JP registered`);
