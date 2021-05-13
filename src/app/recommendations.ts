@@ -144,6 +144,7 @@ export const RECOMMENDATIONS: Step[] = [
   { possibleIn: 1100, necessaryAsOf: 1100, level: 2, step: 'v11 forms async validators', action: 'If you use Angular Forms with async validators defined at initialization time on class instances of `FormControl`, `FormGroup` or `FormArray` , the status change event was not previously emitted once async validator completed. This has been changed so that the status event is emitted into the `statusChanges` observable. If your code relies on the old behavior, you can filter/ignore this additional status change event.' },
 
   { possibleIn: 1200, necessaryAsOf: 1200, level: 1, step: 'v12 ng update', action: 'Run `ng update @angular/core@12 @angular/cli@12` which should bring you to version 12 of Angular.' },
+  { possibleIn: 1200, necessaryAsOf: 1200, level: 1, material: true, step: 'update @angular/material', action: 'Run `ng update @angular/material`.' },
   { possibleIn: 1200, necessaryAsOf: 1200, level: 1, step: 'v12 versions', action: 'Angular now requires [TypeScript 4.2](https://devblogs.microsoft.com/typescript/announcing-typescript-4-2/). `ng update` will update you automatically.' },
   { possibleIn: 1200, necessaryAsOf: 1200, level: 1, step: 'v12 browser support', action: 'IE11 support has been deprecated. Find details in the [RFC for IE11 removal](https://github.com/angular/angular/issues/41840).' },
   { possibleIn: 1200, necessaryAsOf: 1200, level: 1, step: 'v12 minimum  Node.js version', action: 'You can no longer use Angular with Node.js version 10 or older' },
