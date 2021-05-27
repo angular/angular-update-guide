@@ -242,7 +242,7 @@ const steps: LocalizedSteps = {
     action: '您可以选择将 `--create-commits` (或 `-C`)标志传递给 <a href="https://angular.io/cli/update" target="_blank">ng update</a> 命令，以针对每次迁移创建 git commit。'
   },
   'ng update v9': {
-    action: '在终端中运行 `ng update @angular/cli@9 @angular/core@8` 更新 CLI 和核心框架到 v9。'
+    action: '在终端中运行 `ng update @angular/cli@9 @angular/core@9` 更新 CLI 和核心框架到 v9。'
   },
   'typescript 3.8': {
     action: '您的项目现已更新为 TypeScript 3.8，在 <a href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-7.html" target="_blank">TypeScript 3.7 公告</a> 或 <a href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-8.html" target="_blank">TypeScript 3.8 公告</a>阅读有关新编译器检查和错误的详细信息，这些检查和错误可能需要您修复代码中的问题。'
