@@ -527,11 +527,79 @@ const steps: LocalizedSteps = {
   },
   'v11 CollectionChangeRecord': {
     action:
-      'Na detecção de alterações, `CollectionChangeRecord` foi removido, use `IterableChangeRecord` em seu lugar.',
+      'Na detecção de mudanças, `CollectionChangeRecord` foi removido, use `IterableChangeRecord` em seu lugar.',
   },
   'v11 forms async validators': {
     action:
       'Se você usar Angular Forms com validadores assíncronos definidos no momento da inicialização das instâncias de classe de `FormControl`, `FormGroup` ou `FormArray`, o evento de mudança de status não era emitido anteriormente uma vez que o validador assíncrono foi concluído. Isso foi alterado para que o evento de status seja emitido no observable `statusChanges`. Se o seu código depende do comportamento antigo, você pode filtrar/ignorar este evento de mudança de status adicional.',
+  },
+  'v12 ng update': {
+    action:
+      'Execute `ng update @angular/core@12 @angular/cli@12`, que irá migrar para a versão 12 do Angular.',
+  },
+  'v12 versions': {
+    action:
+      'O Angular agora requer [TypeScript 4.2](https://devblogs.microsoft.com/typescript/announcing-typescript-4-2/). `ng update` irá atualizá-lo automaticamente.',
+  },
+  'v12 browser support': {
+    action:
+      'O suporte ao IE11 foi descontinuado. Encontre detalhes no [RFC para remoção do IE11](https://github.com/angular/angular/issues/41840).',
+  },
+  'v12 minimum  Node.js version': {
+    action:
+      'Você não pode mais usar Angular com Node.js versão 10 ou anterior',
+  },
+  'v12 `XhrFactory` relocation': {
+    action:
+      'Altere a importação de `XhrFactory` de` @angular/common/http` para `@angular/common`.',
+  },
+  'v12 removal of UMD bundles': {
+    action:
+      'Certifique-se de não confiar nos pacotes UMD do Angular em seu pipeline de construção, porque eles não farão mais parte da distribuição v12.',
+  },
+  'v12 i18n message ids': {
+    action:
+      'Se você depende de IDs de mensagem i18n legados, use a ferramenta `localize-migrate` para [trocá-los](https://angular.io/guide/migration-legacy-id).',
+  },
+  'v12 deprecates `emitDistinctChangesOnly': {
+    action:
+      'Se você estiver usando `emitDistinctChangesOnly` para configurar as consultas`@ContentChildren` e `@ViewChildren`, pode ser necessário atualizar seu valor para` false` para continuar com seu comportamento anterior. Na v12, `emitDistinctChangesOnly` tem o valor padrão` true`, e em versões futuras removeremos esta opção de configuração para evitar o acionamento de mudanças desnecessárias.',
+  },
+  'v12 prod by default': {
+    action:
+      'Você pode executar a migração opcional para habilitar compilações de produção por padrão `ng update @angular/cli@12 --migrate-only production-by-default`.',
+  },
+  'v12 min and max form attributes': {
+    action:
+      'Se você usar formulários Angular, os atributos `min` e` max` em `<input type="number">` irão agora acionar a lógica de validação.',
+  },
+  'v12 `emitEvent` in `FormArray` and `FormGroup`': {
+    action:
+      'Se o seu aplicativo tem classes personalizadas que estendem as classes `FormArray` ou` FormGroup` e sobrescrevem os métodos mencionados acima, você pode precisar atualizar sua implementação',
+  },
+  'v12 zone.js minimum version': {
+    action:
+      'Atualize o zone.js para a versão 0.11.4. `ng update` irá atualizar esta dependência automaticamente.',
+  },
+  'v12 `HttpParams` method params update': {
+    action:
+      'Se você estender a classe `HttpParams`, poderá ter que atualizar a assinatura de seu método para refletir as mudanças nos tipos de parâmetro.',
+  },
+  'v12 `routerLinkActiveOptions`': {
+    action:
+      'A propriedade `routerLinkActiveOptions` de` RouterLinkActive` agora tem um tipo mais específico. Pode ser necessário atualizar o código de acesso a esta propriedade para alinhar com as alterações.',
+  },
+  'v12 `APP_INITIALIZER` callback types': {
+    action:
+      'Os retornos de chamada do inicializador agora têm tipos de retorno mais específicos, que podem exigir a atualização do seu código se você estiver obtendo uma instância de `APP_INITIALIZER` via` Injector.get` ou `TestBed.inject`.',
+  },
+  'v12 fragment typings': {
+    action:
+      'Os fragmentos do roteador agora podem ser `nulos`. Adicione verificações `null` para evitar que o TypeScript falhe com erros de tipo.',
+  },
+  'v12 `ng.getDirectives`': {
+    action:
+      'Certifique-se de não confiar que `ng.getDirectives` emita um erro se não puder encontrar uma diretiva associada a um nó DOM particular.',
   },
 };
 // @TODO This console log is required or the locale won't be registered
