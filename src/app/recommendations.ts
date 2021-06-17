@@ -115,7 +115,7 @@ export const RECOMMENDATIONS: Step[] = [
   { possibleIn: 1020, necessaryAsOf: 1020, level: 2, step: 'universal-baseurl', action: 'For Angular Universal users, if you use `useAbsoluteUrl` to setup `platform-server`, you now need to also specify `baseUrl`.' },
 
   { possibleIn: 1100, necessaryAsOf: 1100, level: 1, step: 'v11 ng update', action: 'Run `ng update @angular/core@11 @angular/cli@11` which should bring you to version 11 of Angular.' },
-  { possibleIn: 1100, necessaryAsOf: 1100, level: 1, material: true, step: 'update @angular/material', action: 'Run `ng update @angular/material`.' },
+  { possibleIn: 1100, necessaryAsOf: 1100, level: 1, material: true, step: 'update @angular/material', action: 'Run `ng update @angular/material@11`.' },
   { possibleIn: 1100, necessaryAsOf: 1100, level: 1, step: 'v11 versions', action: 'Angular now requires [TypeScript 4.0](https://devblogs.microsoft.com/typescript/announcing-typescript-4-0/). `ng update` will migrate you automatically.' },
   { possibleIn: 1100, necessaryAsOf: 1100, level: 1, step: 'v11 browser support', action: 'Support for IE9, IE10, and IE mobile has been removed. This was announced in the [v10 update](http://blog.angular.io/version-10-of-angular-now-available-78960babd41#c357). ' },
   { possibleIn: 1100, necessaryAsOf: 1100, level: 2, step: 'webpack5 optin', action: 'You can now opt-in to use webpack 5 by using Yarn and adding `"resolutions": {"webpack": "^5.0.0"}` to your `package.json`.' },
