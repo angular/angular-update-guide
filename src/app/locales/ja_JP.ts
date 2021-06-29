@@ -271,7 +271,7 @@ const steps: LocalizedSteps = {
   },
   'v12 i18n message ids': {
     action:
-      'レガシーなi18nメッセージID に依存している場合は、`localize-migrate` ツールを使用して [移行してください](https://angular.io/guide/migration-legacy-id)。',
+      'レガシーなi18nメッセージID に依存している場合は、`localize-migrate` ツールを使用して [移行してください](https://angular.io/guide/migration-legacy-message-id)。',
   },
   'v12 deprecates `emitDistinctChangesOnly`': {
     action:

@@ -559,7 +559,7 @@ const steps: LocalizedSteps = {
   },
   'v12 i18n message ids': {
     action:
-      'Se você depende de IDs de mensagem i18n legados, use a ferramenta `localize-migrate` para [trocá-los](https://angular.io/guide/migration-legacy-id).',
+      'Se você depende de IDs de mensagem i18n legados, use a ferramenta `localize-migrate` para [trocá-los](https://angular.io/guide/migration-legacy-message-id).',
   },
   'v12 deprecates `emitDistinctChangesOnly': {
     action:
