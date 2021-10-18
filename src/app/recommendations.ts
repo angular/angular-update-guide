@@ -161,4 +161,5 @@ export const RECOMMENDATIONS: Step[] = [
   { possibleIn: 1200, necessaryAsOf: 1200, level: 3, step: 'v12 `APP_INITIALIZER` callback types', action: 'The initializer callbacks now have more specific return types, which may require update of your code if you are getting an `APP_INITIALIZER` instance via `Injector.get` or `TestBed.inject`.' },
   { possibleIn: 1200, necessaryAsOf: 1200, level: 3, step: 'v12 fragment typings', action: 'The router fragments now could be `null`. Add `null` checks to avoid TypeScript failing with type errors.' },
   { possibleIn: 1200, necessaryAsOf: 1200, level: 3, step: 'v12 `ng.getDirectives`', action: 'Make sure you don\'t rely on `ng.getDirectives` throwing an error if it can\'t find a directive associated with a particular DOM node.' },
+  { possibleIn: 1200, necessaryAsOf: 1200, level: 3, step: 'v12 `optimization.styles.inlineCritical`', action: 'Check out `optimization.styles.inlineCritical` option in your angular.json file. It now defaults to `true`. Remember that the whole `optimization` option can be set as boolean which will set all the suboptions to defaults.' },
 ];
