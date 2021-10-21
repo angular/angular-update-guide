@@ -4,3 +4,4 @@ import './pt_BR';
 import './zh_CN';
 import './vi_VN';
 import './zh_TW';
+import './ru_RU';
