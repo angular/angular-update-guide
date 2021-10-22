@@ -1,49 +1,45 @@
 import { LocalizedSteps, registerLocalization, LocalizedLabels } from '../localization';
 
 const uiLabels: LocalizedLabels = {
+  Advanced: 'Продвинутое',
+  'After the Update': 'После обновления',
   'Angular Update Guide': 'Руководство по обновлению Angular',
-  'Select the options matching your project:': 'Выберите варианты, соответствующие вашему проекту:',
   'Angular Versions': 'Версии Angular',
-  From: 'С',
-  To: 'По',
-  Warning: 'Внимание',
-  'Plans for releases after the current major release are not finalized and may change. These recommendations are based on scheduled deprecations.':
-    'Планы выпусков после текущего основного выпуска еще не согласованы и могут измениться. Эти рекомендации основаны на запланированных прекращениях поддержки.',
-  'We do not currently support downgrading versions of Angular.':
-    'В настоящее время мы не поддерживаем переход на более ранние версии Angular.',
-  'We do not recommend moving across multiple major versions.': 'Мы не рекомендуем двигаться через несколько версий.',
   'App Complexity': 'Сложность приложения',
   Basic: 'Простое',
+  'Before Updating': 'Подготовка к обновлению',
+  'During the Update': 'Во время обновления',
+  From: 'С',
+  'I use': 'Я использую',
   Medium: 'Среднее',
-  Advanced: 'Продвинутое',
-  'Show update information relevant to all Angular developers.':
-    'Показывать информацию об обновлении, актуальную для всех разработчиков Angular.',
+  'Other Dependencies': 'Прочие зависимости',
+  'Package Manager': 'Менеджер пакетов',
+  'Plans for releases after the current major release are not finalized and may change. These recommendations are based on scheduled deprecations.':
+    'Планы выпусков после текущего основного выпуска еще не согласованы и могут измениться. Эти рекомендации основаны на запланированных прекращениях поддержки.',
+  'Select the options matching your project:': 'Выберите варианты, соответствующие вашему проекту:',
+  'Show all the information we have about the update.': 'Показывать всю имеющуюся у нас информацию об обновлении.',
+  'Show me how to update!': 'Покажите мне как обновиться!',
   'Show more specific update information relevant to around 10% of Angular developers.':
     'Показывать более конкретную информацию об обновлении, актуальную примерно для 10% разработчиков Angular.',
-  'Show all the information we have about the update.': 'Показывать всю имеющуюся у нас информацию об обновлении.',
-  'Other Dependencies': 'Прочие зависимости',
-  'I use': 'Я использую',
-  'Package Manager': 'Менеджер пакетов',
-  npm: 'npm',
-  yarn: 'yarn',
-  'Show me how to update!': 'Покажите мне как обновиться!',
-  'Before Updating': 'Подготовка к обновлению',
-  // tslint:disable-next-line: quotemark
-  "There aren't currently any changes needed before moving between these versions.":
-    'В настоящее время нет необходимости вносить какие-либо изменения перед переходом между этими версиями.',
-  'During the Update': 'Во время обновления',
-  // tslint:disable-next-line: quotemark
-  "There aren't currently any recommendations for moving between these versions.":
-    'В настоящее время нет рекомендаций по переходу между этими версиями.',
-  'After the Update': 'После обновления',
+  'Show update information relevant to all Angular developers.':
+    'Показывать информацию об обновлении, актуальную для всех разработчиков Angular.',
   // tslint:disable-next-line: quotemark
   "There aren't currently any changes needed after moving between these versions.":
     'В настоящее время после перехода между этими версиями никаких изменений не требуется.',
-  'to combine AngularJS & Angular': 'объединить AngularJS и Angular',
-  for: 'для',
-  'Basic Apps': 'простых приложений',
-  'Medium Apps': 'приложений средней сложности',
-  'Advanced Apps': 'продвинутых приложений',
+  // tslint:disable-next-line: quotemark
+  "There aren't currently any changes needed before moving between these versions.":
+    'В настоящее время нет необходимости вносить какие-либо изменения перед переходом между этими версиями.',
+  // tslint:disable-next-line: quotemark
+  "There aren't currently any recommendations for moving between these versions.":
+    'В настоящее время нет рекомендаций по переходу между этими версиями.',
+  To: 'По',
+  Warning: 'Внимание',
+  'We do not currently support downgrading versions of Angular.':
+    'В настоящее время мы не поддерживаем переход на более ранние версии Angular.',
+  'We do not support migrating across multiple major versions at once. Please migrate each major version individually.':
+    'Мы не поддерживаем одновременный переход сквозь несколько основных версий. Производите обновление последовательно.',
+  npm: 'npm',
+  yarn: 'yarn',
 };
 
 const steps: LocalizedSteps = {
