@@ -452,7 +452,7 @@ const steps: LocalizedSteps = {
   },
   'router initialNavigation': {
     action:
-      'No Roteador Angular, as opções obsoletas na v4 para `initialNavigation` foram removidas. Se você usou `enabled` ou `true` anteriormente, agora escolha `enabledNonBlocking ou `enabledBlocking`. Se você já usou `false` ou `legacy_disabled`, agora use `disabled`.',
+      'No Roteador Angular, as opções obsoletas na v4 para `initialNavigation` foram removidas. Se você usou `enabled` ou `true` anteriormente, agora escolha `enabledNonBlocking` ou `enabledBlocking`. Se você já usou `false` ou `legacy_disabled`, agora use `disabled`.',
   },
   'routerlink preserveQueryParams': {
     action:
