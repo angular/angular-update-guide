@@ -59,20 +59,24 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ]
-            }
+            },
+            "development": {}
           },
-          "defaultConfiguration": ""
+          "defaultConfiguration": "production"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular-upgrade-guide:build"
           },
           "configurations": {
             "production": {
               "browserTarget": "angular-upgrade-guide:build:production"
+            },
+            "development": {
+              "browserTarget": "angular-upgrade-guide:build:development"
             }
-          }
+          },
+          "defaultConfiguration": "development"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
