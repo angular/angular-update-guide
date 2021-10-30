@@ -19,7 +19,7 @@
     "@angular/compiler": "12.2.12",
     "@angular/compiler-cli": "12.2.12",
     "@angular/core": "12.2.12",
-    "@angular/fire": "^6.1.0-rc.1",
+    "@angular/fire": "^7.1.1",
     "@angular/forms": "12.2.12",
     "@angular/material": "12.2.12",
     "@angular/platform-browser": "12.2.12",
@@ -34,11 +34,12 @@
     "tslib": "^2.0.0",
     "typescript": "4.3.5",
     "zone.js": "~0.11.4",
-    "firebase": ">= 5.5.7 <8"
+    "firebase": "^9.1.0",
+    "rxfire": "^6.0.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~12.2.12",
-    "firebase-tools": "^8.16.0",
+    "firebase-tools": "^9.21.0",
     "tslint": "~6.1.0",
     "@angular-devkit/architect": "0.1202.12",
     "fuzzy": "^0.1.3",
