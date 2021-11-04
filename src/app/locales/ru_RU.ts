@@ -40,6 +40,11 @@ const uiLabels: LocalizedLabels = {
     'Мы не поддерживаем одновременный переход сквозь несколько основных версий. Производите обновление последовательно.',
   npm: 'npm',
   yarn: 'yarn',
+  'to combine AngularJS & Angular': 'для объединения AngularJS & Angular',
+  'Basic Apps': 'простых приложений',
+  'Medium Apps': 'приложений средней сложности',
+  'Advanced Apps': 'сложных приложений',
+  for: 'для',
 };
 
 const steps: LocalizedSteps = {
@@ -543,7 +548,6 @@ const steps: LocalizedSteps = {
     action:
       'Запустите `npx @angular/cli@12 update @angular/core@ @angular/cli@12`, что должно привести вас к версии 12 Angular.',
   },
-  // 'update @ angular / material': { action: 'Run `npx @ angular / cli @ 12 update @ angular / material @ 12`.' },
   'v12 versions': {
     action:
       'Angular теперь требует [TypeScript 4.2](https://devblogs.microsoft.com/typescript/announcing-typescript-4-2/). `ng update` произведет миграцию автоматически.',
@@ -562,7 +566,7 @@ const steps: LocalizedSteps = {
     action:
       'Если вы полагаетесь на устаревшие идентификаторы сообщений `i18n`, используйте инструмент `localize-migrate`, чтобы [отойти от них](https://angular.io/guide/migration-legacy-message-id).',
   },
-  'v12 deprecates `emitDistinctChangesOnly': {
+  'v12 deprecates `emitDistinctChangesOnly`': {
     action:
       'Если вы используете` emitDistinctChangesOnly` для настройки запросов `@ContentChildren` и `@ViewChildren`, вам может потребоваться обновить его значение до `false`, чтобы привести его в соответствие с его предыдущим поведением. В v12 `emitDistinctChangesOnly` имеет значение по умолчанию `true`, и в будущих выпусках мы удалим этот параметр конфигурации, чтобы предотвратить запуск ненужных изменений.',
   },
@@ -589,7 +593,7 @@ const steps: LocalizedSteps = {
     action:
       '`routerLinkActiveOptions` объекта `RouterLinkActive` теперь имеет более конкретный тип. Вам может потребоваться обновить код доступа к этому свойству, чтобы он соответствовал изменениям.',
   },
-  'v12 `APP_INITIALIZER`': {
+  'v12 `APP_INITIALIZER` callback types': {
     action:
       'Обратные вызовы инициализатора теперь имеют более конкретные типы возврата, что может потребовать обновления вашего кода, если вы получаете экземпляр `APP_INITIALIZER` через `Injector.get` или `TestBed.inject`.',
   },
@@ -604,6 +608,62 @@ const steps: LocalizedSteps = {
   'v12 `optimization.styles.inlineCritical`': {
     action:
       'Проверьте параметр `optimisation.styles.inlineCritical` в вашем файле angular.json. Теперь по умолчанию он имеет значение `true`. Помните, что вся опция `optimisation` может быть установлена ​​как логическая, которая установит для всех подопций значения по умолчанию.',
+  },
+  'v13 ng update': {
+    action:
+      'Запустите `npx @angular/cli@13 update @angular/core@13 @angular/cli@13` для перехода на 13 версию Angular.',
+  },
+  'TypeScript 4.4': {
+    action:
+      'Angular теперь использует TypeScript 4.4, подробнее о других потенциально важных обновлениях читатйте тут: [https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-4.html](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-4.html)',
+  },
+  'v13 node': {
+    action:
+      'Убедитесь, что вы используете <a href="https://nodejs.org/dist/latest-v12.x/" target="_blank">Node 12.20.0 или новее </a>.',
+  },
+  'v13 routerLink': {
+    action:
+      'Теперь вы можете отключить навигацию по `routerLink`, передав `undefined` или `null`. Ранее директива `routerLink` принимала эти два значения как эквивалентные пустой строке.',
+  },
+  'v13 router loadChildren': {
+    action:
+      'Вы больше не можете указывать маршруты с отложенной загрузкой, задав строковое значение `loadChildren`. Убедитесь, что вы перешли к динамическим операторам импорта ESM.',
+  },
+  'v13 service worker activated': {
+    action:
+      '`activated` наблюдаемый объект `SwUpdate` теперь устарел. Чтобы проверить статус активации сервис-воркера, используйте вместо него метод `activeUpdate`.',
+  },
+  'v13 service worker available': {
+    action:
+      '`available` наблюдаемый объект `SwUpdate` теперь устарел. Чтобы получить ту же информацию, используйте `versionUpdates` и фильтруйте только события `VersionReadyEvent`.',
+  },
+  'v13 renderModuleFactory': {
+    action:
+      '`renderModuleFactory` из `@angular/platform-server` болеее не требуется для Ivy. Вместо этого используйте `renderModule`.',
+  },
+  'v13 forms status': {
+    action:
+      'Мы сузили тип `AbstractControl.status` до `FormControlStatus`, а `AbstractControl.status` - до `Observable<FormControlStatus>`. `FormControlStatus` - это объединение всех возможных строк состояния для элементов управления формы.',
+  },
+  'v13 router serializer': {
+    action:
+      'Чтобы соответствовать спецификации URI, теперь сериализатор URL-адресов учитывает вопросительные знаки в параметрах запроса. Например, `/path?q=hello?&q2=2` теперь будет анализироваться как `{ q: \'hello?\', q2: 2 }`',
+  },
+  'v13 host binding': {
+    action:
+      "`href` теперь является привязкой атрибута. Это означает, что `DebugElement.properties['href']` теперь возвращает значение `href`, возвращаемое собственным элементом, а не внутреннее значение свойства `href` элемента `routerLink`.",
+  },
+  'v13 spy location': {
+    action:
+      '`SpyLocation` больше не генерирует событие `popstate` при вызове `location.go`. Кроме того, `simulateHashChange` теперь запускает как `haschange`, так и `popstate`. Тесты, которые полагаются на `location.go`, скорее всего, теперь должны использовать `simulateHashChange` для захвата `popstate`.',
+  },
+  'v13 router URL replacement': {
+    action:
+      'Роутер больше не будет заменять URL-адрес браузера, когда новая навигация отменяет текущую навигацию. Гибридные приложения, которые полагаются на `navigationId`, присутствующий при начальных переходах, которые обрабатывались роутеом Angular, должны подписаться на события `NavigationCancel` и выполнить `location.replaceState`, чтобы добавить `navigationId` в состояние `Router`. Кроме того, тесты, которые утверждают `urlChanges` в `SpyLocation`, могут нуждаться в обновлении кода для учета `replaceState`, которое больше не запускается.',
+  },
+  'v13 removed symbols': {
+    action:
+      'Пакет маршрута больше не экспортирует `SpyNgModuleFactoryLoader` и `DeprecatedLoadChildren`. Если вы их используете, убедитесь, что вы удалили соответствующие операторы импорта.',
   },
 };
 // @TODO This console log is required or the locale won't be registered
