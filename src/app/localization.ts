@@ -25,7 +25,8 @@ export function getLocalizedAction(locale: string, original: Step): string {
   if (!stepLocalizations.has(locale)) {
     return original.action;
   }
-  const step = stepLocalizations.get(locale)[original.step];
+  const steps = stepLocalizations.get(locale);
+  const step = steps ? steps[original.step] : undefined;
   return step ? step.action : original.action;
 }
 
@@ -36,7 +37,8 @@ export function getLocalizedLabel(locale: string, original: string): string {
   if (!labelLocalizations.has(locale)) {
     return original;
   }
-  const label = labelLocalizations.get(locale)[original];
+  const labels = labelLocalizations.get(locale);
+  const label = labels ? labels[original] : null;
   return label != null ? label : original;
 }
 
