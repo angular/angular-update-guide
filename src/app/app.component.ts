@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import snarkdown from 'snarkdown';
 import { Step, RECOMMENDATIONS } from './recommendations';
 import { Location } from '@angular/common';
@@ -7,19 +7,27 @@ import { getLocalizedAction, currentLocale } from './localization';
 import { I18nPipe } from './i18n.pipe';
 import { Clipboard } from '@angular/cdk/clipboard';
 
+interface Option {
+  id: string;
+  name: string;
+  description: string;
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   providers: [I18nPipe]
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'Angular Update Guide';
 
   level = 1;
-  options = {
+  options: Record<string, boolean> = {
     ngUpgrade: false,
+    material: false,
+    windows: isWindows(),
   };
-  optionList = [];
+  optionList: Option[] = [];
   packageManager: 'npm install' | 'yarn add' = 'npm install';
 
   beforeRecommendations: Step[] = [];
@@ -74,6 +82,11 @@ export class AppComponent implements OnInit {
     public i18Service: I18nPipe,
     private clipboard: Clipboard
   ) {
+    this.optionList =  [
+      { id: 'ngUpgrade', name: 'ngUpgrade', description: i18Service.transform('to combine AngularJS & Angular') },
+      { id: 'material', name: 'Angular Material', description: '' },
+      { id: 'windows', name: 'Windows', description: '' },
+    ];
 
     const searchParams = new URLSearchParams(window.location.search);
     // Detect settings in URL
@@ -91,13 +104,6 @@ export class AppComponent implements OnInit {
       this.to = this.versions.find((version) => version.name === to);
       this.showUpdatePath();
     }
-  }
-
-  ngOnInit() {
-    this.optionList =  [
-      { id: 'ngUpgrade', name: 'ngUpgrade', description: this.i18Service.transform('to combine AngularJS & Angular') },
-      { id: 'material', name: 'Angular Material', description: '' },
-    ];
   }
 
   @HostListener('click', ['$event.target'])
@@ -140,7 +146,14 @@ export class AppComponent implements OnInit {
         // Or when the user has a matching option selected
         let skip = false;
         for (const option of this.optionList) {
+          // Skip steps which require an option not set by the user.
           if (step[option.id] && !this.options[option.id]) {
+            skip = true;
+          }
+
+          // Skip steps which require **not** using an option which **is** set
+          // by the user.
+          if (step[option.id] === false && this.options[option.id]) {
             skip = true;
           }
         }
@@ -283,4 +296,10 @@ export class AppComponent implements OnInit {
     this.saveLocale = true;
     this.showUpdatePath();
   }
+}
+
+/** Whether or not the user is running on a Windows OS. */
+function isWindows(): boolean {
+  const platform = navigator.platform.toLowerCase();
+  return platform.includes('windows') || platform.includes('win32');
 }

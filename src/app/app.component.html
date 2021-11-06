@@ -85,7 +85,7 @@
           <h4>{{'Other Dependencies'|i18n}}</h4>
           <ng-container *ngFor="let option of optionList">
             <p>
-              <mat-checkbox (change)="options[option.id] = $event.checked; track.send('setting-'+option.name,$event.checked); showUpdatePath()" [value]="options[option.id]">{{'I use'|i18n}} {{option.name}} {{option.description}}</mat-checkbox>
+              <mat-checkbox (change)="options[option.id] = $event.checked; track.send('setting-'+option.name,$event.checked); showUpdatePath()" [checked]="options[option.id]">{{'I use'|i18n}} {{option.name}} {{option.description}}</mat-checkbox>
             </p>
             <mat-grid-tile [colspan]="2"></mat-grid-tile>
           </ng-container>
