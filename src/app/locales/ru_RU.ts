@@ -541,7 +541,7 @@ const steps: LocalizedSteps = {
 
   'v12 ng update': {
     action:
-      'Запустите `npx @angular/cli@12 update @angular/core@ @angular/cli@12`, что должно привести вас к версии 12 Angular.',
+      'Запустите `npx @angular/cli@12 update @angular/core@12 @angular/cli@12`, что должно привести вас к версии 12 Angular.',
   },
   // 'update @ angular / material': { action: 'Run `npx @ angular / cli @ 12 update @ angular / material @ 12`.' },
   'v12 versions': {
