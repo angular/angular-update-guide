@@ -1,21 +1,26 @@
 import { LocalizedSteps, registerLocalization, LocalizedLabels } from '../localization';
 
 const uiLabels: LocalizedLabels = {
-  Advanced: 'Продвинутое',
+  Advanced: 'Продвинутый',
   'After the Update': 'После обновления',
   'Angular Update Guide': 'Руководство по обновлению Angular',
   'Angular Versions': 'Версии Angular',
-  'App Complexity': 'Сложность приложения',
-  Basic: 'Простое',
+  'App Complexity': 'Уровень приложения',
+  Basic: 'Базовый',
+  'Basic Apps': 'Базовых приложений',
+  'Medium Apps': 'Обычных приложений',
+  'Advanced Apps': 'Продвинутых приложений',
   'Before Updating': 'Подготовка к обновлению',
   'During the Update': 'Во время обновления',
+  'to combine AngularJS & Angular': 'для комбинации AngularJS и Angular',
+  for: 'для',
   From: 'С',
   'I use': 'Я использую',
-  Medium: 'Среднее',
+  Medium: 'Обычный',
   'Other Dependencies': 'Прочие зависимости',
   'Package Manager': 'Менеджер пакетов',
   'Plans for releases after the current major release are not finalized and may change. These recommendations are based on scheduled deprecations.':
-    'Планы выпусков после текущего основного выпуска еще не согласованы и могут измениться. Эти рекомендации основаны на запланированных прекращениях поддержки.',
+    'Планы выпусков после текущего основного выпуска еще не согласованы и могут измениться. Эти рекомендации основаны на запланированных устареваниях методов.',
   'Select the options matching your project:': 'Выберите варианты, соответствующие вашему проекту:',
   'Show all the information we have about the update.': 'Показывать всю имеющуюся у нас информацию об обновлении.',
   'Show me how to update!': 'Покажите мне как обновиться!',
@@ -25,19 +30,19 @@ const uiLabels: LocalizedLabels = {
     'Показывать информацию об обновлении, актуальную для всех разработчиков Angular.',
   // tslint:disable-next-line: quotemark
   "There aren't currently any changes needed after moving between these versions.":
-    'В настоящее время после перехода между этими версиями никаких изменений не требуется.',
+    'Сейчас нет необходиости менять что-то после перехода между этими версиями.',
   // tslint:disable-next-line: quotemark
   "There aren't currently any changes needed before moving between these versions.":
-    'В настоящее время нет необходимости вносить какие-либо изменения перед переходом между этими версиями.',
+    'Сейчас нет необходиости менять что-то перед переходом между этими версиями.',
   // tslint:disable-next-line: quotemark
   "There aren't currently any recommendations for moving between these versions.":
-    'В настоящее время нет рекомендаций по переходу между этими версиями.',
-  To: 'По',
+    'Сейчас нет никаких рекомендаций по переходу между этими версиями.',
+  To: 'До',
   Warning: 'Внимание',
   'We do not currently support downgrading versions of Angular.':
-    'В настоящее время мы не поддерживаем переход на более ранние версии Angular.',
+    'В настоящее время мы не поддерживаем понижение версии Angular.',
   'We do not support migrating across multiple major versions at once. Please migrate each major version individually.':
-    'Мы не поддерживаем одновременный переход сквозь несколько основных версий. Производите обновление последовательно.',
+    'Мы не поддерживаем одновременный переход через одну и более основных версий. Обновляйтесь до каждой основной версии последовательно.',
   npm: 'npm',
   yarn: 'yarn',
 };
@@ -49,7 +54,7 @@ const steps: LocalizedSteps = {
   },
   'Deep Imports': {
     action:
-      'Перестаньте использовать глубокие импорты (deep imports), эти ссылки теперь отмечены знаком "ɵ" и не являются частью нашего публичного API.',
+      'Уберите глубокие импорты (deep imports), эти ссылки теперь отмечены знаком "ɵ" и не являются частью нашего публичного API.',
   },
   invokeElementMethod: {
     action:
@@ -57,11 +62,11 @@ const steps: LocalizedSteps = {
   },
   'Non Animations Module': {
     action:
-      'Если вы используете анимацию, вы должны импортировать `BrowserAnimationsModule` из `@angular/platform-browser/animations` в ваш App `NgModule`.',
+      'Если вы используете анимацию, вы должны импортировать `BrowserAnimationsModule` из `@angular/platform-browser/animations` в `NgModule` приложения.',
   },
   'Native Form Validation': {
     action:
-      'Angular начал добавлять атрибут `novalidate` для элементов формы, когда вы включаете `FormsModule`. Чтобы повторно включить поведение собственных форм, используйте `ngNoForm` или добавьте `ngNativeValidate`.',
+      'Angular стал добавлять атрибут `novalidate` для элементов формы, когда вы включаете `FormsModule`. Чтобы повторно включить поведение собственных форм, используйте `ngNoForm` или добавьте `ngNativeValidate`.',
   },
   RootRenderer: {
     action: 'Замените `RootRenderer` на `RendererFactoryV2`.',
@@ -82,7 +87,7 @@ const steps: LocalizedSteps = {
   },
 
   OpaqueToken: {
-    action: 'Замените все `OpaqueToken` на `InjectionToken`.',
+    action: 'Замените все использования `OpaqueToken` на `InjectionToken`.',
   },
   DifferFactory: {
     action: 'Если вы используете `DifferFactory.create(...)`, удалите аргумент `ChangeDetectorRef`.',
@@ -92,7 +97,7 @@ const steps: LocalizedSteps = {
   },
   ngProbeToken: {
     action:
-      'If you use `ngProbeToken`, make sure you import it from `@angular/core` instead of `@angular/platform-browser`',
+      'Если вы используете `ngProbeToken`, убедитесь, что импортировали его из `@angular/core`, а не из `@angular/platform-browser`',
   },
   TrackByFn: {
     action: 'Используйте `TrackByFunction` вместо `TrackByFn`',
@@ -103,15 +108,15 @@ const steps: LocalizedSteps = {
   },
   gendir: {
     action:
-      'Не полагайтесь на `gendir`, вместо этого рассмотрите использование` skipTemplateCodeGen`. <a href="https://github.com/angular/angular/issues/19339#issuecomment-332607471" target="_blank">Подробнее</a>.',
+      'Не полагайтесь на `gendir`, вместо этого рассмотрите использование `skipTemplateCodeGen`. <a href="https://github.com/angular/angular/issues/19339#issuecomment-332607471" target="_blank">Подробнее</a>.',
   },
   'Dynamic ngUpgrade': {
     action:
-      'Замените `downgradeComponent`, `downgradeInjectable`, `UpgradeComponent`, и `UpgradeModule`, импортируемые из `@angular/upgrade`. Вместо этого используйте новую версию из `@angular/upgrade/static`',
+      'Уберите `downgradeComponent`, `downgradeInjectable`, `UpgradeComponent`, и `UpgradeModule`, импортируемые из `@angular/upgrade`. Вместо этого используйте новые версии методов из `@angular/upgrade/static`',
   },
   'Animations in Core': {
     action:
-      'Если вы импортируете какие-либо службы или инструменты анимации из `@angular/core`, вы должны импортировать их из `@angular/animations`.',
+      'Уберите импорты каких-либо служб или инструментов анимации из `@angular/core`, теперь вы должны импортировать их из `@angular/animations`.',
   },
   ngOutletContext: {
     action: 'Замените `ngOutletContext` на `ngTemplateOutletContext`.',
@@ -120,10 +125,10 @@ const steps: LocalizedSteps = {
     action: 'Замените `CollectionChangeRecord` на `IterableChangeRecord`',
   },
   Renderer: {
-    action: 'Где бы вы ни использовали `Renderer`, теперь используйте `Renderer2`',
+    action: 'Вместо `Renderer` теперь используйте `Renderer2`',
   },
   'Router Query Params': {
-    action: 'Если вы использовали `preserveQueryParams`, теперь используйте `queryParamsHandling`',
+    action: 'Уберите использования метода `preserveQueryParams`, теперь используйте `queryParamsHandling`',
   },
   Http: {
     action:
@@ -604,7 +609,7 @@ const steps: LocalizedSteps = {
   'v12 `optimization.styles.inlineCritical`': {
     action:
       'Проверьте параметр `optimisation.styles.inlineCritical` в вашем файле angular.json. Теперь по умолчанию он имеет значение `true`. Помните, что вся опция `optimisation` может быть установлена ​​как логическая, которая установит для всех подопций значения по умолчанию.',
-  },
+  }
 };
 // @TODO This console log is required or the locale won't be registered
 console.log(`ru-RU registered`);
