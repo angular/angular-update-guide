@@ -444,16 +444,16 @@ const steps: LocalizedSteps = {
     action: 'Angular 現在需要 <a href="https://devblogs.microsoft.com/typescript/announcing-typescript-4-2/" target="_blank">TypeScript 4.2</a>。ng update 將自動搬移。'
   },
   'v12 browser support': {
-    action: 'IE11支援已經棄用。在 <a href="https://github.com/angular/angular/issues/41840" target="_blank">RFC for IE11 removal</a> 查找詳細信息。'
+    action: '已停止支援IE11。在 <a href="https://github.com/angular/angular/issues/41840" target="_blank">RFC for IE11 removal</a> 了解更多詳細資訊。'
   },
   'v12 minimum  Node.js version': {
-    action: '您不能再將 Angular 與 Node.js 版本 10 或更早版本一起使用。'
+    action: '你不能使用 Nodejs 版本 10 或更早的版本執行 Angular。'
   },
   'v12 `XhrFactory` relocation': {
     action: '將 `XhrFactory` 的匯入從 `@angular/common/http` 改變為 `@angular/common`.'
   },
   'v12 i18n message ids': {
-    action: '如果您依賴舊版 i18n 訊息 IDs， 使用 `localize-migrate` 工具來 <a href="https://angular.tw/guide/migration-legacy-message-id" target="_blank">遷移它們</a>。'
+    action: '如果您相依舊版 i18n 訊息 ID， 使用 `localize-migrate` 工具來 <a href="https://angular.tw/guide/migration-legacy-message-id" target="_blank">遷移它們</a>。'
   },
   'v12 deprecates `emitDistinctChangesOnly`': {
     action: '如果您使用  `emitDistinctChangesOnly` 設定來查詢 `@ContentChildren` 和 `@ViewChildren`， 您可能需要將其值更新為 `false` 以與其先前的行為保持一致。 在 v12 中， `emitDistinctChangesOnly` 的預設值為 `true`， 在未來的版本中， 我們將刪除此設定選項以防止觸發不必要的變更。'
@@ -493,10 +493,10 @@ const steps: LocalizedSteps = {
     action: '執行 `npx @angular/cli@13 update @angular/core@13 @angular/cli@13`， 更新 CLI 和核心框架到 v13。'
   },
   'TypeScript 4.4': {
-    action: 'Angular 現在利用 TypeScript 4.4， 閱讀任何有關的潛在重大改變: <a href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-4.html" target="_blank">https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-4.html</a>。'
+    action: 'Angular 現在使用 TypeScript 4.4， 閱讀任何有關的潛在重大改變: <a href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-4.html" target="_blank">https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-4.html</a>。'
   },
   'v13 node': {
-    action: '請確定使用 <a href="http://www.hostingadvice.com/how-to/update-node-js-latest-version/" target="_blank">Node 12.20.0 or later</a>。'
+    action: '請確定使用 <a href="http://www.hostingadvice.com/how-to/update-node-js-latest-version/" target="_blank">Node 12.20.0 或更新的版本</a>。'
   }
 };
 console.log(`zh-TW registered`);
