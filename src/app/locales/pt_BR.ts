@@ -452,7 +452,7 @@ const steps: LocalizedSteps = {
   },
   'router initialNavigation': {
     action:
-      'No Roteador Angular, as opções obsoletas na v4 para `initialNavigation` foram removidas. Se você usou `enabled` ou `true` anteriormente, agora escolha `enabledNonBlocking ou `enabledBlocking`. Se você já usou `false` ou `legacy_disabled`, agora use `disabled`.',
+      'No Roteador Angular, as opções obsoletas na v4 para `initialNavigation` foram removidas. Se você usou `enabled` ou `true` anteriormente, agora escolha `enabledNonBlocking` ou `enabledBlocking`. Se você já usou `false` ou `legacy_disabled`, agora use `disabled`.',
   },
   'routerlink preserveQueryParams': {
     action:
@@ -600,6 +600,66 @@ const steps: LocalizedSteps = {
   'v12 `ng.getDirectives`': {
     action:
       'Certifique-se de não confiar que `ng.getDirectives` emita um erro se não puder encontrar uma diretiva associada a um nó DOM particular.',
+  },
+  'v12 `optimization.styles.inlineCritical`': {
+    action:
+      'Verifique a opção `optimization.styles.inlineCritical` em seu arquivo angular.json. Agora, o padrão é `true`. Lembre-se de que toda a opção `otimização` pode ser definida como booleana, o que definirá todas as subopções para os padrões.',
+  },
+  'v13 ng update': {
+    action:
+      'Execute `npx @angular/cli@13 update @angular/core@13 @angular/ cli@13`, para atualizar seu projeto à versão 13 do Angular.',
+  },
+  'TypeScript 4.4': {
+    action:
+      'O Angular agora usa TypeScript 4.4, leia mais sobre quaisquer alterações importantes em potencial: https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-4.html',
+  },
+  'v13 node': {
+    action:
+      'Certifique-se de usar o <a href="http://www.hostingadvice.com/how-to/update-node-js-latest-version/" target="_blank"> Node 12.20.0 ou posterior </a>',
+  },
+  'v13 routerLink': {
+    action:
+      'Agora você pode desabilitar a navegação de um `routerLink` passando`undefined` e `null`. Anteriormente, a diretiva `routerLink` costumava aceitar esses dois valores como equivalentes a uma string vazia.',
+  },
+  'v13 router loadChildren': {
+    action:
+      'Você não pode mais especificar rotas com lazy loading definindo um valor de string para `loadChildren`. Certifique-se de mover para instruções de importação ESM dinâmicas.',
+  },
+  'v13 service worker activated': {
+    action:
+      'O observable `activated` de `SwUpdate` agora está obsoleto. Para verificar o status de ativação de um service worker, use o método `activateUpdate`.',
+  },
+  'v13 service worker available': {
+    action:
+      'O observable `available` de `SwUpdate` agora está obsoleto. Para obter as mesmas informações, use `versionUpdates` e filtre apenas os eventos` VersionReadyEvent`.',
+  },
+  'v13 renderModuleFactory': {
+    action:
+      'O `renderModuleFactory` de `@angular/platform-server` não é mais necessário com Ivy. Utilize `renderModule` .',
+  },
+  'v13 forms status': {
+    action:
+      'Alteramos os tipos de `AbstractControl.status` para `FormControlStatus` e `AbstractControl.status` para `Observable<FormControlStatus>`. `FormControlStatus` é a união de todas as strings de status possíveis para controles de formulário.',
+  },
+  'v13 router serializer': {
+    action:
+      'Para ficar alinhado com a especificação URI, agora o serializador de URL respeita os pontos de interrogação nos parâmetros de consulta. Por exemplo, `/path?q=hello?&q2=2`  agora será parseado para `{ q: `hello?`, q2: 2 }',
+  },
+  'v13 host binding': {
+    action:
+      '`href` agora é um binding de atributo. Isso significa que `DebugElement.properties[\'href\']` agora retorna o valor `href` retornado pelo elemento nativo, ao invés do valor interno da propriedade` href` do `routerLink`.',
+  },
+  'v13 spy location': {
+    action:
+      '`SpyLocation` não emite mais o evento `popstate` quando `location.go` é chamado. Além disso, `simulateHashChange` agora dispara `haschange` e `popstate`. Os testes que dependem de `location.go` provavelmente agora precisam usar `simulateHashChange` para capturar `popstate`.',
+  },
+  'v13 router URL replacement': {
+    action:
+      'O router não substituirá mais o URL do navegador quando uma nova navegação cancelar uma navegação em andamento. Aplicativos híbridos que dependem do `navigationId` presente nas navegações iniciais que foram manipuladas pelo roteador Angular devem se inscrever em eventos `NavigationCancel` e executar o `location.replaceState` para adicionar `navigationId` ao estado `Router`. Além disso, os testes que fazem o assert `urlChanges` no `SpyLocation` podem precisar ser ajustados para considerar o `replaceState` que não é mais acionado.',
+  },
+  'v13 removed symbols': {
+    action:
+      'O pacote de rota não exporta mais `SpyNgModuleFactoryLoader` e `DeprecatedLoadChildren`. Caso você os use, certifique-se de remover suas instruções de importação correspondentes.',
   },
 };
 // @TODO This console log is required or the locale won't be registered

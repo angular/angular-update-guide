@@ -26,6 +26,7 @@
   <button mat-menu-item (click)="setLocale('zh-CN')">简体中文</button>
   <button mat-menu-item (click)="setLocale('vi-VN')">Tiếng Việt</button>
   <button mat-menu-item (click)="setLocale('zh-TW')">正體中文</button>
+  <button mat-menu-item (click)="setLocale('ru-RU')">Русский</button>
 </mat-menu>
 </div>
 
@@ -84,7 +85,7 @@
           <h4>{{'Other Dependencies'|i18n}}</h4>
           <ng-container *ngFor="let option of optionList">
             <p>
-              <mat-checkbox (change)="options[option.id] = $event.checked; track.send('setting-'+option.name,$event.checked); showUpdatePath()" [value]="options[option.id]">{{'I use'|i18n}} {{option.name}} {{option.description}}</mat-checkbox>
+              <mat-checkbox (change)="options[option.id] = $event.checked; track.send('setting-'+option.name,$event.checked); showUpdatePath()" [checked]="options[option.id]">{{'I use'|i18n}} {{option.name}} {{option.description}}</mat-checkbox>
             </p>
             <mat-grid-tile [colspan]="2"></mat-grid-tile>
           </ng-container>

@@ -312,6 +312,63 @@ const steps: LocalizedSteps = {
     action:
       '特定のDOMノードに関連付けられたディレクティブが見つからない場合に`ng.getDirectives`エラーを投げる振る舞いに頼らないようにしてください。',
   },
+  // v13.0
+  'v13 ng update': {
+    action:
+      '`npx @angular/cli@13 update @angular/core@13 @angular/cli@13` を実行すると、Angularのバージョンが13になります。',
+  },
+  'TypeScript 4.4': {
+    action:
+      'AngularはTypeScript 4.4を使用するようになりました。壊れる可能性のある変更点についてはこちらをご覧ください： https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-4.html',
+  },
+  'v13 node': {
+    action:
+      '<a href="http://www.hostingadvice.com/how-to/update-node-js-latest-version/" target="_blank">Node 12.20.0以降</a>を使用していることを確認してください。',
+  },
+  'v13 routerLink': {
+    action:
+      '`undefined` と `null` を渡すことで、`routerLink` のナビゲーションを無効にすることができるようになりました。以前の `routerLink` ディレクティブでは、この2つの値を空の文字列と同等のものとして受け入れていました。',
+  },
+  'v13 router loadChildren': {
+    action:
+      '`loadChildren`に文字列の値を設定して、遅延ロードのルートを指定することができなくなりました。必ずESMの動的インポート文に移行してください。',
+  },
+  'v13 service worker activated': {
+    action:
+      '`SwUpdate` の `activated` observable は、現在では非推奨となっています。サービスワーカーのアクティベーションステータスを確認するには、代わりに `activatedUpdate` メソッドを使用してください。',
+  },
+  'v13 service worker available': {
+    action:
+      '`SwUpdate`の`available` observableは、現在では非推奨となっています。同じ情報を取得するには、`versionUpdates` を使用し、`VersionReadyEvent` イベントのみをフィルタリングしてください。',
+  },
+  'v13 renderModuleFactory': {
+    action:
+      'Ivyでは、`@angular/platform-server`の`renderModuleFactory`はもう必要ありません。代わりに `renderModule` を使用してください。',
+  },
+  'v13 forms status': {
+    action:
+      '`AbstractControl.status` の型を `FormControlStatus` に、`AbstractControl.statusChanges` を `Observable<FormControlStatus>` に絞りました。`FormControlStatus` は、フォームコントロールで可能なすべてのステータス文字列の組合わせです。',
+  },
+  'v13 router serializer': {
+    action:
+      'URI仕様に合わせて、URLシリアライザがクエリパラメータのクエスチョンマークを尊重するようになりました。例えば、`/path?q=hello?&q2=2`は、`{ q: \'hello?\', q2: 2 }`と解析されるようになりました。',
+  },
+  'v13 host binding': {
+    action:
+      "`href` が属性バインディングになりました。これは、`DebugElement.properties['href']`が、`routerLink`の`href`プロパティの内部値ではなく、ネイティブ要素が返す`href`の値を返すようになったことを意味しています。",
+  },
+  'v13 spy location': {
+    action:
+      '`SpyLocation` は、`location.go` が呼ばれたときに、`popstate` イベントを出さなくなりました。加えて、`simulateHashChange` は `haschange` と `popstate` の両方をトリガーするようになりました。`location.go` に依存しているテストでは、おそらく `simulateHashChange` を使用して `popstate` を捕捉する必要があります。',
+  },
+  'v13 router URL replacement': {
+    action:
+      '新しいナビゲーションが進行中のナビゲーションをキャンセルした場合、ルーターはブラウザのURLを置き換えなくなります。Angular ルーターによって処理された最初のナビゲーションで `navigationId` が存在することに依存しているハイブリッドアプリケーションは、`NavigationCancel` イベントをサブスクライブし、`location.replaceState` を実行して `navigationId` を `Router` の状態に追加する必要があります。さらに、`SpyLocation`で`urlChanges`をアサートするテストは、トリガーされなくなった`replaceState`を考慮して調整する必要があるかもしれません。',
+  },
+  'v13 removed symbols': {
+    action:
+      'Routerパッケージは、`SpyNgModuleFactoryLoader`と`DeprecatedLoadChildren`をエクスポートしなくなりました。これらを使用している場合は、対応するimport文を削除してください。',
+  },
 };
 // @TODO This console log is required or the locale won't be registered
 console.log(`ja-JP registered`);

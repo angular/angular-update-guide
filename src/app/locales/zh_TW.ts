@@ -247,7 +247,7 @@ const steps: LocalizedSteps = {
     action: '你的專案已經更新到 TypeScript 3.8，在 <a href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-7.html" target="_blank">TypeScript 3.7 公告</a> 或 <a href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-8.html" target="_blank">TypeScript 3.8 公告</a>閱讀關於新的編譯器檢查和錯誤的詳細訊息，這些檢查和錯誤可能你修正程式碼中的問題。'
   },
   'update @angular/material': {
-    action: '執行 `ng update @angular/material`，更新到 Angular 7、Angular 8、Angular 9、Angular 10，請執行對應的 `ng update @angular/material@7`、`ng update @angular/material@8`、`ng update @angular/material@9`、`ng update @angular/material@10`'
+    action: '執行 `ng update @angular/material`，更新到 Angular 7、Angular 8、Angular 9、Angular 10, Angular 11, Angular 12, Angular 13，請執行對應的 `ng update @angular/material@7`、`ng update @angular/material@8`、`ng update @angular/material@9`、`ng update @angular/material@10`、`npx @angular/cli@11 update @angular/material@11`、`npx @angular/cli@12 update @angular/material@12`、`npx @angular/cli@13 update @angular/material@13`。'
   },
   'update @nguniversal/hapi-engine': {
     action: '如果使用 Angular Universal，根據使用的引擎執行 `ng update @nguniversal/hapi-engine` 或 `ng update @nguniversal/express-engine`。如果有第三方相依項目尚未更新其對等相依的 Angular 版本，則此步驟可能需要 `--force` 標誌。'
@@ -435,6 +435,68 @@ const steps: LocalizedSteps = {
   },
   'v11 forms async validators': {
     action: '如果在初始化時 `FormControl`、`FormGroup` 或 `FormArray` 類別實例上使用定義的非同步驗證器使用 Angular 表單，則在非同步的驗證器完成之後，之前不會發出狀態變更的事件。這已修改以便狀態變更事件被發送到可被觀察的 `statusChanges` 中。如果程式碼相依於舊的行為，可以過濾或忽略其他狀態的變更事件。'
+  },
+
+  'v12 ng update': {
+    action: '執行 `npx @angular/cli@12 update @angular/core@12 @angular/cli@12`， 更新 CLI 和核心框架到 v12。'
+  },
+  'v12 versions': {
+    action: 'Angular 現在需要 <a href="https://devblogs.microsoft.com/typescript/announcing-typescript-4-2/" target="_blank">TypeScript 4.2</a>。ng update 將自動搬移。'
+  },
+  'v12 browser support': {
+    action: '已停止支援IE11。在 <a href="https://github.com/angular/angular/issues/41840" target="_blank">RFC for IE11 removal</a> 了解更多詳細資訊。'
+  },
+  'v12 minimum  Node.js version': {
+    action: '你不能使用 Nodejs 版本 10 或更早的版本執行 Angular。'
+  },
+  'v12 `XhrFactory` relocation': {
+    action: '將 `XhrFactory` 的匯入從 `@angular/common/http` 改變為 `@angular/common`.'
+  },
+  'v12 i18n message ids': {
+    action: '如果您相依舊版 i18n 訊息 ID， 使用 `localize-migrate` 工具來 <a href="https://angular.tw/guide/migration-legacy-message-id" target="_blank">遷移它們</a>。'
+  },
+  'v12 deprecates `emitDistinctChangesOnly`': {
+    action: '如果您使用  `emitDistinctChangesOnly` 設定來查詢 `@ContentChildren` 和 `@ViewChildren`， 您可能需要將其值更新為 `false` 以與其先前的行為保持一致。 在 v12 中， `emitDistinctChangesOnly` 的預設值為 `true`， 在未來的版本中， 我們將刪除此設定選項以防止觸發不必要的變更。'
+  },
+  'v12 prod by default': {
+    action: '您可以選擇性地執行 `npx @angular/cli@12 update @angular/cli@12 --migrate-only production-by-default` 使能夠生產專業構建。'
+  },
+  'v12 min and max form attributes': {
+    action: '如果您使用 Angular 表單， `<input type="number">` 的 `min` 和 `max` 屬性現在將觸發驗證邏輯。'
+  },
+  'v12 `emitEvent` in `FormArray` and `FormGroup`': {
+    action: '如果您的應用程式有延續 `FormArray` 或 `FormGroup` 類別的自訂類別， 還有取代上述的方法函式， 您可能需要更新您的實行。'
+  },
+  'v12 zone.js minimum version': {
+    action: '將 zone.js 的版本更新到 0.11.4。 `ng update` 將會更新自動這個依賴。'
+  },
+  'v12 `HttpParams` method params update': {
+    action: '如果您延續 `HttpParams` 類別， 您可能需要更新方法函式的簽名以反映參數類型的變化。'
+  },
+  'v12 `routerLinkActiveOptions`': {
+    action: '`RouterLinkActive` 的 `routerLinkActiveOptions` 屬性現在有更具體的類型。 您可能需要更新存取這個屬性的程式以確保與這個變更保持一致。'
+  },
+  'v12 `APP_INITIALIZER` callback types': {
+    action: 'The initializer callbacks 現在有更具體的返回類型， 如果您透過 `Injector.get` 或 `TestBed.inject` 獲得 `APP_INITIALIZER` 實例， 可能需要更新您的程式。'
+  },
+  'v12 fragment typings': {
+    action: 'The router fragments 現在可以是 `null`。 增加 `null` 檢查以避免 TypeScript 發生類型錯誤。'
+  },
+  'v12 `ng.getDirectives`': {
+    action: '如果 `ng.getDirectives` 找不到跟特定 DOM node 相關的指令 (directives)， 請肯定您沒有依賴 `ng.getDirectives` 來發出錯誤。'
+  },
+  'v12 `optimization.styles.inlineCritical`': {
+    action: '查閱 angular.json 文件中的 `optimization.styles.inlineCritical` 選項。 它現在設定值為 `true`。 請記住整個 `optimization` 選項可以設定為 boolean， 這將會成為所有子選項的設定值。'
+  },
+
+  'v13 ng update': {
+    action: '執行 `npx @angular/cli@13 update @angular/core@13 @angular/cli@13`， 更新 CLI 和核心框架到 v13。'
+  },
+  'TypeScript 4.4': {
+    action: 'Angular 現在使用 TypeScript 4.4， 閱讀任何有關的潛在重大改變: <a href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-4.html" target="_blank">https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-4.html</a>。'
+  },
+  'v13 node': {
+    action: '請確定使用 <a href="http://www.hostingadvice.com/how-to/update-node-js-latest-version/" target="_blank">Node 12.20.0 或更新的版本</a>。'
   }
 };
 console.log(`zh-TW registered`);
