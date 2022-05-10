@@ -35,6 +35,7 @@ export class AppComponent {
   afterRecommendations: Step[] = [];
 
   versions = [
+    { name: '15.0', number: 1500 },
     { name: '14.0', number: 1400 },
     { name: '13.0', number: 1300 },
     { name: '12.0', number: 1200 },
