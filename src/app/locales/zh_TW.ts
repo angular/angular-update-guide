@@ -1,4 +1,4 @@
-import { LocalizedSteps, registerLocalization, LocalizedLabels } from '../localization';
+import { LocalizedLabels, LocalizedSteps, registerLocalization } from '../localization';
 const uiLabels: LocalizedLabels = {
   'Angular Update Guide': 'Angular 升級指南',
   'Select the options matching your project:': '選擇與你的專案符合的選項:',
@@ -497,7 +497,123 @@ const steps: LocalizedSteps = {
   },
   'v13 node': {
     action: '請確定使用 <a href="http://www.hostingadvice.com/how-to/update-node-js-latest-version/" target="_blank">Node 12.20.0 或更新的版本</a>。'
-  }
+  },
+  'v13 routerLink': {
+    action: '你現在可以透過傳遞 `undefined` 和 `null` 來取消 `routerLink` 的導覽。這兩個資料再過去相當於在 `routerLink` 使用空字串'
+  },
+  'v13 router loadChildren': {
+    action: '你不能再透過設定 `loadChildren` 為空字串來進行延遲載入。確認你使用動態的 ESM import 語句。'
+  },
+  'v13 service worker activated': {
+    action: '`SwUpdate` 的 `activated` observable 已經被棄用。要確認 service worker 的啟動狀態請改用 `activatedUpdate`。'
+  },
+  'v13 service worker available': {
+    action: '`SwUpdate` 的 `available` observable 已經被棄用。要得到一樣的資訊可以使用 `versionUpdates` 並過濾 `VersionReadyEvent` 事件。'
+  },
+  'v13 renderModuleFactory': {
+    action: 'Ivy 不再需要 `@angular/platform-server` 的 `renderModuleFactory`。使用 `renderModule` 取代。'
+  },
+  'v13 forms status': {
+    action: '我們將 `AbstractControl.status` 縮短為 `FormControlStatus` 以及將 AbstractControl.statusChange 縮短為 `Observable<FormControlStatus>`。`FormControlStatus` 是表單控制項所有可能狀態字串的集合。'
+  },
+  'v13 router serializer': {
+    action: '為了對齊 URL 規範，現在 URL 序列化程式能正確解析查詢字串中的問號。例如 `/path?q=hello?&q2=2` 將會被解析成 `{ q: `hello?`, q2: 2 }`'
+  },
+  'v13 host binding': {
+    action: '`href` 現在是屬性(attribute）繫結。這代表 `DebugElement.properties[\'href\']` 現在會回傳原生元素的 `href` 資料，而不是 `routerLink` 內部的 `href` 屬性（property）'
+  },
+  'v13 spy location': {
+    action: '當 `location.go` 被呼叫時，`SpyLocation` 不再發送 `popstate` 事件 when `location.go`；`simulateHashChange` 現在會同時觸發 `haschange` and `popstate`。依賴 `location.go` 的測試現在最有可能需要使用 `simulateHashChange` 來擷取 `popstate`。'
+  },
+  'v13 router URL replacement': {
+    action: '當新的導覽行為取消一個進行中的導覽時，路由將不再取代瀏覽器的網址。由 Angular 處理且在初始導覽時依賴 `navigationId` 混合形應用程式應該訂閱 `NavigationCancel` 事件並執行 `location.replaceState` 以將 `navigationId` 添加到 `Router` 狀態。此外，在 `SpyLocation` 上斷言 `urlChanges` 的測試可能需要針對 `replaceState` 不再觸發而調整。'
+  },
+  'v13 removed symbols': {
+    action: '路由套件不再匯出 `SpyNgModuleFactoryLoader` 和 `DeprecatedLoadChildren`。如果你有使用，請確定有移除相關的 import 語句。'
+  },
+
+  'v14 ng update': {
+     action: '執行 `ng update @angular/core@14 @angular/cli@14` 更新到 Angular 14'
+  },
+  'TypeScript 4.6': {
+     action: 'Angular 現在使用 TypeScript 4.6，關於可能的破壞更新: https://devblogs.microsoft.com/typescript/announcing-typescript-4-6/',
+  },
+  'v14 node': {
+     action: '確認你使用 <a href="http://www.hostingadvice.com/how-to/update-node-js-latest-version/" target="_blank">Node 14.15.0 以上版本</a>',
+  },
+  'v14 strict forms': {
+     action: '表單模型現在需要一個范型型別。為了逐步更新，你可以先使用未定義型別的模型類別版本'
+  },
+  'v14 aotSummaries': {
+     action: '移除 `TestBed` 的 `aotSummaries`，因為 Angular Ivy 不再需要他們了。'
+  },
+  'v14 MatVertical and Horizontal Stepper': {
+     action: '如果你有使用 `MatVerticalStepper` 或 `MatHorizontalStepper` 請改用 `MatStepper`。'
+  },
+  'v14 JSONP': {
+     action: 'JSONP 的請求移除標頭。JSONP 不支援標頭，而且如果指定 HTTP 模組將拋出錯誤而不是忽略他們。'
+  },
+  'v14 resolvers': {
+     action: 'Resolvers 現在將會取得 observable 第一個發送的資料之後進行導覽，而不是最後一個。以更好的對齊其他 guards。'
+  },
+  'v14 deprecate protractor entry': {
+     action: '棄用的 `angular/cdk/testing/protractor` 進入點現在已移除。'
+  },
+  'v14 chipInput': {
+     action: '確保你指定 `MatChipInputEvent` 的 `chipInput`，因為它現在是必需的。'
+  },
+  'v14 mixinErrorState': {
+     action: '使用 `mixinErrorState` 時你需要時做 `stateChanges` 類別成員因為 mixin 不再提供了。'
+  },
+  'v14 CdkStepper orientation': {
+     action: '使用 `CdkStepper.orientation` 取代 `CdkStepper._orientation`。'
+  },
+  'v14 CdkStepper and MatStepper': {
+     action: '如果你在建構式中擴充或使用 `CdkStepper` 或 `MatStepper` 你不應該再傳入 `_document` 參數，因為它現在被移除了。'
+  },
+  'v14 mat-list-item-avatar': {
+     action: '將 `mat-list-item-avatar` CSS 類別重新並名為 `mat-list-item-with-avatar`。'
+  },
+  'v14 MatSelectionListChange.option': {
+     action: '使用 `MatSelectionListChange.options` 而非 `MatSelectionListChange.option`。'
+  },
+  'v14 getHarnessLoaderForContent': {
+     action: '使用 `getChildLoader(MatListItemSection.CONTENT)` 而非 `getHarnessLoaderForContent`.'
+  },
+  'v14 MatSelectionList': {
+     action: '如果你使用 `MatSelectionList` 請確認你有將 `_focusMonitor` 傳到建構式內因為它現在是必須的。另外，這個類別不再包含 `tabIndex` 屬性，也不會在建構式的參數內。'
+  },
+  'v14 initialNavigation': {
+     action: '將 `initialNavigation: \'enabled\'` 更新為 `initialNavigation: \'enabledBlocking\'`。'
+  },
+  'v14 Route.pathMatch': {
+     action: ' `Route` or `Routes` 需要明確指定 `Route.pathMatch` 以避免 TypeScript 將 `pathMatch` 推斷為 `string`。'
+  },
+  'v14 stricter LoadChildrenCallback': {
+     action: '`LoadChildrenCallback` 回傳的 promise 現在有更嚴格的型別參數 `Type<any>|NgModuleFactory<any>` 而不再是 `any`。'
+  },
+  'v14 router scheduling': {
+     action: '路由不再使用 `setTimeout` 來安排 redirect 導覽。請確定你的測試程式沒有依賴此行為。'
+  },
+  'v14 LocationStrategy': {
+     action: '`LocationStrategy` 介面現在需要實作 `getState()` 定義。'
+  },
+  'v14 http queries': {
+     action: '發送 `+` 作為查詢的一部分不再需要解決方法，因為 `+` 不再發送空格。'
+  },
+  'v14 AnimationDriver.getParentElement': {
+     action: '實作 `AnimationDriver` 現在需要 `getParentElement` 方法。'
+  },
+  'v14 invalid config': {
+     action: '無效的延遲載入路由設定將拋出錯無而不是被忽略。'
+  },
+  'v14 router resolver': {
+     action: '移除 `RouterOutletContract.activateWith` 的 `resolver` 以及 `OutletContext` 類別的 `resolver` 因為不再需要 resolver 工廠。'
+  },
+  'v14 initialUrl': {
+     action: '`Router.initialUrl` 只接受 `UrlTree` 以避免指派字串遭到誤用。'
+  },
+
 };
 console.log(`zh-TW registered`);
 registerLocalization('zh-TW', steps, uiLabels);
