@@ -351,7 +351,7 @@ const steps: LocalizedSteps = {
   },
   'v13 router serializer': {
     action:
-      'URI仕様に合わせて、URLシリアライザがクエリパラメータのクエスチョンマークを尊重するようになりました。例えば、`/path?q=hello?&q2=2`は、`{ q: \'hello?\', q2: 2 }`と解析されるようになりました。',
+      "URI仕様に合わせて、URLシリアライザがクエリパラメータのクエスチョンマークを尊重するようになりました。例えば、`/path?q=hello?&q2=2`は、`{ q: 'hello?', q2: 2 }`と解析されるようになりました。",
   },
   'v13 host binding': {
     action:
@@ -368,6 +368,100 @@ const steps: LocalizedSteps = {
   'v13 removed symbols': {
     action:
       'Routerパッケージは、`SpyNgModuleFactoryLoader`と`DeprecatedLoadChildren`をエクスポートしなくなりました。これらを使用している場合は、対応するimport文を削除してください。',
+  },
+  // v14.0
+  'v14 ng update': {
+    action: '`ng update @angular/core@14 @angular/cli@14` を実行すると、Angularのバージョンが14になります。',
+  },
+  'TypeScript 4.6': {
+    action:
+      'AngularがTypeScript 4.6を使用するようになりました。潜在的な破壊的変更についての詳細をご覧ください。: https://devblogs.microsoft.com/typescript/announcing-typescript-4-6/',
+  },
+  'v14 node': {
+    action:
+      '<a href="http://www.hostingadvice.com/how-to/update-node-js-latest-version/" target="_blank">Node 14.15.0 以上</a>を使用していることを確認してください。',
+  },
+  'v14 strict forms': {
+    action:
+      'フォームモデルは一般的な型パラメータを必要とするようになりました。徐々に移行するために、フォームモデルクラスの非型化バージョンを使用することを選択することができます。',
+  },
+  'v14 aotSummaries': { action: 'Ivy で必要としなくなったため、`TestBed` から `aotSummaries` を削除しました。' },
+  'v14 MatVertical and Horizontal Stepper': {
+    action:
+      'もし、 `MatVerticalStepper` や `MatHorizontalStepper` を使用している場合は、必ず `MatStepper` に切り替えてください。',
+  },
+  'v14 JSONP': {
+    action:
+      'JSONP リクエストからヘッダーを削除しました。JSONP はヘッダをサポートしておらず、もし指定された場合、HTTP モジュールはヘッダを無視するのではなく、エラーを投げるようになりました。',
+  },
+  'v14 resolvers': {
+    action:
+      'リゾルバは、最後に放出された値を取るのではなく、他のガードとより良く整合するために、Observableの最初の値を取り、その後にナビゲーションに進むようになりました。',
+  },
+  'v14 deprecate protractor entry': {
+    action: '非推奨の `angular/cdk/testing/protractor` エントリーポイントは削除されました。',
+  },
+  'v14 chipInput': {
+    action: '`MatChipInputEvent` の `chipInput` は必須となったので、必ず指定してください。',
+  },
+  'v14 mixinErrorState': {
+    action:
+      'mixinが提供しなくなったので、`mixinErrorState` を使って `stateChanges` クラスメンバーを実装する必要があります。',
+  },
+  'v14 CdkStepper orientation': {
+    action: '`CdkStepper._orientation`の代わりに、`CdkStepper.orientation`を使用します。',
+  },
+  'v14 CdkStepper and MatStepper': {
+    action:
+      '`CdkStepper` や `MatStepper` を拡張したり、コンストラクタで使用している場合、 `_document` パラメータは削除されたので、今後は渡す必要はありません。',
+  },
+  'v14 mat-list-item-avatar': {
+    action: '`mat-list-item-avatar` の CSS クラスを `mat-list-item-with-avatar` にリネームします。',
+  },
+  'v14 MatSelectionListChange.option': {
+    action: '`MatSelectionListChange.option` ではなく、`MatSelectionListChange.options` を使ってください。',
+  },
+  'v14 getHarnessLoaderForContent': {
+    action: '`getHarnessLoaderForContent` ではなく、 `getChildLoader(MatListItemSection.CONTENT)` を使用します。',
+  },
+  'v14 MatSelectionList': {
+    action:
+      '`MatSelectionList` を使用している場合は、コンストラクタで `_focusMonitor` を渡す必要があります。さらに、このクラスは `tabIndex` プロパティと `tabIndex` コンストラクタのパラメータを持たなくなりました。',
+  },
+  'v14 initialNavigation': {
+    action: "`initialNavigation: 'enabled'` を `initialNavigation: 'enabledBlocking'` に更新しました。",
+  },
+  'v14 Route.pathMatch': {
+    action:
+      '`pathMatch` を使ってルートを定義している場合は、明示的に `Route` または `Routes` にキャストする必要があるかもしれません。`Route.pathMatch` は `string` 型との互換性がなくなりました。',
+  },
+  'v14 stricter LoadChildrenCallback': {
+    action:
+      '`LoadChildrenCallback` が返すプロミスは、 `any` ではなく、より厳しい型パラメータ `Type<any>|NgModuleFactory<any>` を持つようになりました。',
+  },
+  'v14 router scheduling': {
+    action:
+      'ルーターは `setTimeout` 内でリダイレクトナビゲーションをスケジュールしないようになりました。テストがこの動作に依存しないことを確認してください。',
+  },
+  'v14 LocationStrategy': {
+    action: '`LocationStrategy` インターフェースの実装には、 `getState()` の定義が必要になりました。',
+  },
+  'v14 http queries': {
+    action: 'クエリ文字列の一部として `+` を送信しても、スペースを送信しなくなったので、回避策が不要になりました。',
+  },
+  'v14 AnimationDriver.getParentElement': {
+    action: '`AnimationDriver` を実装するには、`getParentElement` メソッドが必要になりました。',
+  },
+  'v14 invalid config': {
+    action: '遅延ロードされたモジュールの無効なルート構成は、無視されるのではなく、エラーを投げるようになりました。',
+  },
+  'v14 router resolver': {
+    action:
+      'ファクトリーリゾルバが不要になったため、 `RouterOutletContract.activateWith` 関数と `OutletContext` クラスから `resolver` を削除します。',
+  },
+  'v14 initialUrl': {
+    action:
+      '`Router.initialUrl` は `UrlTree` のみを受け付けます。これは `string` 値を代入して API を誤用することを防ぐためです。',
   },
 };
 // @TODO This console log is required or the locale won't be registered
