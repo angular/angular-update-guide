@@ -1,4 +1,4 @@
-import { LocalizedSteps, registerLocalization, LocalizedLabels } from '../localization';
+import { LocalizedLabels, LocalizedSteps, registerLocalization } from '../localization';
 const uiLabels: LocalizedLabels = {
   'Angular Update Guide': 'Angular 升級指南',
   'Select the options matching your project:': '選擇與你的專案符合的選項:',
@@ -247,7 +247,7 @@ const steps: LocalizedSteps = {
     action: '你的專案已經更新到 TypeScript 3.8，在 <a href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-7.html" target="_blank">TypeScript 3.7 公告</a> 或 <a href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-8.html" target="_blank">TypeScript 3.8 公告</a>閱讀關於新的編譯器檢查和錯誤的詳細訊息，這些檢查和錯誤可能你修正程式碼中的問題。'
   },
   'update @angular/material': {
-    action: '執行 `ng update @angular/material`，更新到 Angular 7、Angular 8、Angular 9、Angular 10，請執行對應的 `ng update @angular/material@7`、`ng update @angular/material@8`、`ng update @angular/material@9`、`ng update @angular/material@10`'
+    action: '執行 `ng update @angular/material`，更新到 Angular 7、Angular 8、Angular 9、Angular 10, Angular 11, Angular 12, Angular 13，請執行對應的 `ng update @angular/material@7`、`ng update @angular/material@8`、`ng update @angular/material@9`、`ng update @angular/material@10`、`npx @angular/cli@11 update @angular/material@11`、`npx @angular/cli@12 update @angular/material@12`、`npx @angular/cli@13 update @angular/material@13`。'
   },
   'update @nguniversal/hapi-engine': {
     action: '如果使用 Angular Universal，根據使用的引擎執行 `ng update @nguniversal/hapi-engine` 或 `ng update @nguniversal/express-engine`。如果有第三方相依項目尚未更新其對等相依的 Angular 版本，則此步驟可能需要 `--force` 標誌。'
@@ -435,7 +435,185 @@ const steps: LocalizedSteps = {
   },
   'v11 forms async validators': {
     action: '如果在初始化時 `FormControl`、`FormGroup` 或 `FormArray` 類別實例上使用定義的非同步驗證器使用 Angular 表單，則在非同步的驗證器完成之後，之前不會發出狀態變更的事件。這已修改以便狀態變更事件被發送到可被觀察的 `statusChanges` 中。如果程式碼相依於舊的行為，可以過濾或忽略其他狀態的變更事件。'
-  }
+  },
+
+  'v12 ng update': {
+    action: '執行 `npx @angular/cli@12 update @angular/core@12 @angular/cli@12`， 更新 CLI 和核心框架到 v12。'
+  },
+  'v12 versions': {
+    action: 'Angular 現在需要 <a href="https://devblogs.microsoft.com/typescript/announcing-typescript-4-2/" target="_blank">TypeScript 4.2</a>。ng update 將自動搬移。'
+  },
+  'v12 browser support': {
+    action: '已停止支援IE11。在 <a href="https://github.com/angular/angular/issues/41840" target="_blank">RFC for IE11 removal</a> 了解更多詳細資訊。'
+  },
+  'v12 minimum  Node.js version': {
+    action: '你不能使用 Nodejs 版本 10 或更早的版本執行 Angular。'
+  },
+  'v12 `XhrFactory` relocation': {
+    action: '將 `XhrFactory` 的匯入從 `@angular/common/http` 改變為 `@angular/common`.'
+  },
+  'v12 i18n message ids': {
+    action: '如果您相依舊版 i18n 訊息 ID， 使用 `localize-migrate` 工具來 <a href="https://angular.tw/guide/migration-legacy-message-id" target="_blank">遷移它們</a>。'
+  },
+  'v12 deprecates `emitDistinctChangesOnly`': {
+    action: '如果您使用  `emitDistinctChangesOnly` 設定來查詢 `@ContentChildren` 和 `@ViewChildren`， 您可能需要將其值更新為 `false` 以與其先前的行為保持一致。 在 v12 中， `emitDistinctChangesOnly` 的預設值為 `true`， 在未來的版本中， 我們將刪除此設定選項以防止觸發不必要的變更。'
+  },
+  'v12 prod by default': {
+    action: '您可以選擇性地執行 `npx @angular/cli@12 update @angular/cli@12 --migrate-only production-by-default` 使能夠生產專業構建。'
+  },
+  'v12 min and max form attributes': {
+    action: '如果您使用 Angular 表單， `<input type="number">` 的 `min` 和 `max` 屬性現在將觸發驗證邏輯。'
+  },
+  'v12 `emitEvent` in `FormArray` and `FormGroup`': {
+    action: '如果您的應用程式有延續 `FormArray` 或 `FormGroup` 類別的自訂類別， 還有取代上述的方法函式， 您可能需要更新您的實行。'
+  },
+  'v12 zone.js minimum version': {
+    action: '將 zone.js 的版本更新到 0.11.4。 `ng update` 將會更新自動這個依賴。'
+  },
+  'v12 `HttpParams` method params update': {
+    action: '如果您延續 `HttpParams` 類別， 您可能需要更新方法函式的簽名以反映參數類型的變化。'
+  },
+  'v12 `routerLinkActiveOptions`': {
+    action: '`RouterLinkActive` 的 `routerLinkActiveOptions` 屬性現在有更具體的類型。 您可能需要更新存取這個屬性的程式以確保與這個變更保持一致。'
+  },
+  'v12 `APP_INITIALIZER` callback types': {
+    action: 'The initializer callbacks 現在有更具體的返回類型， 如果您透過 `Injector.get` 或 `TestBed.inject` 獲得 `APP_INITIALIZER` 實例， 可能需要更新您的程式。'
+  },
+  'v12 fragment typings': {
+    action: 'The router fragments 現在可以是 `null`。 增加 `null` 檢查以避免 TypeScript 發生類型錯誤。'
+  },
+  'v12 `ng.getDirectives`': {
+    action: '如果 `ng.getDirectives` 找不到跟特定 DOM node 相關的指令 (directives)， 請肯定您沒有依賴 `ng.getDirectives` 來發出錯誤。'
+  },
+  'v12 `optimization.styles.inlineCritical`': {
+    action: '查閱 angular.json 文件中的 `optimization.styles.inlineCritical` 選項。 它現在設定值為 `true`。 請記住整個 `optimization` 選項可以設定為 boolean， 這將會成為所有子選項的設定值。'
+  },
+
+  'v13 ng update': {
+    action: '執行 `npx @angular/cli@13 update @angular/core@13 @angular/cli@13`， 更新 CLI 和核心框架到 v13。'
+  },
+  'TypeScript 4.4': {
+    action: 'Angular 現在使用 TypeScript 4.4， 閱讀任何有關的潛在重大改變: <a href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-4.html" target="_blank">https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-4.html</a>。'
+  },
+  'v13 node': {
+    action: '請確定使用 <a href="http://www.hostingadvice.com/how-to/update-node-js-latest-version/" target="_blank">Node 12.20.0 或更新的版本</a>。'
+  },
+  'v13 routerLink': {
+    action: '你現在可以透過傳遞 `undefined` 和 `null` 來取消 `routerLink` 的導覽。這兩個資料再過去相當於在 `routerLink` 使用空字串'
+  },
+  'v13 router loadChildren': {
+    action: '你不能再透過設定 `loadChildren` 為空字串來進行延遲載入。確認你使用動態的 ESM import 語句。'
+  },
+  'v13 service worker activated': {
+    action: '`SwUpdate` 的 `activated` observable 已經被棄用。要確認 service worker 的啟動狀態請改用 `activatedUpdate`。'
+  },
+  'v13 service worker available': {
+    action: '`SwUpdate` 的 `available` observable 已經被棄用。要得到一樣的資訊可以使用 `versionUpdates` 並過濾 `VersionReadyEvent` 事件。'
+  },
+  'v13 renderModuleFactory': {
+    action: 'Ivy 不再需要 `@angular/platform-server` 的 `renderModuleFactory`。使用 `renderModule` 取代。'
+  },
+  'v13 forms status': {
+    action: '我們將 `AbstractControl.status` 縮短為 `FormControlStatus` 以及將 AbstractControl.statusChange 縮短為 `Observable<FormControlStatus>`。`FormControlStatus` 是表單控制項所有可能狀態字串的集合。'
+  },
+  'v13 router serializer': {
+    action: '為了對齊 URL 規範，現在 URL 序列化程式能正確解析查詢字串中的問號。例如 `/path?q=hello?&q2=2` 將會被解析成 `{ q: `hello?`, q2: 2 }`'
+  },
+  'v13 host binding': {
+    action: '`href` 現在是屬性(attribute）繫結。這代表 `DebugElement.properties[\'href\']` 現在會回傳原生元素的 `href` 資料，而不是 `routerLink` 內部的 `href` 屬性（property）'
+  },
+  'v13 spy location': {
+    action: '當 `location.go` 被呼叫時，`SpyLocation` 不再發送 `popstate` 事件 when `location.go`；`simulateHashChange` 現在會同時觸發 `haschange` and `popstate`。依賴 `location.go` 的測試現在最有可能需要使用 `simulateHashChange` 來擷取 `popstate`。'
+  },
+  'v13 router URL replacement': {
+    action: '當新的導覽行為取消一個進行中的導覽時，路由將不再取代瀏覽器的網址。由 Angular 處理且在初始導覽時依賴 `navigationId` 混合形應用程式應該訂閱 `NavigationCancel` 事件並執行 `location.replaceState` 以將 `navigationId` 添加到 `Router` 狀態。此外，在 `SpyLocation` 上斷言 `urlChanges` 的測試可能需要針對 `replaceState` 不再觸發而調整。'
+  },
+  'v13 removed symbols': {
+    action: '路由套件不再匯出 `SpyNgModuleFactoryLoader` 和 `DeprecatedLoadChildren`。如果你有使用，請確定有移除相關的 import 語句。'
+  },
+
+  'v14 ng update': {
+     action: '執行 `ng update @angular/core@14 @angular/cli@14` 更新到 Angular 14'
+  },
+  'TypeScript 4.6': {
+     action: 'Angular 現在使用 TypeScript 4.6，關於可能的破壞更新: https://devblogs.microsoft.com/typescript/announcing-typescript-4-6/',
+  },
+  'v14 node': {
+     action: '確認你使用 <a href="http://www.hostingadvice.com/how-to/update-node-js-latest-version/" target="_blank">Node 14.15.0 以上版本</a>',
+  },
+  'v14 strict forms': {
+     action: '表單模型現在需要一個范型型別。為了逐步更新，你可以先使用未定義型別的模型類別版本'
+  },
+  'v14 aotSummaries': {
+     action: '移除 `TestBed` 的 `aotSummaries`，因為 Angular Ivy 不再需要他們了。'
+  },
+  'v14 MatVertical and Horizontal Stepper': {
+     action: '如果你有使用 `MatVerticalStepper` 或 `MatHorizontalStepper` 請改用 `MatStepper`。'
+  },
+  'v14 JSONP': {
+     action: 'JSONP 的請求移除標頭。JSONP 不支援標頭，而且如果指定 HTTP 模組將拋出錯誤而不是忽略他們。'
+  },
+  'v14 resolvers': {
+     action: 'Resolvers 現在將會取得 observable 第一個發送的資料之後進行導覽，而不是最後一個。以更好的對齊其他 guards。'
+  },
+  'v14 deprecate protractor entry': {
+     action: '棄用的 `angular/cdk/testing/protractor` 進入點現在已移除。'
+  },
+  'v14 chipInput': {
+     action: '確保你指定 `MatChipInputEvent` 的 `chipInput`，因為它現在是必需的。'
+  },
+  'v14 mixinErrorState': {
+     action: '使用 `mixinErrorState` 時你需要時做 `stateChanges` 類別成員因為 mixin 不再提供了。'
+  },
+  'v14 CdkStepper orientation': {
+     action: '使用 `CdkStepper.orientation` 取代 `CdkStepper._orientation`。'
+  },
+  'v14 CdkStepper and MatStepper': {
+     action: '如果你在建構式中擴充或使用 `CdkStepper` 或 `MatStepper` 你不應該再傳入 `_document` 參數，因為它現在被移除了。'
+  },
+  'v14 mat-list-item-avatar': {
+     action: '將 `mat-list-item-avatar` CSS 類別重新並名為 `mat-list-item-with-avatar`。'
+  },
+  'v14 MatSelectionListChange.option': {
+     action: '使用 `MatSelectionListChange.options` 而非 `MatSelectionListChange.option`。'
+  },
+  'v14 getHarnessLoaderForContent': {
+     action: '使用 `getChildLoader(MatListItemSection.CONTENT)` 而非 `getHarnessLoaderForContent`.'
+  },
+  'v14 MatSelectionList': {
+     action: '如果你使用 `MatSelectionList` 請確認你有將 `_focusMonitor` 傳到建構式內因為它現在是必須的。另外，這個類別不再包含 `tabIndex` 屬性，也不會在建構式的參數內。'
+  },
+  'v14 initialNavigation': {
+     action: '將 `initialNavigation: \'enabled\'` 更新為 `initialNavigation: \'enabledBlocking\'`。'
+  },
+  'v14 Route.pathMatch': {
+     action: ' `Route` or `Routes` 需要明確指定 `Route.pathMatch` 以避免 TypeScript 將 `pathMatch` 推斷為 `string`。'
+  },
+  'v14 stricter LoadChildrenCallback': {
+     action: '`LoadChildrenCallback` 回傳的 promise 現在有更嚴格的型別參數 `Type<any>|NgModuleFactory<any>` 而不再是 `any`。'
+  },
+  'v14 router scheduling': {
+     action: '路由不再使用 `setTimeout` 來安排 redirect 導覽。請確定你的測試程式沒有依賴此行為。'
+  },
+  'v14 LocationStrategy': {
+     action: '`LocationStrategy` 介面現在需要實作 `getState()` 定義。'
+  },
+  'v14 http queries': {
+     action: '發送 `+` 作為查詢的一部分不再需要解決方法，因為 `+` 不再發送空格。'
+  },
+  'v14 AnimationDriver.getParentElement': {
+     action: '實作 `AnimationDriver` 現在需要 `getParentElement` 方法。'
+  },
+  'v14 invalid config': {
+     action: '無效的延遲載入路由設定將拋出錯無而不是被忽略。'
+  },
+  'v14 router resolver': {
+     action: '移除 `RouterOutletContract.activateWith` 的 `resolver` 以及 `OutletContext` 類別的 `resolver` 因為不再需要 resolver 工廠。'
+  },
+  'v14 initialUrl': {
+     action: '`Router.initialUrl` 只接受 `UrlTree` 以避免指派字串遭到誤用。'
+  },
+
 };
 console.log(`zh-TW registered`);
 registerLocalization('zh-TW', steps, uiLabels);

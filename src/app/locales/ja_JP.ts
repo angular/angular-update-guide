@@ -312,6 +312,157 @@ const steps: LocalizedSteps = {
     action:
       '特定のDOMノードに関連付けられたディレクティブが見つからない場合に`ng.getDirectives`エラーを投げる振る舞いに頼らないようにしてください。',
   },
+  // v13.0
+  'v13 ng update': {
+    action:
+      '`npx @angular/cli@13 update @angular/core@13 @angular/cli@13` を実行すると、Angularのバージョンが13になります。',
+  },
+  'TypeScript 4.4': {
+    action:
+      'AngularはTypeScript 4.4を使用するようになりました。壊れる可能性のある変更点についてはこちらをご覧ください： https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-4.html',
+  },
+  'v13 node': {
+    action:
+      '<a href="http://www.hostingadvice.com/how-to/update-node-js-latest-version/" target="_blank">Node 12.20.0以降</a>を使用していることを確認してください。',
+  },
+  'v13 routerLink': {
+    action:
+      '`undefined` と `null` を渡すことで、`routerLink` のナビゲーションを無効にすることができるようになりました。以前の `routerLink` ディレクティブでは、この2つの値を空の文字列と同等のものとして受け入れていました。',
+  },
+  'v13 router loadChildren': {
+    action:
+      '`loadChildren`に文字列の値を設定して、遅延ロードのルートを指定することができなくなりました。必ずESMの動的インポート文に移行してください。',
+  },
+  'v13 service worker activated': {
+    action:
+      '`SwUpdate` の `activated` observable は、現在では非推奨となっています。サービスワーカーのアクティベーションステータスを確認するには、代わりに `activatedUpdate` メソッドを使用してください。',
+  },
+  'v13 service worker available': {
+    action:
+      '`SwUpdate`の`available` observableは、現在では非推奨となっています。同じ情報を取得するには、`versionUpdates` を使用し、`VersionReadyEvent` イベントのみをフィルタリングしてください。',
+  },
+  'v13 renderModuleFactory': {
+    action:
+      'Ivyでは、`@angular/platform-server`の`renderModuleFactory`はもう必要ありません。代わりに `renderModule` を使用してください。',
+  },
+  'v13 forms status': {
+    action:
+      '`AbstractControl.status` の型を `FormControlStatus` に、`AbstractControl.statusChanges` を `Observable<FormControlStatus>` に絞りました。`FormControlStatus` は、フォームコントロールで可能なすべてのステータス文字列の組合わせです。',
+  },
+  'v13 router serializer': {
+    action:
+      "URI仕様に合わせて、URLシリアライザがクエリパラメータのクエスチョンマークを尊重するようになりました。例えば、`/path?q=hello?&q2=2`は、`{ q: 'hello?', q2: 2 }`と解析されるようになりました。",
+  },
+  'v13 host binding': {
+    action:
+      "`href` が属性バインディングになりました。これは、`DebugElement.properties['href']`が、`routerLink`の`href`プロパティの内部値ではなく、ネイティブ要素が返す`href`の値を返すようになったことを意味しています。",
+  },
+  'v13 spy location': {
+    action:
+      '`SpyLocation` は、`location.go` が呼ばれたときに、`popstate` イベントを出さなくなりました。加えて、`simulateHashChange` は `haschange` と `popstate` の両方をトリガーするようになりました。`location.go` に依存しているテストでは、おそらく `simulateHashChange` を使用して `popstate` を捕捉する必要があります。',
+  },
+  'v13 router URL replacement': {
+    action:
+      '新しいナビゲーションが進行中のナビゲーションをキャンセルした場合、ルーターはブラウザのURLを置き換えなくなります。Angular ルーターによって処理された最初のナビゲーションで `navigationId` が存在することに依存しているハイブリッドアプリケーションは、`NavigationCancel` イベントをサブスクライブし、`location.replaceState` を実行して `navigationId` を `Router` の状態に追加する必要があります。さらに、`SpyLocation`で`urlChanges`をアサートするテストは、トリガーされなくなった`replaceState`を考慮して調整する必要があるかもしれません。',
+  },
+  'v13 removed symbols': {
+    action:
+      'Routerパッケージは、`SpyNgModuleFactoryLoader`と`DeprecatedLoadChildren`をエクスポートしなくなりました。これらを使用している場合は、対応するimport文を削除してください。',
+  },
+  // v14.0
+  'v14 ng update': {
+    action: '`ng update @angular/core@14 @angular/cli@14` を実行すると、Angularのバージョンが14になります。',
+  },
+  'TypeScript 4.6': {
+    action:
+      'AngularがTypeScript 4.6を使用するようになりました。潜在的な破壊的変更についての詳細をご覧ください。: https://devblogs.microsoft.com/typescript/announcing-typescript-4-6/',
+  },
+  'v14 node': {
+    action:
+      '<a href="http://www.hostingadvice.com/how-to/update-node-js-latest-version/" target="_blank">Node 14.15.0 以上</a>を使用していることを確認してください。',
+  },
+  'v14 strict forms': {
+    action:
+      'フォームモデルは一般的な型パラメータを必要とするようになりました。徐々に移行するために、フォームモデルクラスの非型化バージョンを使用することを選択することができます。',
+  },
+  'v14 aotSummaries': { action: 'Ivy で必要としなくなったため、`TestBed` から `aotSummaries` を削除しました。' },
+  'v14 MatVertical and Horizontal Stepper': {
+    action:
+      'もし、 `MatVerticalStepper` や `MatHorizontalStepper` を使用している場合は、必ず `MatStepper` に切り替えてください。',
+  },
+  'v14 JSONP': {
+    action:
+      'JSONP リクエストからヘッダーを削除しました。JSONP はヘッダをサポートしておらず、もし指定された場合、HTTP モジュールはヘッダを無視するのではなく、エラーを投げるようになりました。',
+  },
+  'v14 resolvers': {
+    action:
+      'リゾルバは、最後に放出された値を取るのではなく、他のガードとより良く整合するために、Observableの最初の値を取り、その後にナビゲーションに進むようになりました。',
+  },
+  'v14 deprecate protractor entry': {
+    action: '非推奨の `angular/cdk/testing/protractor` エントリーポイントは削除されました。',
+  },
+  'v14 chipInput': {
+    action: '`MatChipInputEvent` の `chipInput` は必須となったので、必ず指定してください。',
+  },
+  'v14 mixinErrorState': {
+    action:
+      'mixinが提供しなくなったので、`mixinErrorState` を使って `stateChanges` クラスメンバーを実装する必要があります。',
+  },
+  'v14 CdkStepper orientation': {
+    action: '`CdkStepper._orientation`の代わりに、`CdkStepper.orientation`を使用します。',
+  },
+  'v14 CdkStepper and MatStepper': {
+    action:
+      '`CdkStepper` や `MatStepper` を拡張したり、コンストラクタで使用している場合、 `_document` パラメータは削除されたので、今後は渡す必要はありません。',
+  },
+  'v14 mat-list-item-avatar': {
+    action: '`mat-list-item-avatar` の CSS クラスを `mat-list-item-with-avatar` にリネームします。',
+  },
+  'v14 MatSelectionListChange.option': {
+    action: '`MatSelectionListChange.option` ではなく、`MatSelectionListChange.options` を使ってください。',
+  },
+  'v14 getHarnessLoaderForContent': {
+    action: '`getHarnessLoaderForContent` ではなく、 `getChildLoader(MatListItemSection.CONTENT)` を使用します。',
+  },
+  'v14 MatSelectionList': {
+    action:
+      '`MatSelectionList` を使用している場合は、コンストラクタで `_focusMonitor` を渡す必要があります。さらに、このクラスは `tabIndex` プロパティと `tabIndex` コンストラクタのパラメータを持たなくなりました。',
+  },
+  'v14 initialNavigation': {
+    action: "`initialNavigation: 'enabled'` を `initialNavigation: 'enabledBlocking'` に更新しました。",
+  },
+  'v14 Route.pathMatch': {
+    action:
+      '`pathMatch` を使ってルートを定義している場合は、明示的に `Route` または `Routes` にキャストする必要があるかもしれません。`Route.pathMatch` は `string` 型との互換性がなくなりました。',
+  },
+  'v14 stricter LoadChildrenCallback': {
+    action:
+      '`LoadChildrenCallback` が返すプロミスは、 `any` ではなく、より厳しい型パラメータ `Type<any>|NgModuleFactory<any>` を持つようになりました。',
+  },
+  'v14 router scheduling': {
+    action:
+      'ルーターは `setTimeout` 内でリダイレクトナビゲーションをスケジュールしないようになりました。テストがこの動作に依存しないことを確認してください。',
+  },
+  'v14 LocationStrategy': {
+    action: '`LocationStrategy` インターフェースの実装には、 `getState()` の定義が必要になりました。',
+  },
+  'v14 http queries': {
+    action: 'クエリ文字列の一部として `+` を送信しても、スペースを送信しなくなったので、回避策が不要になりました。',
+  },
+  'v14 AnimationDriver.getParentElement': {
+    action: '`AnimationDriver` を実装するには、`getParentElement` メソッドが必要になりました。',
+  },
+  'v14 invalid config': {
+    action: '遅延ロードされたモジュールの無効なルート構成は、無視されるのではなく、エラーを投げるようになりました。',
+  },
+  'v14 router resolver': {
+    action:
+      'ファクトリーリゾルバが不要になったため、 `RouterOutletContract.activateWith` 関数と `OutletContext` クラスから `resolver` を削除します。',
+  },
+  'v14 initialUrl': {
+    action:
+      '`Router.initialUrl` は `UrlTree` のみを受け付けます。これは `string` 値を代入して API を誤用することを防ぐためです。',
+  },
 };
 // @TODO This console log is required or the locale won't be registered
 console.log(`ja-JP registered`);
