@@ -67,9 +67,9 @@ export class AppComponent {
     { name: '2.1', number: 201 },
     { name: '2.0', number: 200 },
   ];
-  from = this.versions.find((version) => version.name === '12.0');
-  to = this.versions.find((version) => version.name === '13.0');
-  futureVersion = 1400
+  from = this.versions.find((version) => version.name === '13.0');
+  to = this.versions.find((version) => version.name === '14.0');
+  futureVersion = 1500
   /**
    * Only save the locale in the URL if it was already there, or the user changed it
    */
