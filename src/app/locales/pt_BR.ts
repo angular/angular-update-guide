@@ -607,7 +607,7 @@ const steps: LocalizedSteps = {
   },
   'v13 ng update': {
     action:
-      'Execute `npx @angular/cli@13 update @angular/core@13 @angular/ cli@13`, para atualizar seu projeto à versão 13 do Angular.',
+      'Execute `npx @angular/cli@13 update @angular/core@13 @angular/cli@13`, para atualizar seu projeto à versão 13 do Angular.',
   },
   'TypeScript 4.4': {
     action:
