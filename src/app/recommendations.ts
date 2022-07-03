@@ -213,7 +213,7 @@ export const RECOMMENDATIONS: Step[] = [
   { possibleIn: 1400, necessaryAsOf: 1400, level: 3, step: 'v14 Route.pathMatch', action: 'If you are defining routes with `pathMatch`, you may have to cast it to `Route` or `Routes` explicitly. `Route.pathMatch` is no longer compatible with `string` type.' },
   { possibleIn: 1400, necessaryAsOf: 1400, level: 3, step: 'v14 stricter LoadChildrenCallback', action: 'The promise returned by `LoadChildrenCallback` now has a stricter type parameter `Type<any>|NgModuleFactory<any>` rather than `any`.' },
   { possibleIn: 1400, necessaryAsOf: 1400, level: 3, step: 'v14 router scheduling', action: 'The router does no longer schedule redirect navigation within a `setTimeout`. Make sure your tests do not rely on this behavior.' },
-  { possibleIn: 1400, necessaryAsOf: 1400, level: 3, step: 'v14 LocationStrategy', action: 'Implementing a the `LocationStrategy` interface now requires definition of `getState()`.' },
+  { possibleIn: 1400, necessaryAsOf: 1400, level: 3, step: 'v14 LocationStrategy', action: 'Implementing the `LocationStrategy` interface now requires definition of `getState()`.' },
   { possibleIn: 1400, necessaryAsOf: 1400, level: 3, step: 'v14 http queries', action: 'Sending `+` as part of a query no longer requires workarounds since `+` no longer sends a space.' },
   { possibleIn: 1400, necessaryAsOf: 1400, level: 3, step: 'v14 AnimationDriver.getParentElement', action: 'Implementing `AnimationDriver` now requires the `getParentElement` method.' },
   { possibleIn: 1400, necessaryAsOf: 1400, level: 3, step: 'v14 invalid config', action: 'Invalid route configurations of lazy-loaded modules will now throw an error rather than being ignored.' },
