@@ -661,6 +661,115 @@ const steps: LocalizedSteps = {
     action:
       'O pacote de rota não exporta mais `SpyNgModuleFactoryLoader` e `DeprecatedLoadChildren`. Caso você os use, certifique-se de remover suas instruções de importação correspondentes.',
   },
+  'v14 ng update': {
+    action:
+      'Execute o comando `ng update @angular/core@14 @angular/cli@14` que irá atualizar seu projeto para a versão 14 do Angular.',
+  },
+  'TypeScript 4.6': {
+    action:
+      'O Angular agora usa o TypeScript 4.6, leia mais sobre possíveis breaking changes: https://devblogs.microsoft.com/typescript/announcing-typescript-4-6/ ',
+  },
+  'v14 node': {
+    action:
+      'Verifique se você está usando o <a href="http://www.hostingadvice.com/how-to/update-node-js-latest-version/" target="_blank">Node 14.15.0 ou posterior</a >',
+  },
+  'v14 strict forms': {
+    action:
+      'Os modelos de formulário agora exigem um parâmetro de tipo genérico. Para migração gradual, você pode optar por não usar a versão sem tipo das classes de modelo de formulário.',
+  },
+  'v14 aotSummaries': {
+    action:
+      'Remova `aotSummaries` de `TestBed` já que o Angular não precisa mais deles no Ivy.',
+  },
+  'v14 MatVertical and Horizontal Stepper': {
+    action:
+      'Se você estiver usando `MatVerticalStepper` ou `MatHorizontalStepper` certifique-se de mudar para `MatStepper`.',
+  },
+  'v14 JSONP': {
+    action:
+      'Remova os cabeçalhos das solicitações JSONP. JSONP não suporta cabeçalhos e, se especificado, o módulo HTTP agora lançará um erro em vez de ignorá-los.',
+  },
+  'v14 resolvers': {
+    action:
+      'Os resolvers agora pegarão o primeiro valor emitido por um observable e depois disso prosseguirão para a navegação para se alinhar melhor com outros guards em vez de pegar o último valor emitido.',
+  },
+  'v14 deprecate protractor entry': {
+    action:
+      'O entry point obsoleto `angular/cdk/testing/protractor` agora foi removido.',
+  },
+  'v14 chipInput': {
+    action:
+      'Certifique-se de especificar `chipInput` de `MatChipInputEvent` porque agora é obrigatório.',
+  },
+  'v14 mixinErrorState': {
+    action:
+      'Você precisa implementar o membro da classe `stateChanges` em abstrações usando `mixinErrorState` porque o mixin não o fornece mais.',
+  },
+  'v14 CdkStepper orientation': {
+    action:
+      'Use `CdkStepper.orientation` em vez de `CdkStepper._orientation`.',
+  },
+  'v14 CdkStepper and MatStepper': {
+    action:
+      'Se você está estendendo ou usando `CdkStepper` ou `MatStepper` no construtor, você não deve mais passar o parâmetro `_document` já que ele foi removido.',
+  },
+  'v14 mat-list-item-avatar': {
+    action:
+      'Renomeie a classe CSS `mat-list-item-avatar` para `mat-list-item-with-avatar`.',
+  },
+  'v14 MatSelectionListChange.option': {
+    action:
+      'Use `MatSelectionListChange.options` em vez de `MatSelectionListChange.option`.',
+  },
+  'v14 getHarnessLoaderForContent': {
+    action:
+      'Use `getChildLoader(MatListItemSection.CONTENT)` em vez de `getHarnessLoaderForContent`.',
+  },
+  'v14 MatSelectionList': {
+    action:
+      'Se você estiver usando `MatSelectionList` certifique-se de passar `_focusMonitor` em seu construtor porque agora é obrigatório. Além disso, essa classe não possui mais a propriedade `tabIndex` e um parâmetro construtor `tabIndex`.',
+  },
+  'v14 initialNavigation': {
+    action:
+      'Atualize `initialNavigation: \'enabled\'` para `initialNavigation: \'enabledBlocking\'`.',
+  },
+  'v14 Route.pathMatch': {
+    action:
+      'Se você estiver definindo rotas com `pathMatch`, talvez seja necessário convertê-lo para `Route` ou `Routes` explicitamente. `Route.pathMatch` não é mais compatível com o tipo `string`.',
+  },
+  'v14 stricter LoadChildrenCallback': {
+    action:
+      'A promise retornada por `LoadChildrenCallback` agora tem um parâmetro de tipo mais restrito `Type<any>|NgModuleFactory<any>` em vez de `any`.',
+  },
+  'v14 router scheduling': {
+    action:
+      'O router não agenda mais a navegação de redirecionamento dentro de um `setTimeout`. Certifique-se de que seus testes não dependam desse comportamento.',
+  },
+  'v14 LocationStrategy': {
+    action:
+      'Implementar a interface `LocationStrategy` agora requer a definição de `getState()`.',
+  },
+  'v14 http queries': {
+    action:
+      'Enviar `+` como parte de uma query não requer mais soluções alternativas, pois `+` não envia mais um espaço.',
+  },
+  'v14 AnimationDriver.getParentElement': {
+    action:
+      'Implementar `AnimationDriver` agora requer o método `getParentElement`.',
+  },
+  'v14 invalid config': {
+    action:
+      'Configurações de rota inválidas de módulos de lazy-loaded agora gerarão um erro em vez de serem ignoradas.',
+  },
+  'v14 router resolver': {
+    action:
+      'Remova o `resolver` da função `RouterOutletContract.activateWith` e o `resolver` da classe `OutletContext` já que os factory resolvers não são mais necessários.',
+  },
+  'v14 initialUrl': {
+    action:
+      '`Router.initialUrl` aceita apenas `UrlTree` para evitar o uso indevido da API, atribuindo um valor `string`.',
+  },
+
 };
 // @TODO This console log is required or the locale won't be registered
 console.log(`pt-BR registered`);
