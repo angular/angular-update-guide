@@ -193,7 +193,7 @@ export const RECOMMENDATIONS: Step[] = [
 
   { possibleIn: 1400, necessaryAsOf: 1400, level: 1, step: 'v14 ng update', action: 'Run `ng update @angular/core@14 @angular/cli@14` which should bring you to version 14 of Angular.' },
   { possibleIn: 1400, necessaryAsOf: 1400, level: 1, material: true, step: 'update @angular/material', action: 'Run `ng update @angular/material@14`.' },
-  { possibleIn: 1400, necessaryAsOf: 1400, level: 1, step: 'TypeScript 4.6', action: 'Angular now uses TypeScript 4.6, read more about any potential breaking changes: https://devblogs.microsoft.com/typescript/announcing-typescript-4-6/', },
+  { possibleIn: 1400, necessaryAsOf: 1400, level: 1, step: 'TypeScript 4.7', action: 'Angular now uses TypeScript 4.7, read more about any potential breaking changes: https://devblogs.microsoft.com/typescript/announcing-typescript-4-6/', },
   { possibleIn: 1400, necessaryAsOf: 1400, level: 1, step: 'v14 node', action: 'Make sure you are using <a href="http://www.hostingadvice.com/how-to/update-node-js-latest-version/" target="_blank">Node 14.15.0 or later</a>', },
   { possibleIn: 1400, necessaryAsOf: 1400, level: 2, step: 'v14 strict forms', action: 'Form models now require a generic type parameter. For gradual migration you can opt-out using the untyped version of the form model classes.' },
   { possibleIn: 1400, necessaryAsOf: 1400, level: 2, step: 'v14 aotSummaries', action: 'Remove `aotSummaries` from `TestBed` since Angular no longer needs them in Ivy.' },
