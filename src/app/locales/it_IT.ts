@@ -80,7 +80,7 @@ const steps: LocalizedSteps = {
       'Stop using `DefaultIterableDiffer`, `KeyValueDiffers#factories`, or `IterableDiffers#factories`',
   },
   'Template Tag': {
-    action: 'Rinimina it tuoi tag `template` in `ng-template`',
+    action: 'Rinomina it tuoi tag `template` in `ng-template`',
   },
 
   OpaqueToken: {
@@ -337,7 +337,7 @@ const steps: LocalizedSteps = {
   //   windows: false,
     action:
       "Esegui `NG_DISABLE_VERSION_CHECK=1 npx @angular/cli@8 update @angular/core@8 @angular/cli@8` nella directory del tuo spazio di lavoro per aggiornare all'ultima versione 8.x di `@angular/core` e `@angular/cli` e confermare questi cambiamenti."
-    },
+   },
   // 'cli v8 latest': {
   //    windows: true,
   //    action:
@@ -346,7 +346,7 @@ const steps: LocalizedSteps = {
   'create commits': {
     action:
       'Puoi opzionalmente passare il flag `--create-commits` (o `-C`) ai comandi [ng update](https://angular.io/cli/update) per creare un commit git per migrazione individuale.',
-    },
+  },
   // END v8
 
   // START v9
@@ -445,7 +445,6 @@ const steps: LocalizedSteps = {
   'v10 NodeJS 12': {
     action:
       'Assicurati di utilizzare una versione di <a href="https://nodejs.org/dist/latest-v12.x/" target="_blank">Node 12 o successiva</a>.'
-
   },
   // END v9
 
@@ -526,6 +525,10 @@ const steps: LocalizedSteps = {
   'v10-more-details': {
     action:
       'For more details about deprecations, automated migrations, and changes visit the [guide angular.io](https://v10.angular.io/guide/updating-to-version-10)',
+  },
+  'universal-baseurl': {
+    action:
+      'For Angular Universal users, if you use `useAbsoluteUrl` to setup `platform-server`, you now need to also specify `baseUrl`.',
   },
   // END v10
 };
