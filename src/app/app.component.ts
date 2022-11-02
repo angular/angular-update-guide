@@ -126,13 +126,13 @@ export class AppComponent {
       return;
     }
 
-    const labelTitle = this.i18Service.transform('Angular Update Guide');
-    const labelBasic = this.i18Service.transform('Basic Apps');
-    const labelMedium = this.i18Service.transform('Medium Apps');
-    const labelAdvanced = this.i18Service.transform('Advanced Apps');
+    const labelTitle = this.i18Service.transform('Guide to update your Angular application');
+    const labelBasic = this.i18Service.transform('basic applications');
+    const labelMedium = this.i18Service.transform('medium applications');
+    const labelAdvanced = this.i18Service.transform('advanced applications');
 
     this.title =
-    `${labelTitle} | ${this.from.name} -> ${this.to.name}
+    `${labelTitle} v${this.from.name} -> v${this.to.name}
     ${this.i18Service.transform('for')}
     ${
       this.level < 2 ?
