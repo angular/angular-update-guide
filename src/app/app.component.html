@@ -35,21 +35,21 @@
   <div class="wizard">
     <div>
       <mat-card>
-        <h3>
-          {{'Select the options matching your project:'|i18n}}
-        </h3>
+        <h2>
+          {{'Select the options that match your update'|i18n}}
+        </h2>
 
         <mat-card-content>
 
-          <h4>{{'Angular Versions'|i18n}}</h4>
-          {{'From'|i18n}}:
+          <h3>{{'Angular versions'|i18n}}</h3>
+          {{'From'|i18n}} v.
           <mat-form-field appearance="outline">
             <select (change)="from = getVersion($event.target.value); track.send('setting-from','v'+$event.target.value); showUpdatePath()" placeholder="from" matNativeControl>
               <option *ngFor="let version of versions" [value]="version.name" [selected]="version.name === from.name">{{version.name}}</option>
             </select>
           </mat-form-field>
 
-          <span style="white-space: nowrap">{{'To'|i18n}}:
+          <span style="white-space: nowrap">{{'To'|i18n}} v.
           <mat-form-field appearance="outline">
             <select (change)="to = getVersion($event.target.value);  track.send('setting-to','v'+$event.target.value); showUpdatePath()" placeholder="to" matNativeControl>
               <option *ngFor="let version of versions" [value]="version.name" [selected]="version.name === to.name">{{version.name}}</option>
@@ -63,26 +63,26 @@
           </div>
           <div *ngIf="from.number > to.number">
             <br/>
-            <strong style="color:darkred">{{'Warning'|i18n}}:</strong> {{'We do not currently support downgrading versions of Angular.'|i18n}}
+            <strong style="color:darkred">{{'Warning'|i18n}}:</strong> {{'We do not support downgrading versions of Angular.'|i18n}}
           </div>
           <div *ngIf="(to.number - from.number > 150) && from.number > 240">
             <br/>
-            <strong style="color:darkred">{{'Warning'|i18n}}:</strong> {{'We do not support migrating across multiple major versions at once. Please migrate each major version individually.'|i18n}}
+            <strong style="color:darkred">{{'Warning'|i18n}}:</strong> {{'Be sure to follow the guide below to migrate your application to the new version. You can\'t run'|i18n}} <code>ng update</code> {{'to update Angular applications more than one major version at a time.'|i18n}}
           </div>
 
-          <h4>{{'App Complexity'|i18n}}</h4>
+          <h3>{{'Application complexity'|i18n}}</h3>
           <ng-container>
               <mat-button-toggle-group (change)="level = $event.value; track.send('setting-complexity',$event.value); showUpdatePath()" [value]="level" style="margin-bottom:16px;">
                 <mat-button-toggle [value]="1">{{'Basic'|i18n}}</mat-button-toggle>
                 <mat-button-toggle [value]="2">{{'Medium'|i18n}}</mat-button-toggle>
                 <mat-button-toggle [value]="3">{{'Advanced'|i18n}}</mat-button-toggle>
               </mat-button-toggle-group>
-              <p *ngIf="level === 1">{{'Show update information relevant to all Angular developers.'|i18n}}</p>
-              <p *ngIf="level === 2">{{'Show more specific update information relevant to around 10% of Angular developers.'|i18n}}</p>
-              <p *ngIf="level === 3">{{'Show all the information we have about the update.'|i18n}}</p>
+              <p *ngIf="level === 1">{{'Shows information for all Angular developers.'|i18n}}</p>
+              <p *ngIf="level === 2">{{'Shows information that\'s of interest to more advanced Angular developers.'|i18n}}</p>
+              <p *ngIf="level === 3">{{'Shows all the information we have about this update.'|i18n}}</p>
             </ng-container>
 
-          <h4>{{'Other Dependencies'|i18n}}</h4>
+          <h3>{{'Other dependencies'|i18n}}</h3>
           <ng-container *ngFor="let option of optionList">
             <p>
               <mat-checkbox (change)="options[option.id] = $event.checked; track.send('setting-'+option.name,$event.checked); showUpdatePath()" [checked]="options[option.id]">{{'I use'|i18n}} {{option.name}} {{option.description}}</mat-checkbox>
@@ -112,30 +112,34 @@
 
   <div class="recommendations" *ngIf="beforeRecommendations.length > 0 || duringRecommendations.length > 0 || afterRecommendations.length > 0">
     <h2>{{title}}</h2>
-    <h3>{{'Before Updating'|i18n}}</h3>
+    <h3>{{'Before you update'|i18n}}</h3>
     <div *ngFor="let r of beforeRecommendations">
       <mat-checkbox></mat-checkbox>
       <div style="margin-left:30px;" [innerHTML]="r.renderedStep"></div>
     </div>
     <div *ngIf="beforeRecommendations.length <= 0">
-      <em>{{"There aren't currently any changes needed before moving between these versions."|i18n}}</em>
+      <em>{{"You don't need to do anything before moving between these versions."|i18n}}</em>
     </div>
 
-    <h3>{{'During the Update'|i18n}}</h3>
+    <h3>{{'Update to the new version'|i18n}}</h3>
+    <div *ngIf="duringRecommendations.length > 0">
+      <p><em>{{"Review these changes and perform the actions to update your application."|i18n}}</em></p>
+      <p>&nbsp;</p>
+    </div>
     <div *ngFor="let r of duringRecommendations">
       <mat-checkbox></mat-checkbox>
       <div style="margin-left:30px;" [innerHTML]="r.renderedStep"></div>
     </div>
     <div *ngIf="duringRecommendations.length <= 0">
-      <em>{{"There aren't currently any recommendations for moving between these versions."|i18n}}</em>
+      <em>{{"There aren't any recommendations for moving between these versions."|i18n}}</em>
     </div>
-    <h3>{{'After the Update'|i18n}}</h3>
+    <h3>{{'After you update'|i18n}}</h3>
     <div *ngFor="let r of afterRecommendations">
       <mat-checkbox></mat-checkbox>
       <div style="margin-left:30px;" [innerHTML]="r.renderedStep"></div>
     </div>
     <div *ngIf="afterRecommendations.length <= 0">
-      <em>{{"There aren't currently any changes needed after moving between these versions."|i18n}}</em>
+      <em>{{"You don't need to do anything after moving between these versions."|i18n}}</em>
     </div>
   </div>
 </div>
