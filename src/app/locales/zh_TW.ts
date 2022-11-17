@@ -1,10 +1,14 @@
 import { LocalizedLabels, LocalizedSteps, registerLocalization } from '../localization';
 const uiLabels: LocalizedLabels = {
   'Angular Update Guide': 'Angular 升級指南',
-  'Select the options matching your project:': '選擇與你的專案符合的選項:',
-  'Angular Versions': 'Angular 版本',
+  'Select the options that match your update:': '選擇與你的專案符合的選項:',
+  'Angular versions': 'Angular 版本',
+  'Application complexity': '應用程式複雜度',
   'From': '從',
   'To': '到',
+  'Shows information for all Angular developers.': '顯示所有給 Angular 開發者的資訊。',
+  'Shows information that\'s of interest to more advanced Angular developers.': '顯示對進階 Angular 開發者有興趣的資訊。',
+  'Shows all the information we have about this update.': '顯示所有關於這次升級的資訊。',
   'Warning': '注意',
   'Plans for releases after the current major release are not finalized and may change. These recommendations are based on scheduled deprecations.':
     '目前主要版本後的規劃尚未定案，且可能有所變更。這些建議基於已排定的棄用。',
@@ -21,27 +25,23 @@ const uiLabels: LocalizedLabels = {
   'Show more specific update information relevant to around 10% of Angular developers.':
     '顯示約前10% Angular 開發人員詳細更新資訊。',
   'Show all the information we have about the update.': '顯示所有更新資訊。',
-  'Other Dependencies': '其他相依',
+  'Other dependencies': '其他相依',
   'I use': '使用',
   'to combine AngularJS & Angular': '結合 AngularJS 和 Angular',
   'Package Manager': '套件管理',
   'Show me how to update!': '顯示如何更新！',
-  'Before Updating': '更新前',
-  // tslint:disable-next-line: quotemark
-  "There aren't currently any changes needed before moving between these versions.":
-    '這兩個版本中間的更新，目前無任何變更。',
-  'During the Update': '更新時',
-  // tslint:disable-next-line: quotemark
-  "There aren't currently any recommendations for moving between these versions.":
-    '目前沒有關於這兩個版本之間的任何建議。',
-  'After the Update': '更新後',
-  // tslint:disable-next-line: quotemark
-  "There aren't currently any changes needed after moving between these versions.":
-    '目前這兩個版本之間無需做任何變動。',
-  'for': '對於',
-  'Basic Apps': '基本應用程式',
-  'Medium Apps': '中等應用程式',
-  'Advanced Apps': '進階應用程式',
+  'Guide to update your Angular application': 'Angular 應用程式升級指南',
+  'for': '針對',
+  'basic applications': '基本應用程式',
+  'medium applications': '中等應用程式',
+  'advanced applications': '進階應用程式',
+  'Before you update': '在您開始更新前',
+  "You don't need to do anything before moving between these versions.": '在這些版本之間不需要做任何事情。',
+  'Review these changes and perform the actions to update your application.': '檢視這些變更並執行動作來更新您的應用程式。',
+  'Update to the new version': '更新到新版本',
+  "There aren't any recommendations for moving between these versions.": '在這些版本之間沒有任何建議。',
+  'After you update': '更新後',
+  "You don't need to do anything after moving between these versions.": '在這些版本之間不需要做任何事情。'
 };
 
 const steps: LocalizedSteps = {
@@ -613,7 +613,66 @@ const steps: LocalizedSteps = {
   'v14 initialUrl': {
      action: '`Router.initialUrl` 只接受 `UrlTree` 以避免指派字串遭到誤用。'
   },
-
+  'v15 node support': {
+    action: '在升級應用程式之前確認你正在使用支援的 node.js 版本。Angular v15 支援 node.js 版本：14.20.x、16.13.x 和 18.10.x。<a href="https://angular.io/guide/update-to-version-15#v15-bc-01" alt="關於這項變更的更多資訊">閱讀更多</a>'
+  },
+  'v15 ts support': {
+    action: '在升級應用程式之前確認你正在使用支援的 TypeScript 版本。Angular v15 支援 TypeScript 版本 4.8 或更高版本。<a href="https://angular.io/guide/update-to-version-15#v15-bc-02" alt="關於這項變更的更多資訊">閱讀更多</a>'
+  },
+  'v15 ng update': {
+    action: '在應用程式的專案目錄中，執行 `ng update @angular/core@15 @angular/cli@15` 以將你的應用程式升級到 Angular v15。'
+  },
+  'V15 update @angular/material': {
+    action: '執行 `ng update @angular/material@15` 以更新 Material 元件。'
+  },
+  'v15 keyframe': {
+    action: '在 v15 中，Angular 編譯器會將 CSS 中的 `@keyframes` 加上元件的範圍前綴。這意味著任何依賴 `keyframes` 名稱的 TypeScript 程式碼在 v15 中都不再運作。請更新任何此類實例：以程式碼方式定義 keyframes、使用全域樣式表或更改元件的檢視封裝。<a href="https://angular.io/guide/update-to-version-15#v15-bc-03" alt="關於這項變更的更多資訊">閱讀更多</a>'
+  },
+  'v15 no-ivy': {
+    action: '在應用程式的 `tsconfig.json` 檔案中，移除 `enableIvy`。在 v15 中，Ivy 是唯一的渲染引擎，因此不再需要 `enableIvy`。'
+  },
+  'v15 base-decorators': {
+    action: '確保在有繼承關係且使用建構子和相依注入的基礎類別中使用裝飾器。這樣的基礎類別應該使用 `@Injectable` 或 `@Directive` 來裝飾，否則編譯器會回傳錯誤。<a href="https://angular.io/guide/update-to-version-15#v15-bc-05" alt="關於這項變更的更多資訊">閱讀更多</a>'
+  },
+  'v15 setDisabledState': {
+    action: '在 v15 中，當 `ControlValueAccessor` 附加時，`setDisabledState` 始終會被呼叫。若要選擇性地取消此行為，請使用 `FormsModule.withConfig` 或 `ReactiveFormsModule.withConfig`。<a href="https://angular.io/guide/update-to-version-15#v15-bc-06" alt="關於這項變更的更多資訊">閱讀更多</a>'
+  },
+  'v15 canParse': {
+    action: '使用 `@angular/localize/tools` 中的 `analyze` 來取代使用 `canParse` 的應用程式。在 v15 中，`@angular/localize/tools` 中的所有翻譯解析器都已從 `canParse` 方法中移除。<a href="https://angular.io/guide/update-to-version-15#v15-bc-07" alt="關於這項變更的更多資訊">閱讀更多</a>'
+  },
+  'v15 ActivatedRoutSnapshot': {
+    action: '確保所有 `ActivatedRouteSnapshot` 物件都有 `title` 屬性。在 v15 中，`title` 屬性是 `ActivatedRouteSnapshot` 的必要屬性。<a href="https://angular.io/guide/update-to-version-15#v15-bc-08" alt="關於這項變更的更多資訊">閱讀更多</a>'
+  },
+  'v15 RouterOutlet': {
+    action: '如果你的 `RouterOutlet` 測試失敗，請確保它們不依賴於相對於變更偵測的相對應元件的實例化順序。在 v15 中，`RouterOutlet` 在變更偵測之後實例化元件。<a href="https://angular.io/guide/update-to-version-15#v15-bc-09" alt="關於這項變更的更多資訊">閱讀更多</a>'
+  },
+  'v15 relativeLinkResolution': {
+    action: '在 v15 中，`relativeLinkResolution` 在路由器中無法設定。它用來退出現在已經是標準的早期 bug 修正。 <a href="https://angular.io/guide/update-to-version-15#v15-bc-10" alt="關於這項變更的更多資訊">閱讀更多</a>'
+  },
+  'v15 DATE_PIPE_DEFAULT_OPTIONS': {
+    action: '將 `DATE_PIPE_DEFAULT_TIMEZONE` token 的實例更改為使用 `DATE_PIPE_DEFAULT_OPTIONS` 來配置時區。在 v15 中，`DATE_PIPE_DEFAULT_TIMEZONE` token 已棄用。<a href="https://angular.io/guide/update-to-version-15#v15-dp-01" alt="關於這項變更的更多資訊">閱讀更多</a>'
+  },
+  'v15 Injector.get': {
+    action: '更新使用 `InjectFlags` 參數的 `Injector.get()` 實例，以使用 `InjectOptions` 參數。v15 中棄用 `Injector.get()` 的 `InjectFlags` 參數。<a href="https://angular.io/guide/update-to-version-15#v15-dp-02" alt="關於這項變更的更多資訊">閱讀更多</a>'
+  },
+  'v15 TestBed.inject': {
+    action: '更新使用 `InjectFlags` 參數的 `TestBed.inject()` 實例，以使用 `InjectOptions` 參數。v15 中棄用 `TestBed.inject()` 的 `InjectFlags` 參數。<a href="https://angular.io/guide/update-to-version-15#v15-dp-01" alt="關於這項變更的更多資訊">閱讀更多</a>'
+  },
+  'v15 ngModule in providedIn': {
+    action: '在 v15 中，對 `@Injectable` 和 `InjectionToken` 使用 `providedIn: ngModule` 已棄用。<a href="https://angular.io/guide/update-to-version-15#v15-dp-04" alt="關於這項變更的更多資訊">閱讀更多</a>'
+  },
+  'v15 providedIn any': {
+    action: '在 v15 中，對 `@Injectable` 和 `InjectionToken` 使用 `providedIn: \'any\'` 已棄用。<a href="https://angular.io/guide/update-to-version-15#v15-dp-05" alt="關於這項變更的更多資訊">閱讀更多</a>'
+  },
+  'v15 RouterLinkWithHref': {
+    action: '更新 `RouterLinkWithHref` directive 的實例，以使用 `RouterLink` directive。v15 中棄用 `RouterLinkWithHref` 指令。<a href="https://angular.io/guide/update-to-version-15#v15-dp-06" alt="關於這項變更的更多資訊">閱讀更多</a>'
+  },
+  'v15 mat refactor': {
+    action: '在 Angular Material v15 中，許多元件已基於官方 Material Design Components (MDC) for Web 重構。這個變更影響了許多元件的 DOM 和 CSS 類別。<a href="https://rc.material.angular.io/guide/mdc-migration" alt="關於這項變更的更多資訊">閱讀更多</a>'
+  },
+  'v15 visual review': {
+    action: '在將應用程式更新到 v15 後，用肉眼檢查一下您的應用程式及其互動，以確保一切都正常運作。'
+  },
 };
 console.log(`zh-TW registered`);
 registerLocalization('zh-TW', steps, uiLabels);
