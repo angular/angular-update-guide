@@ -769,6 +769,90 @@ const steps: LocalizedSteps = {
     action:
       '`Router.initialUrl` aceita apenas `UrlTree` para evitar o uso indevido da API, atribuindo um valor `string`.',
   },
+  'v15 node support': {
+    action:
+      'Certifique-se de estar usando uma versão compatível do node.js antes de atualizar seu aplicativo. Angular v15 é compatível com as versões do node.js: 14.20.x, 16.13.xe 18.10.x. <a href="https://angular.io/guide/update-to-version-15#v15-bc-01" alt="Link para obter mais informações sobre esta alteração">Leia mais</a>',
+  },
+  'v15 ts support': {
+    action:
+      'Certifique-se de estar usando uma versão compatível do TypeScript antes de atualizar seu aplicativo. Angular v15 suporta TypeScript versão 4.8 ou posterior. <a href="https://angular.io/guide/update-to-version-15#v15-bc-02" alt="Link para mais informações sobre esta mudança">Leia mais</a>',
+  },
+  'v15 ng update': {
+    action:
+      'No diretório do projeto do aplicativo, execute `ng update @angular/core@15 @angular/cli@15` para atualizar seu aplicativo para Angular v15.',
+  },
+  'V15 update @angular/material': {
+    action:
+      'Execute `ng update @angular/material@15` para atualizar os componentes do Material.',
+  },
+  'v15 keyframe': {
+    action:
+      'Na v15, o compilador Angular prefixa `@keyframes` em CSS com o escopo do componente. Isso significa que qualquer código TypeScript que dependa de nomes de `keyframes` não funciona mais na v15. Atualize essas instâncias para: definir keyframes programaticamente, usando CSS globais ou alterando o view encapsulation do componente. <a href="https://angular.io/guide/update-to-version-15#v15-bc-03" alt="Link para mais informações sobre esta mudança">Leia mais</a>',
+  },
+  'v15 no-ivy': {
+    action:
+      'No arquivo `tsconfig.json` do seu aplicativo, remova `enableIvy`. Na v15, Ivy é o único mecanismo de renderização, portanto, `enableIvy` não é necessário.',
+  },
+  'v15 base-decorators': {
+    action:
+      'Certifique-se de usar decoradores em classes base com classes filhas que herdam construtores e usam injeção de dependência. Essas classes base devem ser decoradas com `@Injectable` ou `@Directive` ou o compilador retornará um erro. <a href="https://angular.io/guide/update-to-version-15#v15-bc-05" alt="Link para mais informações sobre esta mudança">Leia mais</a>',
+  },
+  'v15 setDisabledState': {
+    action:
+      'Na v15, `setDisabledState` é sempre chamado quando um `ControlValueAccessor` é anexado. Para desativar esse comportamento, use `FormsModule.withConfig` ou `ReactiveFormsModule.withConfig`. <a href="https://angular.io/guide/update-to-version-15#v15-bc-06" alt="Link para mais informações sobre esta mudança">Leia mais</a>',
+  },
+  'v15 canParse': {
+    action:
+      'Aplicativos que usam `canParse` devem usar `analyze` de `@angular/localize/tools`. Na v15, o método `canParse` foi removido de todos os analisadores de tradução em `@angular/localize/tools`. <a href="https://angular.io/guide/update-to-version-15#v15-bc-07" alt="Link para obter mais informações sobre esta alteração">Leia mais</a>',
+  },
+  'v15 ActivatedRoutSnapshot': {
+    action:
+      'Certifique-se de que todos os objetos `ActivatedRouteSnapshot` tenham uma propriedade `title`. Na v15, a propriedade `title` é uma propriedade obrigatória de `ActivatedRouteSnapshot`. <a href="https://angular.io/guide/update-to-version-15#v15-bc-08" alt="Link para obter mais informações sobre esta alteração">Leia mais</a>',
+  },
+  'v15 RouterOutlet': {
+    action:
+      'Se seus testes com `RouterOutlet` falharem, certifique-se de que eles não dependam da ordem de instanciação do componente correspondente em relação à change detection. Na v15, o `RouterOutlet` instancia o componente após o change detection. <a href="https://angular.io/guide/update-to-version-15#v15-bc-09" alt="Link para obter mais informações sobre esta alteração">Leia mais</a>',
+  },
+  'v15 relativeLinkResolution': {
+    action:
+      'Na v15, `relativeLinkResolution` não é configurável no roteador. Ele foi usado para desativar uma correção de bug anterior que agora é padrão. <a href="https://angular.io/guide/update-to-version-15#v15-bc-10" alt="Link para mais informações sobre esta mudança">Leia mais</a>',
+  },
+  'v15 DATE_PIPE_DEFAULT_OPTIONS': {
+    action:
+      'Altere as instâncias do token `DATE_PIPE_DEFAULT_TIMEZONE` para usar `DATE_PIPE_DEFAULT_OPTIONS` para configurar fusos horários. Na v15, o token `DATE_PIPE_DEFAULT_TIMEZONE` está obsoleto. <a href="https://angular.io/guide/update-to-version-15#v15-dp-01" alt="Link para obter mais informações sobre essa alteração">Leia mais</a>',
+  },
+  'v15 iframe': {
+    action:
+      'As instâncias `<iframe>` existentes podem ter atributos inseguros aplicados a elas como um attribute ou property binding. Esses atributos inseguros podem ocorrer em um template ou em uma diretiva host bindings. Tais ocorrências requerem uma atualização para garantir a conformidade com as novas e mais rígidas regras sobre o uso do `<iframe>`. Para obter mais informações, consulte [a página de erro](https://angular.io/errors/NG0910).',
+  },
+  'v15 Injector.get': {
+    action:
+      'Atualize instâncias de `Injector.get()` que usam um parâmetro `InjectFlags` para usar um parâmetro `InjectOptions`. O parâmetro `InjectFlags` de `Injector.get()` está obsoleto na v15. <a href="https://angular.io/guide/update-to-version-15#v15-dp-02" alt="Link para obter mais informações sobre essa alteração">Leia mais</a>',
+  },
+  'v15 TestBed.inject': {
+    action:
+      'Atualize instâncias de `TestBed.inject()` que usam um parâmetro `InjectFlags` para usar um parâmetro `InjectOptions`. O parâmetro `InjectFlags` de `TestBed.inject()` está obsoleto na v15. <a href="https://angular.io/guide/update-to-version-15#v15-dp-01" alt="Link para obter mais informações sobre essa alteração">Leia mais</a>',
+  },
+  'v15 ngModule in providedIn': {
+    action:
+      'Usar `providedIn: ngModule` para um `@Injectable` e `InjectionToken` está obsoleto na v15. <a href="https://angular.io/guide/update-to-version-15#v15-dp-04" alt="Link para mais informações sobre esta mudança">Leia mais</a>',
+  },
+  'v15 providedIn any': {
+    action:
+      'Usar `providedIn: \'any\'` para um `@Injectable` ou `InjectionToken` está obsoleto na v15. <a href="https://angular.io/guide/update-to-version-15#v15-dp-05" alt="Link para mais informações sobre esta mudança">Leia mais</a>',
+  },
+  'v15 RouterLinkWithHref': {
+    action:
+      'Atualize instâncias da diretiva `RouterLinkWithHref` para usar a diretiva `RouterLink`. A diretiva `RouterLinkWithHref` está obsoleta na v15. <a href="https://angular.io/guide/update-to-version-15#v15-dp-06" alt="Link para obter mais informações sobre esta alteração">Leia mais</a>',
+  },
+  'v15 mat refactor': {
+    action:
+      'No Angular Material v15, muitos dos componentes foram refatorados para serem baseados no Material Design Components for Web (MDC) oficial. Essa mudança afetou as classes DOM e CSS de muitos componentes. <a href="https://rc.material.angular.io/guide/mdc-migration" alt="Link para mais informações sobre esta mudança">Leia mais</a>',
+  },
+  'v15 visual review': {
+    action:
+      'Depois de atualizar seu aplicativo para a v15, revise visualmente seu aplicativo e suas interações para garantir que tudo esteja funcionando como deveria.',
+  },
 
 };
 // @TODO This console log is required or the locale won't be registered
