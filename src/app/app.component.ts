@@ -35,6 +35,7 @@ export class AppComponent {
   afterRecommendations: Step[] = [];
 
   versions = [
+    { name: '17.0', number: 1700 },
     { name: '16.0', number: 1600 },
     { name: '15.0', number: 1500 },
     { name: '14.0', number: 1400 },
@@ -68,9 +69,9 @@ export class AppComponent {
     { name: '2.1', number: 201 },
     { name: '2.0', number: 200 },
   ];
-  from = this.versions.find((version) => version.name === '14.0');
-  to = this.versions.find((version) => version.name === '15.0');
-  futureVersion = 1600
+  from = this.versions.find((version) => version.name === '15.0');
+  to = this.versions.find((version) => version.name === '16.0');
+  futureVersion = 1700
   /**
    * Only save the locale in the URL if it was already there, or the user changed it
    */
