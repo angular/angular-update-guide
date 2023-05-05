@@ -2,8 +2,8 @@ import { LocalizedSteps, registerLocalization, LocalizedLabels } from '../locali
 
 const uiLabels: LocalizedLabels = {
   'Angular Update Guide': 'Angularアップデートガイド',
-  'Select the options matching your project:': 'プロジェクトにマッチするオプションを選択',
-  'Angular Versions': 'Angularのバージョン',
+  'Select the options that match your update': 'プロジェクトに適したオプションを選択しましょう',
+  'Angular versions': 'Angularのバージョン',
   From: 'From',
   To: 'To',
   Warning: '注意',
@@ -13,32 +13,30 @@ const uiLabels: LocalizedLabels = {
     'バージョンのダウングレードは現在サポートしていません。',
   'We do not recommend moving across multiple major versions.':
     '複数のメジャーバージョンをまたぐことはおすすめしません。',
-  'App Complexity': 'アプリケーションの複雑度',
+  'Application complexity': 'アプリケーションの複雑度',
   Basic: 'Basic',
   Medium: 'Medium',
   Advanced: 'Advanced',
-  'Show update information relevant to all Angular developers.': 'すべてのAngular開発者に関連する情報を表示します。',
-  'Show more specific update information relevant to around 10% of Angular developers.':
-    'およそ10%程度のAngular開発者に関連する具体的な情報を表示します。',
-  'Show all the information we have about the update.': 'すべての情報を表示します。',
-  'Other Dependencies': 'その他の依存関係',
+  'Shows information for all Angular developers.': 'すべてのAngular開発者のための情報を表示します。',
+  "Shows information that's of interest to more advanced Angular developers.":
+    'より高度なAngular開発者が興味を持つ情報を表示します。',
+  'Shows all the information we have about this update.': 'すべての情報を表示します。',
+  'Other dependencies': 'その他の依存関係',
   'I use': '',
   'Package Manager': 'パッケージマネージャ',
   npm: 'npm',
   yarn: 'yarn',
   'Show me how to update!': 'アップデート手順を表示！',
-  'Before Updating': 'アップデートの前に',
+  'Before you update': 'アップデートの前に',
   // tslint:disable-next-line: quotemark
-  "There aren't currently any changes needed before moving between these versions.":
-    'バージョン移行前に必要な手順はありません。',
-  'During the Update': 'アップデートの実施',
+  "You don't need to do anything before moving between these versions.": 'バージョン移行前に必要な手順はありません。',
+  'Update to the new version': '新バージョンへのアップデート',
   // tslint:disable-next-line: quotemark
-  "There aren't currently any recommendations for moving between these versions.":
-    'バージョン移行のための推奨事項はありません。',
-  'After the Update': 'アップデートの後に',
+  'Review these changes and perform the actions to update your application.':
+    'これらの変更点を確認し、アプリケーションをアップデートするためのアクションを実行してください。',
+  'After you update': 'アップデートの後に',
   // tslint:disable-next-line: quotemark
-  "There aren't currently any changes needed after moving between these versions.":
-    'バージョン移行後に必要な手順はありません。',
+  "You don't need to do anything after moving between these versions.": 'バージョン移行後に必要な手順はありません。',
 };
 
 const steps: LocalizedSteps = {
@@ -462,6 +460,199 @@ const steps: LocalizedSteps = {
   'v14 initialUrl': {
     action:
       '`Router.initialUrl` は `UrlTree` のみを受け付けます。これは `string` 値を代入して API を誤用することを防ぐためです。',
+  },
+  // v15
+  'v15 node support': {
+    action:
+      'アプリケーションのアップグレードを行う前に、サポートされているバージョンの Node.js を使用していることを確認してください。 Angular v15 は次の Node.js バージョンをサポートしています： 14.20.x, 16.13.x, 18.10.x. <a href="https://angular.io/guide/update-to-version-15#v15-bc-01" alt="この変更に関する詳細情報へのリンク">さらに読む</a>',
+  },
+  'v15 ts support': {
+    action:
+      'アプリケーションをアップグレードする前に、サポートされているバージョンのTypeScriptを使用していることを確認してください。 Angular v15 は TypeScript バージョン 4.8 以降をサポートしています。  <a href="https://angular.io/guide/update-to-version-15#v15-bc-02" alt="この変更に関する詳細情報へのリンク">さらに読む</a>',
+  },
+  'v15 ng update': {
+    action:
+      'アプリケーションのプロジェクトディレクトリで、`ng update @angular/core@15 @angular/cli@15` を実行し、アプリケーションを Angular v15 にアップデートします。',
+  },
+  'V15 update @angular/material': {
+    action: '`ng update @angular/material@15` を実行し、Materialコンポーネントを更新します。',
+  },
+  'v15 keyframe': {
+    action:
+      'v15 では、Angular コンパイラが CSS 内の `@keyframes` をコンポーネントのスコープでプレフィックスするようになりました。 これにより、`keyframes`の名前に依存するTypeScriptコードはv15で動作しなくなりました。 そのような場合は、キーフレームをプログラムで定義するか、グローバルなスタイルシートを使用するか、コンポーネントのビュー・カプセル化を変更するように更新してください。 <a href="https://angular.io/guide/update-to-version-15#v15-bc-03" alt="Link to more information about this change">さらに読む</a>',
+  },
+  'v15 no-ivy': {
+    action:
+      'アプリケーションの `tsconfig.json` ファイルで、`enableIvy` を削除してください。v15では、レンダリングエンジンはIvyだけなので、`enableIvy`は必要ありません。',
+  },
+  'v15 base-decorators': {
+    action:
+      'コンストラクターを継承し、依存性の注入を使用する子クラスを持つ基底クラスでは、必ずデコレーターを使用するようにしてください。 このような基底クラスは `@Injectable` または `@Directive` で装飾する必要があり、そうでなければコンパイラーはエラーを返します。 <a href="https://angular.io/guide/update-to-version-15#v15-bc-05" alt="Link to more information about this change">さらに読む</a>',
+  },
+  'v15 setDisabledState': {
+    action:
+      'v15 では、`ControlValueAccessor` がアタッチされると、常に `setDisabledState` が呼び出されます。 この動作を無効にするには、`FormsModule.withConfig` または `ReactiveFormsModule.withConfig` を使用します。 <a href="https://angular.io/guide/update-to-version-15#v15-bc-06" alt="Link to more information about this change">さらに読む</a>',
+  },
+  'v15 canParse': {
+    action:
+      '`canParse` を使用するアプリケーションは、代わりに `@angular/localize/tools` の `analyze` を使用してください。 v15 では、`canParse` メソッドは `@angular/localize/tools` にあるすべての翻訳パーサーから削除されました。  <a href="https://angular.io/guide/update-to-version-15#v15-bc-07" alt="Link to more information about this change">さらに読む</a>',
+  },
+  'v15 ActivatedRoutSnapshot': {
+    action:
+      '`ActivatedRouteSnapshot` オブジェクトがすべて `title` プロパティを持っていることを確認してください。 v15 では、`title` プロパティは `ActivatedRouteSnapshot` の必須プロパティとなります。 <a href="https://angular.io/guide/update-to-version-15#v15-bc-08" alt="Link to more information about this change">さらに読む</a>',
+  },
+  'v15 RouterOutlet': {
+    action:
+      'もし `RouterOutlet` を使ったテストが壊れるなら、それが変更検出に対する対応するコンポーネントのインスタンス化順序に依存していないことを確かめてください。 v15 では、`RouterOutlet` は変更検出の後にコンポーネントをインスタンス化します。 <a href="https://angular.io/guide/update-to-version-15#v15-bc-09" alt="Link to more information about this change">さらに読む</a>',
+  },
+  'v15 relativeLinkResolution': {
+    action:
+      'v15 では、`relativeLinkResolution`はルーターで設定できなくなりました。 これは、現在標準となっている以前のバグフィックスをオプトアウトするために使用されていました。  <a href="https://angular.io/guide/update-to-version-15#v15-bc-10" alt="Link to more information about this change">さらに読む</a>',
+  },
+  'v15 DATE_PIPE_DEFAULT_OPTIONS': {
+    action:
+      '`DATE_PIPE_DEFAULT_TIMEZONE` トークンを使用している場合は、`DATE_PIPE_DEFAULT_OPTIONS` を使用してタイムゾーンを設定するように変更します。  v15 では、`DATE_PIPE_DEFAULT_TIMEZONE` トークンは非推奨です。 <a href="https://angular.io/guide/update-to-version-15#v15-dp-01" alt="Link to more information about this change">さらに読む</a>',
+  },
+  'v15 iframe': {
+    action:
+      '既存の `<iframe>` インスタンスには、属性やプロパティのバインディングとして、セキュリティに影響を与える属性が適用されている場合があります。これらのセキュリティに影響する属性は、テンプレートやディレクティブのホストバインディングに存在する可能性があります。このような場合、`<iframe>`バインディングに関する新しくより厳しい規則に準拠するために、更新が必要です。詳しくは、[エラーページ](https://angular.io/errors/NG0910) を参照してください。',
+  },
+  'v15 Injector.get': {
+    action:
+      '`InjectFlags` パラメータを使用している `Injector.get()` を更新し、`InjectOptions` パラメータを使用するようにしてください。 `Injector.get()` の `InjectFlags` パラメータは v15 で非推奨になりました。 <a href="https://angular.io/guide/update-to-version-15#v15-dp-02" alt="Link to more information about this change">さらに読む</a>',
+  },
+  'v15 TestBed.inject': {
+    action:
+      '`InjectFlags` パラメータを使用している `TestBed.inject()` を更新し、`InjectOptions` パラメータを使用するようにしてください。 `TestBed.inject()` の `InjectFlags` パラメータは v15 で非推奨になりました。 <a href="https://angular.io/guide/update-to-version-15#v15-dp-01" alt="Link to more information about this change">さらに読む</a>',
+  },
+  'v15 ngModule in providedIn': {
+    action:
+      '`providedIn: ngModule` を `@Injectable` と `InjectionToken` に使用することは、v15 では非推奨です。 <a href="https://angular.io/guide/update-to-version-15#v15-dp-04" alt="Link to more information about this change">さらに読む</a>',
+  },
+  'v15 providedIn any': {
+    action:
+      '`providedIn: \'any\'` を `@Injectable` と `InjectionToken` に使用することは、v15 では非推奨です。 <a href="https://angular.io/guide/update-to-version-15#v15-dp-05" alt="Link to more information about this change">さらに読む</a>',
+  },
+  'v15 RouterLinkWithHref': {
+    action:
+      '`RouteLinkWithHref` ディレクティブのインスタンスを更新し、`RouterLink` ディレクティブを使用するようにします。 `RouterLinkWithHref` ディレクティブは v15 で非推奨になりました。 <a href="https://angular.io/guide/update-to-version-15#v15-dp-06" alt="Link to more information about this change">さらに読む</a>',
+  },
+  'v15 mat refactor': {
+    action:
+      'Angular Material v15では、多くのコンポーネントが公式のMaterial Design Components for Web（MDC）をベースとするようにリファクタリングされました。 この変更により、多くのコンポーネントの DOM と CSS クラスに影響があります。 <a href="https://rc.material.angular.io/guide/mdc-migration" alt="Link to more information about this change">さらに読む</a>',
+  },
+  'v15 visual review': {
+    action:
+      'アプリケーションをv15にアップデートした後、アプリケーションとそのインタラクションを目視で確認し、すべてが正常に動作していることを確認してください。',
+  },
+  // v16
+  'v16 node support': {
+    action:
+      'アプリケーションをアップグレードする前に、サポートされているNode.jsのバージョンを使用していることを確認してください。Angular v16は、次のNode.jsのバージョンをサポートしています: v16 および v18',
+  },
+  'v16 ts support': {
+    action:
+      'アプリケーションをアップグレードする前に、サポートされているバージョンのTypeScriptを使用していることを確認してください。Angular v16はTypeScriptバージョン4.9.3以降をサポートしています。アプリケーションをアップグレードする前に、サポートされているバージョンのTypeScriptを使用していることを確認してください。Angular v16はTypeScriptバージョン4.9.3以降をサポートしています。',
+  },
+  'v16 zone.js support': {
+    action:
+      'アプリケーションをアップグレードする前に、Zone.jsのサポートされているバージョンを使用していることを確認してください。Angular v16はZone.jsのバージョン0.13.x以降をサポートしています。',
+  },
+  'v16 RouterEvent': {
+    action:
+      'Event ユニオン型はもはや `RouterEvent` を含んでいません。つまり、Event型を使用する場合、型定義を `(e: Event)` から `(e: Event|RouterEvent)` に変更しなければならない場合があります。',
+  },
+  'v16 routerEvent prop type': {
+    action: '`NavigationEnd` に加えて、`routerEvent` は `NavigationSkipped` 型を受け付けるようになりました。',
+  },
+  'v16 RendererType2': {
+    action: '`RendererType2.styles`はネストした配列を受け付けなくなり、フラットな配列のみを渡すようになりました。',
+  },
+  'v16 BrowserPlatformLocation': {
+    action:
+      '`MockPlatformLocation`がデフォルトでテストに提供されるようになったため、`BrowserPlatformLocation`を使用しているテストを更新する必要があるかもしれません。[さらに読む](https://github.com/angular/angular/blob/main/CHANGELOG.md#common-9)',
+  },
+  'v16 ngcc': {
+    action:
+      'v16でAngular Compatibility Compiler（ngcc）が削除されたため、v16以降のプロジェクトではView Engineライブラリがサポートされなくなりました。',
+  },
+  'v16 createUrlTree': {
+    action:
+      '`Router.createUrlTree`のバグフィックス後、`ActivatedRoute`をモックしたテストを再調整することが必要な場合があります。[さらに読む](https://github.com/angular/angular/blob/main/CHANGELOG.md#1600-next1-2023-03-01)',
+  },
+  'v16 ApplicationConfig imports': {
+    action: '`ApplicationConfig` のインポート元を `@angular/core` に変更してください。',
+  },
+  'v16 renderModule': {
+    action: '`renderModuleFactoryは削除されたため、`renderModule`を使用するようにコードを修正してください。',
+  },
+  'v16 XhrFactory': {
+    action:
+      '`@angular/common/http` からエクスポートされた`XhrFactory`の代わりに、`@angular/common` から `XhrFactory` を使用するようにコードを修正してください。',
+  },
+  'v16 withServerTransition': {
+    action:
+      "同じページで複数のAngularアプリを動作させていて、`BrowserModule.withServerTransition({ appId: 'serverApp' })` を使用している場合、`withServerTransition` が非推奨になったため、代わりに `APP_ID` を設定することを確認して下さい。[さらに読む](https://github.com/angular/angular/blob/main/CHANGELOG.md#platform-browser-4)",
+  },
+  'v16 EnvironmentInjector': {
+    action:
+      '`EnvironmentInjector.runInContext` を `runInInjectionContext` に変更し、第一引数として環境インジェクターを渡してください。',
+  },
+  'v16 ViewContainerRef.createComponent': {
+    action:
+      'ファクトリーリゾルバーを使用せずに `ViewContainerRef.createComponent` を使用するようにコードを更新してください。`ComponentFactoryResolver` は Router API から削除されました。',
+  },
+  'v16 APP_ID': {
+    action: '複数のアプリを同じページでブートストラップする場合は、一意の `APP_ID` を設定してください。',
+  },
+  'v16 server renderApplication': {
+    action:
+      '`renderApplication`メソッドは、第一引数としてルートコンポーネントを受け取らず、代わりにアプリを起動するコールバックを受け取るように、コードを更新してください。[さらに読む](https://github.com/angular/angular/blob/main/CHANGELOG.md#platform-server-3)',
+  },
+  'v16 PlatformConfig.baseUrl': {
+    action:
+      '`PlatformConfig.baseUrl`と`PlatformConfig.useAbsoluteUrl`のplatform-serverの設定オプションは非推奨となったため、コードを更新して参照しているものを削除してください。',
+  },
+  'v16 moduleid': {
+    action:
+      'このプロパティは何の効果もなく、v17で削除される予定ですので、コードを更新して `@Directive`/`@Component` の `moduleId` プロパティへの参照を削除してください。',
+  },
+  'v16 transfer state imports': {
+    action:
+      "`import {makeStateKey、StateKey、TransferState} from '@angular/platform-browser'` から `import {makeStateKey、StateKey、TransferState} from '@angular/core'` にインポートを更新してください。",
+  },
+  'v16 ComponentRef': {
+    action:
+      'もし、`ComponentRef.setInput`によって、`Object.is`の等価検査で同じであってもコンポーネントの入力を設定する場合は、その値を必ずコピーするようにしてください。',
+  },
+  'v16 ANALYZE_FOR_ENTRY_COMPONENTS': {
+    action:
+      '`ANALYZE_FOR_ENTRY_COMPONENTS` インジェクショントークンは削除されたため、コードを更新して参照しているものを削除してください。',
+  },
+  'v16 entry components': {
+    action:
+      '`entryComponents`はもう利用できないため、`@NgModule`と`@Component`のパブリックAPIからその参照をすべて削除できます。',
+  },
+  'v16 ngTemplateOutletContext': {
+    action:
+      'ngTemplateOutletContextは型チェックが厳密になり、対応するオブジェクトですべてのプロパティを宣言しなければなりません。[さらに読む](https://github.com/angular/angular/blob/main/CHANGELOG.md#common-1)',
+  },
+  'v16 APF': {
+    action: 'AngularのパッケージにはFESM2015が含まれなくなり、配布されているECMAScriptは2020から2022に更新されました。',
+  },
+  'v16 EventManager': {
+    action: '非推奨の `EventManager` のメソッド `addGlobalEventListener` は、Ivy で使用されないため削除されました。',
+  },
+  'v16 BrowserTransferStateModule': {
+    action:
+      '`BrowserTransferStateModule`は使用できなくなりましたので、アプリケーションからその参照を削除してください。',
+  },
+  'v16 ReflectiveInjector': {
+    action: '`ReflectiveInjector` は削除されたため、 `Injector.create` を使用するようにコードを更新してください。',
+  },
+  'v16 QueryList': {
+    action:
+      '`QueryList.filter` がタイプガード関数をサポートするようになりました。型が絞られるため、古い動作に依存しているアプリケーションコードを更新する必要があるかもしれません。',
   },
 };
 // @TODO This console log is required or the locale won't be registered
