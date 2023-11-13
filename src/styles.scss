@@ -1,6 +1,47 @@
+@use '@angular/material' as mat;
+@import "@angular/material/prebuilt-themes/pink-bluegrey.css";
 @import "@angular/material/prebuilt-themes/indigo-pink.css";
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+@include mat.core();
+
+$dark-theme: mat.define-dark-theme((
+color: (
+primary: mat.define-palette(mat.$pink-palette),
+secondary: mat.define-palette(mat.$blue-grey-palette),
+accent: mat.define-palette(mat.$red-palette)
+),
+typography: mat.define-typography-config(),
+density: 0,
+));
+
+.dark-theme {
+  background: #303030;
+  @include mat.all-component-themes($dark-theme);
+  color: #fff;
+h1, h2, h3, h4, h5, h6, p, li, ul, ol, td, th, table {
+  color: #fff;
+}
+a {
+  color: #f48fb1;
+}
+a:hover {
+  color: #ffb0c7;
+}
+code {
+  background: #ffffff0f;
+&:hover{
+   background: #ffffff4a;
+ }
+&:hover:after {
+   background: #e91e63;
+ }
+
+&:hover:before {
+   background: #404040;
+ }
+}
+}
 
 * {
   margin: 0;

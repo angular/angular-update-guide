@@ -16,6 +16,7 @@ import { Location, LocationStrategy, PathLocationStrategy } from '@angular/commo
 
 import './locales';
 import { I18nPipe } from './i18n.pipe';
+import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
   declarations: [AppComponent, I18nPipe],
@@ -31,6 +32,7 @@ import { I18nPipe } from './i18n.pipe';
     MatGridListModule,
     MatProgressBarModule,
     MatButtonToggleModule,
+    MatIconModule,
     MatMenuModule,
   ],
   providers: [Location, { provide: LocationStrategy, useClass: PathLocationStrategy }],
