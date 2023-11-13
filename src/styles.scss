@@ -1,6 +1,7 @@
-@import "@angular/material/prebuilt-themes/indigo-pink.css";
+@use '@angular/material' as mat;
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+@include mat.core();
 
 * {
   margin: 0;
@@ -10,10 +11,6 @@
 
 h1, h2, h3, h4 {
   padding: 16px 0;
-}
-
-h1, h2, h3, h4, h5, h6, p, li, ul, ol, td, th, table {
-  color: #333333;
 }
 
 .recommendations>*>div {
@@ -103,4 +100,38 @@ code:hover {
   background-color: #B0BEC5;
   cursor: pointer;
   position: relative;
+}
+
+.dark-mode {
+  $dark-theme: mat.define-dark-theme((
+    color: (
+      primary: mat.define-palette(mat.$indigo-palette, 500),
+      accent: mat.define-palette(mat.$pink-palette, 400)
+    ),
+    density: 0,
+  ));
+
+  @include mat.core-theme($dark-theme);
+  @include mat.core-color($dark-theme);
+  @include mat.button-color($dark-theme);
+  @include mat.all-component-themes($dark-theme);
+
+  code {
+    color: black;
+  }
+}
+
+.light-mode {
+  $light-theme: mat.define-light-theme((
+    color: (
+            primary: mat.define-palette(mat.$indigo-palette, 500),
+            accent: mat.define-palette(mat.$pink-palette, 400)
+    ),
+    density: 0,
+  ));
+
+  @include mat.core-theme($light-theme);
+  @include mat.core-color($light-theme);
+  @include mat.button-color($light-theme);
+  @include mat.all-component-themes($light-theme);
 }

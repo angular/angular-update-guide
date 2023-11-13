@@ -12,6 +12,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 
 import './locales';
@@ -22,6 +24,7 @@ import { I18nPipe } from './i18n.pipe';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    MatIconModule,
     MatToolbarModule,
     MatButtonModule,
     MatCheckboxModule,
@@ -32,6 +35,7 @@ import { I18nPipe } from './i18n.pipe';
     MatProgressBarModule,
     MatButtonToggleModule,
     MatMenuModule,
+    MatSidenavModule,
   ],
   providers: [Location, { provide: LocationStrategy, useClass: PathLocationStrategy }],
   bootstrap: [AppComponent],

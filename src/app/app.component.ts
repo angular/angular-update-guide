@@ -20,6 +20,12 @@ interface Option {
 })
 export class AppComponent {
   title = 'Angular Update Guide';
+  THEME_KEY = 'UPDATE_ANGULAR_THEME';
+  mode: 'dark-mode' | 'light-mode' = localStorage.getItem(this.THEME_KEY) === 'dark-mode' ? 'dark-mode' : 'light-mode';
+  toggleMode() {
+    this.mode = this.mode === 'light-mode' ? 'dark-mode' : 'light-mode';
+    localStorage.setItem(this.THEME_KEY, this.mode);
+  }
 
   level = 1;
   options: Record<string, boolean> = {
