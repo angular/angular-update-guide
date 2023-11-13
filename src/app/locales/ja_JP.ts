@@ -552,7 +552,7 @@ const steps: LocalizedSteps = {
   },
   'v16 ts support': {
     action:
-      'アプリケーションをアップグレードする前に、サポートされているバージョンのTypeScriptを使用していることを確認してください。Angular v16はTypeScriptバージョン4.9.3以降をサポートしています。アプリケーションをアップグレードする前に、サポートされているバージョンのTypeScriptを使用していることを確認してください。Angular v16はTypeScriptバージョン4.9.3以降をサポートしています。',
+      'アプリケーションをアップグレードする前に、サポートされているバージョンのTypeScriptを使用していることを確認してください。Angular v16はTypeScriptバージョン4.9.3以降をサポートしています。',
   },
   'v16 zone.js support': {
     action:
