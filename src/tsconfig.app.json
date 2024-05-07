@@ -10,17 +10,17 @@
       "dom"
     ],
     "outDir": "../out-tsc/app",
-    "target": "es2015",
+    "target": "ES2022",
     "module": "es2015",
     "baseUrl": "",
-    "types": []
+    "types": [],
+    "useDefineForClassFields": false
   },
   "angularCompilerOptions": {
     "enableIvy": true
   },
   "files": [
-    "main.ts",
-    "polyfills.ts"
+    "main.ts"
   ],
   "include": [
     "**/*.d.ts"
