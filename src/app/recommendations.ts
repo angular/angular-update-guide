@@ -299,8 +299,28 @@ export const RECOMMENDATIONS: Step[] = [
   {
     possibleIn: 1800,
     necessaryAsOf: 1800,
+    level: ApplicationComplexity.Basic,
+    step: 'v18 node support',
+    action: 'Make sure that you are using a supported version of node.js before you upgrade your application. Angular v18 supports node.js versions: v18.19.0 and newer'
+  },
+  { possibleIn: 1800,
+    necessaryAsOf: 1800,
+    level: ApplicationComplexity.Basic,
+    step: 'v18 ng update',
+    action: 'In the application\'s project directory, run `ng update @angular/core@18 @angular/cli@18` to update your application to Angular v18.'
+  },
+  {
+    possibleIn: 1800,
+    necessaryAsOf: 1800,
+    level: ApplicationComplexity.Basic,
+    step: "18.0.0 Upgrade TypeScript",
+    action: "Update TypeScript to versions 5.4 or newer."
+  },
+  {
+    possibleIn: 1800,
+    necessaryAsOf: 1800,
     level: ApplicationComplexity.Advanced,
-    step: "18.0.0: async has been removed, use waitForAsync instead",
+    step: "18.0.0: async has been removed, use `waitForAsync` instead",
     action: "Replace `async` from `@angular/core` with `waitForAsync`."
   },
   {
@@ -329,14 +349,14 @@ export const RECOMMENDATIONS: Step[] = [
     necessaryAsOf: 1800,
     level: ApplicationComplexity.Advanced,
     step: "18.0.0.REMOVE_OBSOLETE_IS_WORKER",
-    action: "Update the application to remove 'isPlatformWorkerUi' and 'isPlatformWorkerApp' since they were part of platform WebWorker which is now not part of Angular."
+    action: "Update the application to remove `isPlatformWorkerUi` and `isPlatformWorkerApp` since they were part of platform WebWorker which is now not part of Angular."
   },
   {
     possibleIn: 1800,
     necessaryAsOf: 1800,
     level: ApplicationComplexity.Medium,
     step: "18.0.0.FORCE_ZONE_CHANGE_DETECTION",
-    action: "Tests may run additional rounds of change detection to fully reflect test state in the DOM. As a last resort, revert to the old behavior by adding 'provideZoneChangeDetection({ignoreChangesOutsideZone: true})' to the TestBed providers."
+    action: "Tests may run additional rounds of change detection to fully reflect test state in the DOM. As a last resort, revert to the old behavior by adding `provideZoneChangeDetection({ignoreChangesOutsideZone: true})` to the TestBed providers."
   },
   {
     possibleIn: 1800,
@@ -364,14 +384,7 @@ export const RECOMMENDATIONS: Step[] = [
     necessaryAsOf: 1800,
     level: ApplicationComplexity.Advanced,
     step: "18.0.0 Use RedirectCommand or new NavigationBehaviorOptions",
-    action: "When a guard returns a `UrlTree` as a redirect, the redirecting navigation will now use `replaceUrl` if the initial navigation was also using the `replaceUrl` option. If this is not desirable, the redirect can configure new `NavigationBehaviorOptions` by returning a `RedirectCommand` with the desired options instead of `UrlTree`."
-  },
-  {
-    possibleIn: 1800,
-    necessaryAsOf: 1800,
-    level: ApplicationComplexity.Basic,
-    step: "18.0.0 Upgrade TypeScript",
-    action: "Update TypeScript to versions 5.4 or newer."
+    action: "When a guard returns a `UrlTree` as a redirect, the redirecting navigation will now use `replaceUrl` if the initial navigation was also using the `replaceUrl` option. If you prefer the previous behavior, configure the redirect using the new `NavigationBehaviorOptions` by returning a `RedirectCommand` with the desired options instead of `UrlTree`."
   },
   {
     possibleIn: 1800,
