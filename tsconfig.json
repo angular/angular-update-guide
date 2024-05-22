@@ -9,10 +9,11 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "target": "es2015",
+    "target": "ES2022",
     "lib": [
       "es2016",
       "dom"
-    ]
+    ],
+    "useDefineForClassFields": false
   }
 }

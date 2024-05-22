@@ -49,7 +49,7 @@
             </select>
           </mat-form-field>
 
-          <span style="white-space: nowrap">{{'To'|i18n}} v.
+          <span style="white-space: nowrap; padding-left: 5px">{{'To'|i18n}} v.
           <mat-form-field appearance="outline">
             <select (change)="to = getVersion($event.target.value);  track.send('setting-to','v'+$event.target.value); showUpdatePath()" placeholder="to" matNativeControl>
               <option *ngFor="let version of versions" [value]="version.name" [selected]="version.name === to.name">{{version.name}}</option>
