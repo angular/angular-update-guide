@@ -673,6 +673,108 @@ const steps: LocalizedSteps = {
   'v15 visual review': {
     action: '在將應用程式更新到 v15 後，用肉眼檢查一下您的應用程式及其互動，以確保一切都正常運作。'
   },
+  'v16 node support': {
+    action: '確保在升級應用程式之前，您使用的是支援的 node.js 版本。Angular v16 支援 node.js 版本：v16 和 v18。'
+  },
+  'v16 ts support': {
+    action:
+      '確保在升級應用程式之前，您使用的是支援的 TypeScript 版本。Angular v16 支援 TypeScript 4.9.3 或以上的版本。'
+  },
+  'v16 zone.js support': {
+    action: '確保在升級應用程式之前，您使用的是支援的 Zone.js 版本。Angular v16 支援 Zone.js 0.13.x 或以上的版本。'
+  },
+  'v16 RouterEvent': {
+    action:
+      'Event 不再包含 `RouterEvent`，這表示如果您使用 Event 類型，您可能必須將類型定義從 `(e: Event)` 變更為 `(e: Event|RouterEvent)`'
+  },
+  'v16 routerEvent prop type': {
+    action: '除了 `NavigationEnd` 之外，`routerEvent` 屬性現在也接受 `NavigationSkipped` 類型'
+  },
+  'v16 RendererType2': {
+    action: '傳遞給 `RendererType2.styles` 的參數現在必須是攤平的陣列，因為現在不再接受巢狀陣列'
+  },
+  'v16 BrowserPlatformLocation': {
+    action:
+      '您可能必須更新使用 `BrowserPlatformLocation` 的測試，因為 `MockPlatformLocation` 現在在測試中會預設被提供 。[閱讀更多](https://github.com/angular/angular/blob/main/CHANGELOG.md#common-9)'
+  },
+  'v16 ngcc': {
+    action:
+      '由於在 v16 中移除了 Angular Compatibility Compiler (ngcc)，因此 v16 及之後的專案不再支援 View Engine libraries。'
+  },
+  'v16 createUrlTree': {
+    action:
+      '在 `Router.createUrlTree` 中修復錯誤之後，您可能必須調整模擬 `ActiveRoute` 的測試。[閱讀更多](https://github.com/angular/angular/blob/main/CHANGELOG.md#1600-next1-2023-03-01)'
+  },
+  'v16 ApplicationConfig imports': { action: '匯入 `ApplicationConfig` 的來源變更為 `@angular/core`。' },
+  'v16 renderModule': {
+    action: '使用 `renderModule` 替代 `renderModuleFactory`，因為 `renderModuleFactory` 已被刪除。'
+  },
+  'v16 XhrFactory': {
+    action: '從 `@angular/common` 使用 `XhrFactory` 來取代 `@angular/common/http` 中的 `XhrFactory`。'
+  },
+  'v16 withServerTransition': {
+    action:
+      "如果您在同一頁面上執行多個 Angular 應用程式，並且使用 `BrowserModule.withServerTransition({ appId: 'serverApp' })`，請確保您設定了唯一的 `APP_ID`，因為 `withServerTransition` 現在已棄用。[閱讀更多](https://github.com/angular/angular/blob/main/CHANGELOG.md#platform-browser-4)"
+  },
+  'v16 EnvironmentInjector': {
+    action:
+      '將 `EnvironmentInjector.runInContext` 變更為 `runInInjectionContext`，並將環境注入器 (Environment Injector) 作為第一個參數傳遞。'
+  },
+  'v16 ViewContainerRef.createComponent': {
+    action:
+      '更新您的程式碼，以使用不帶工廠解析器的 `ViewContainerRef.createComponent`。`ComponentFactoryResolver` 已從 Router APIs 中移除。'
+  },
+  'v16 APP_ID': {
+    action: '如果您在同一頁面上執行多個 Angular 應用程式，請確保您設定了唯一的 `APP_ID`'
+  },
+  'v16 server renderApplication': {
+    action:
+      '更新您的程式碼，以修復 `renderApplication` 方法的錯誤，因為它不再接受根元件作為第一個參數，而是接受一個回呼函式，該函式應該啟動您的應用程式。[閱讀更多](https://github.com/angular/angular/blob/main/CHANGELOG.md#platform-server-3)'
+  },
+  'v16 PlatformConfig.baseUrl': {
+    action:
+      '更新您的程式碼，移除任何對 `PlatformConfig.baseUrl` 和 `PlatformConfig.useAbsoluteUrl` 平台伺服器設定選項的參考，因為它已被棄用。'
+  },
+  'v16 moduleid': {
+    action:
+      '更新您的程式碼，移除任何對 `@Directive`/`@Component` 的 `moduleId` 屬性，因為它沒有任何效果，並且將在 v17 中移除。'
+  },
+  'v16 transfer state imports': {
+    action:
+      "更新您的程式碼，從 `import {makeStateKey, StateKey, TransferState} from '@angular/platform-browser'` 變更為 `import {makeStateKey, StateKey, TransferState} from '@angular/core'`"
+  },
+  'v16 ComponentRef': {
+    action:
+      '如果您依賴 `ComponentRef.setInput` 來設定元件輸入，即使它基於 `Object.is` 相等性檢查是相同的，也請確保您複製了它的值。'
+  },
+  'v16 ANALYZE_FOR_ENTRY_COMPONENTS': {
+    action: '更新您的程式碼，移除任何對 `ANALYZE_FOR_ENTRY_COMPONENTS` 注入令牌的參考，因為它已被刪除。'
+  },
+  'v16 entry components': {
+    action: '`entryComponents` 不再可用，並且可以從 `@NgModule` 和 `@Component` 公開 API 中移除任何對它的參考。'
+  },
+  'v16 ngTemplateOutletContext': {
+    action:
+      '`ngTemplateOutletContext` 具有更嚴格的類型檢查，您需要在相應物件中宣告所有屬性。[閱讀更多](https://github.com/angular/angular/blob/main/CHANGELOG.md#common-1)'
+  },
+  'v16 APF': {
+    action: 'Angular 產出的套件不再包含 FESM2015，並且產出的 ECMScript 已從 2020 更新為 2022。'
+  },
+  'v16 EventManager': {
+    action: '`EventManager` 中棄用的 `addGlobalEventListener` 方法已經被移除，因為他不再被 Ivy 所需要。'
+  },
+  'v16 BrowserTransferStateModule': {
+    action:
+      '`BrowserTransferStateModule` 已經不再需要，在應用程式中的任何參考都可以移除。'
+  },
+  'v16 ReflectiveInjector': {
+    action:
+      '更新您的程式碼，使用 `Injector.create` 替代 `ReflectiveInjector`，因為 `ReflectiveInjector` 已被刪除。'
+  },
+  'v16 QueryList': {
+    action:
+      'QureyList.filter 現在提供了型別保護的函示。由於型別會被限縮，您可能需要更新依賴於舊行為的應用程式程式碼。'
+  },
 };
 console.log(`zh-TW registered`);
 registerLocalization('zh-TW', steps, uiLabels);
