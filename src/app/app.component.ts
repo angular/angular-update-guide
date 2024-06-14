@@ -102,6 +102,14 @@ export class AppComponent {
     }
     const versions = searchParams.get('v');
 
+    const enabledOptions = (searchParams.get('options') || '').split(',');
+
+    for(const option of enabledOptions){
+      if(this.options.hasOwnProperty(option)){
+        this.options[option] = true;
+      }
+    }
+
     // Detect versions of from and to
     if (versions) {
       const [from, to] = versions.split('-');
@@ -187,6 +195,15 @@ export class AppComponent {
     if (currentLocale.locale && this.saveLocale) {
       searchParams.set('locale', currentLocale.locale);
     }
+
+    const enabledOptions = this.optionList.map(o => o.id).filter(id => this.options[id]).join(',');
+
+    if(enabledOptions.length){
+      searchParams.set('options', enabledOptions);
+    } else {
+      searchParams.delete('options');
+    }
+
     if (this.level >= 2) {
       searchParams.set('l', `${this.level}`);
     }
