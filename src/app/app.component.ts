@@ -6,6 +6,7 @@ import { AnalyticsService } from './analytics.service';
 import { getLocalizedAction, currentLocale } from './localization';
 import { I18nPipe } from './i18n.pipe';
 import { Clipboard } from '@angular/cdk/clipboard';
+import {ThemeService} from "./theme/theme.service";
 
 interface Option {
   id: string;
@@ -78,15 +79,19 @@ export class AppComponent {
    * Only save the locale in the URL if it was already there, or the user changed it
    */
   saveLocale = false;
-
+  darkMode: boolean = false;
   steps: Step[] = RECOMMENDATIONS;
 
   constructor(
     public location: Location,
     public track: AnalyticsService,
     public i18Service: I18nPipe,
-    private clipboard: Clipboard
+    private clipboard: Clipboard,
+    private readonly themeService: ThemeService
   ) {
+    if(this.themeService.getSavedTheme() === this.themeService.darkTheme){
+      this.toggleTheme(false)
+    }
     this.optionList =  [
       { id: 'ngUpgrade', name: 'ngUpgrade', description: i18Service.transform('to combine AngularJS & Angular') },
       { id: 'material', name: 'Angular Material', description: '' },
@@ -300,6 +305,11 @@ export class AppComponent {
     currentLocale.locale = locale;
     this.saveLocale = true;
     this.showUpdatePath();
+  }
+
+  toggleTheme(useStorage: boolean = true) {
+    this.themeService.setTheme(useStorage);
+    this.darkMode = this.themeService.isDarkMode();
   }
 }
 
